@@ -1,0 +1,227 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.vertical-menu {
+  padding-right:0;
+  padding-left:0;
+  background-color: #fff;
+  width: 100%;
+  height: calc(170vh - 200px);
+  overflow: auto;
+}
+
+.vertical-menu a {
+    background-color: #fff;
+    color: #b5becf;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.vertical-menu a:hover {
+  background-color: #f4f9fe;
+}
+
+.vertical-menu a.active {
+    background-color: #f4f9fe;
+    color: #555d65;
+    font-weight: bold;
+    font-size: 16px;
+}.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    }
+
+    .scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    }
+
+    .scrollmenu a:hover {
+    background-color: #777;
+    }
+</style>
+<div class="bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="vertical-menu col-md-3 my-5 offset-lg-1 d-none d-md-block">
+                    
+                <a  href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+                <a class="active" href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+                {% if current_user.is_role != 'Brand' %}
+                <a  href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a> 
+                <a  href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a> 
+                {% endif %}
+                <a  href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+                <a  href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+                <a  href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Achievement') }}</a>
+                <a  href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+                {% if current_user.is_role == 'Brand' %}
+                <a  href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+                {% endif %} {% if current_user.is_role != 'Brand' %}
+
+                {% endif %}
+                {% if user.category == 'Sports' %}
+                <a  href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+                {% endif %}
+              </div> 
+            
+              <div class="scrollmenu d-block d-md-none">
+
+                  <a href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+                  <a href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+                  {% if current_user.is_role != 'Brand' %}
+                  <a href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a>
+                  <a href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a>
+                  {% endif %}
+                  <a href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+                  <a href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+                  <a href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Achievement') }}</a>
+                  <a class="active" href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+                  {% if current_user.is_role == 'Brand' %}
+                  <a href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+                  {% endif %} {% if current_user.is_role != 'Brand' %}
+
+                  {% endif %}
+                  {% if user.category == 'Sports' %}
+                  <a href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+                  {% endif %}
+              </div>
+            <div class="col-md-6 col-12 bg-white my-5 p-3">
+                <div class="d-flex align-items-center">
+                    <div class="">
+                        <img style="height:100px; width:100px;"  class="shadow-sm rounded-circle"
+                            src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+                    </div>
+
+                    <div class="pl-5">
+                        <h2 class="mb_username">{{ user.username }}</h2>
+                        <p class="text-secondary">{{ user.email }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+
+                        <p Class="text-secondary p-1">Street Address</p>
+                        <div class="form-group">
+                            <!-- {{ form.street.label(class="form-control-label") }} -->
+                            {% if form.street.errors %}
+                            {{ form.street(class="form-control is-invalid",id="googleplaces") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.street.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.street(class="form-control",id="googleplaces") }}
+                            {% endif %}
+                        </div>
+
+                        <p Class="text-secondary p-1">City</p>
+                        <div class="form-group">
+                            <!-- {{ form.city.label(class="form-control-label") }} -->
+                            {% if form.city.errors %}
+                            {{ form.city(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.city.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.city(class="form-control", placeholder="City") }}
+                            {% endif %}
+                        </div>
+
+                        <p Class="text-secondary p-1">ZIP Code</p>
+                        <div class="form-group">
+                            <!-- {{ form.zip_code.label(class="form-control-label") }} -->
+                            {% if form.zip_code.errors %}
+                            {{ form.zip_code(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.zip_code.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.zip_code(class="form-control", placeholder="Zip code") }}
+                            {% endif %}
+                        </div>
+
+                        <p Class="text-secondary p-1">Country</p>
+                        <div class="form-group">
+                            <!-- {{ form.country.label(class="form-control-label") }} -->
+                            {% if form.country.errors %}
+                            {{ form.country(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.country.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.country(class="form-control",id="countries-flags", placeholder="Country") }}
+                            {% endif %}
+                        </div>
+
+
+
+                        <div class="form-group text-right">
+                            {{ form.submit(class="btn btn-info shadow-sm") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="{{ url_for('static', filename='easy-autocomplete.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='resources/flags.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ url_for('static', filename='jquery-1.11.2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='jquery.easy-autocomplete.min.js') }}" type="text/javascript"></script>
+<script>
+    var options = {
+
+        url: "{{ url_for('static', filename='countries.json') }}",
+
+        getValue: "name",
+
+        list: {
+            match: {
+                enabled: true
+            },
+            maxNumberOfElements: 8
+        },
+
+        template: {
+            type: "custom",
+            method: function (value, item) {
+                return "<span class='flag flag-" + (item.code).toLowerCase() + "' ></span>" + value;
+            }
+        },
+
+        theme: "round"
+    };
+
+    $("#countries-flags").easyAutocomplete(options);
+</script>
+
+
+<script>
+    function activatePlacesSearch() {
+        var input = document.getElementById('googleplaces');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+</script>
+
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZZjkOg4_d2Fw6BBN6UeDDqkh-PqgSzDU&libraries=places&callback=activatePlacesSearch">
+    </script>
+{% endblock content %}

@@ -1,0 +1,444 @@
+{% extends "layout.html" %} {% block content %}
+<style>
+.vertical-menu {
+  padding-right:0;
+  padding-left:0;
+  background-color: #fff;
+  width: 100%;
+  height: calc(170vh - 200px);
+  overflow: auto;
+}
+
+.vertical-menu a {
+    background-color: #fff;
+    color: #b5becf;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.vertical-menu a:hover {
+  background-color: #f4f9fe;
+}
+
+.vertical-menu a.active {
+    background-color: #f4f9fe;
+    color: #555d65;
+    font-weight: bold;
+    font-size: 16px;
+}
+.btn {
+    color: #fff;
+    margin-bottom: 0px !important; 
+    position: relative;
+}
+.btn {
+    color: #fff;
+    margin-bottom: 0px !important; 
+    position: relative;
+}
+.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    }
+
+    .scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    }
+
+    .scrollmenu a:hover {
+    background-color: #777;
+    }
+</style>
+<div class="bg-light">
+    <div class="container" style="overflow-x: hidden !important;">
+        <div class="row my-3">
+            <!-- <div class="col-12 offset-md-1 bg-white border shadow-sm "> -->
+                <div class="vertical-menu col-md-3 mt-3 offset-lg-1 d-none d-md-block">
+                    
+                    <a class="active"
+                        href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+                    <a  href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+                    {% if current_user.is_role != 'Brand' %}
+                    <a  href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a> 
+                    <a  href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a> 
+                    {% endif %}
+                    <a  href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+                    <a  href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+                    <a  href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Milestones & Achievements') }}</a>
+                    <a  href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+                    {% if current_user.is_role == 'Brand' %}
+                    <a  href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+                    {% endif %} {% if current_user.is_role != 'Brand' %}
+                    {% endif %}
+                    {% if user.category == 'Sports' %}
+                    <a  href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+                    {% endif %}
+                  </div> 
+                
+              <div class="scrollmenu d-block d-md-none">
+
+                  <a href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+                  <a href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+                  {% if current_user.is_role != 'Brand' %}
+                  <a href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a>
+                  <a href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a>
+                  {% endif %}
+                  <a href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+                  <a href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+                  <a href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Achievement') }}</a>
+                  <a class="active" href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+                  {% if current_user.is_role == 'Brand' %}
+                  <a href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+                  {% endif %} {% if current_user.is_role != 'Brand' %}
+
+                  {% endif %}
+                  {% if user.category == 'Sports' %}
+                  <a href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+                  {% endif %}
+              </div>
+                
+            <!-- </div> -->
+            <div class="col-12 offset-md-0 bg-white p-3 mt-3 col-md-7">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="">
+                        <img style="height:100px; width:100px;"  class="rounded-circle" src="{{ image_file }}">
+                    </div>
+
+                    <div class="pl-5">
+                        <h2 class="mb_username">{{ user.username }}</h2>
+                        <p class="text-secondary">{{ user.email }} | {{ user.is_role }}&#xA0;<small><a href="{{ url_for('main.role') }}">(change)</a></small> </p>
+
+                    </div>
+                </div>
+                <hr>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    {% if current_user.is_role == 'Brand' %}
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            {% if current_user.is_administrator() %}
+
+                            <p class="text-secondary p-1"> Role</p>
+                            <div class="form-group">
+                                <!-- {{ form.is_role.label(class="form-control-label") }} -->
+                                {% if form.is_role.errors %} {{ form.is_role(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.is_role.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.is_role(class="form-control") }} {% endif %}
+                            </div>
+                            {% endif %}
+                            <p class="text-secondary p-1">Brand Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.brand_name.label(class="form-control-label") }} -->
+                                {% if form.brand_name.errors %} {{ form.brand_name(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.brand_name.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.brand_name(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Company Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.company_name.label(class="form-control-label") }} -->
+                                {% if form.company_name.errors %} {{ form.company_name(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.company_name.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.company_name(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">About you</p>
+                            <div class="form-group">
+                                <!-- {{ form.about_me.label(class="form-control-label") }} -->
+                                {% if form.about_me.errors %} {{ form.about_me(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.about_me.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.about_me(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Web URL</p>
+                            <div class="form-group">
+                                <!-- {{ form.web_url.label(class="form-control-label") }} -->
+                                {% if form.web_url.errors %} {{ form.web_url(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.web_url.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.web_url(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Are you available for sponsorship ?</p>
+                            <div class="form-group">
+                                <!-- {{ form.available_for_sponsorship.label(class="form-control-label") }} -->
+                                {% if form.available_for_sponsorship.errors %} {{ form.available_for_sponsorship(class="form-control is-invalid")
+                                                    }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.available_for_sponsorship.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.available_for_sponsorship(class="form-control") }} {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6">
+
+                            <p class="text-secondary p-1">User Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.username.label(class="form-control-label") }} -->
+                                {% if form.username.errors %} {{ form.username(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                    <span>{{ error }}</span> {% endfor %}date_of_birth
+                                </div>
+                                {% else %} {{ form.username(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Phone No</p>
+                            <div class="form-group">
+                                <!-- {{ form.contact_number.label(class="form-control-label") }} -->
+                                {% if form.contact_number.errors %} {{ form.contact_number(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.contact_number.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.contact_number(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Email</p>
+                            <div class="form-group">
+                                <!-- {{ form.email.label(class="form-control-label") }} -->
+                                {% if form.email.errors %} {{ form.email(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.email(class="form-control") }} {% endif %}
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ form.picture.label() }} {{ form.picture(class="form-control-file") }}
+                                {% if form.picture.errors %} {% for error in form.picture.errors
+                        %}
+                                <span class="text-danger">{{ error }}</span><br> {% endfor %} {% endif %}
+                            </div>
+                                <!-- {% if current_user.purpuse != "ok" %}
+                           
+                               <a class="text-danger" href="{{ url_for('main.accountverify') }}">Verify Your Profile</a>
+                            
+                            {% endif %} -->
+                        </div>
+                    </div>
+
+                    {% else %}
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            {% if current_user.is_administrator() %}
+
+                            <p class="text-secondary p-1"> Role</p>
+                            <div class="form-group">
+                                <!-- {{ form.is_role.label(class="form-control-label") }}  -->
+                                {% if form.is_role.errors %} {{ form.is_role(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.is_role.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.is_role(class="form-control") }} {% endif %}
+                            </div>
+                            {% endif %}
+                            <p class="text-secondary p-1">First Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.first_name.label(class="form-control-label") }}  -->
+                                {% if form.first_name.errors %} {{ form.first_name(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.first_name.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.first_name(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Last Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.last_name.label(class="form-control-label") }}  -->
+                                {% if form.last_name.errors %} {{ form.last_name(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.last_name.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.last_name(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Category</p>
+                            <div class="form-group">
+                                <!-- {{ form.category.label(class="form-control-label") }}  -->
+                                {% if form.category.errors %} {{ form.category(class="form-control
+                                                    is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.category.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.category(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">About Me</p>
+                            <div class="form-group">
+                                <!-- {{ form.about_me.label(class="form-control-label") }}  -->
+                                {% if form.about_me.errors %} {{ form.about_me(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.about_me.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.about_me(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Web URL</p>
+                            <div class="form-group">
+                                <!-- {{ form.web_url.label(class="form-control-label") }}  -->
+                                {% if form.web_url.errors %} {{ form.web_url(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.web_url.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.web_url(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">User Name</p>
+                            <div class="form-group">
+                                <!-- {{ form.username.label(class="form-control-label") }}  -->
+                                {% if form.username.errors %} {{ form.username(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                    <span>{{ error }}</span> {% endfor %}date_of_birth
+                                </div>
+                                {% else %} {{ form.username(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Gender</p>
+                            <div class="form-group">
+                                <!-- {{ form.gender.label(class="form-control-label") }}  -->
+                                {% if form.gender.errors %} {{ form.gender(class="is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.gender.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.gender(class="form-control") }} {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6">
+
+                            <p class="text-secondary p-1">Date Of birth</p>
+                            <div class="form-group">
+                                <!-- {{ form.date_of_birth.label(class="form-control-label") }}  -->
+                                {% if form.date_of_birth.errors %} {{ form.date_of_birth(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.date_of_birth.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.date_of_birth(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Language</p>
+                            <div class="form-group">
+                                <!-- {{ form.language.label(class="form-control-label") }}  -->
+                                {% if form.language.errors %} {{ form.language(class="form-control
+                                                    is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.language.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.language(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Education</p>
+                            <div class="form-group">
+                                <!-- {{ form.education_level.label(class="form-control-label") }}  -->
+                                {% if form.education_level.errors %} {{ form.education_level(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.education_level.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.education_level(class="form-control") }} {% endif %}
+                            </div>
+
+                            <p class="text-secondary p-1">Contact No</p>
+                            <div class="form-group">
+                                <!-- {{ form.contact_number.label(class="form-control-label") }}  -->
+                                {% if form.contact_number.errors %} {{ form.contact_number(class="form-control
+                        is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.contact_number.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.contact_number(class="form-control") }} {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Email</p>
+                            <div class="form-group">
+                                <!-- {{ form.email.label(class="form-control-label") }}  -->
+                                {% if form.email.errors %} {{ form.email(class="form-control is-invalid")
+                        }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                    <span>{{ error }}</span> {% endfor %}
+                                </div>
+                                {% else %} {{ form.email(class="form-control") }} {% endif %}
+                            </div>
+
+                            
+
+                            <p class="text-secondary p-1">Update Profile Picture</p>
+                            <div class="form-group">
+                                <!-- {{ form.picture.label() }} -->
+                                {{ form.picture(class="form-control-file border p-1") }}
+                                {% if form.picture.errors %}
+                                {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span><br> {% endfor %} {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group text-right">
+                        {% if current_user.purpuse != "ok" %}
+                        <a class="text-danger" style="padding-right: 10px;" href="{{ url_for('main.accountverify') }}">*<em>Verify Your Profile</em></a>                        
+                        {% endif %}
+                          
+                        {{ form.submit(class="btn btn-info") }}
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.container1 {
+  position: relative;
+  text-align: center;
+  /* color: white; */
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mb_txt1{
+    font-size: 35px;
+    font-weight: bold;
+}
+.mb_txt2{
+  font-size: 18px;
+}
+.clear{
+  clear: both;
+}
+@media only screen and (max-width: 620px) {
+       .mb_col{
+         padding-left: 5px;
+       }
+       .mb_txt1{
+        font-size: 14px;
+        font-weight: bold;
+       }
+       .mb_txt2{
+        font-size: 13px;
+       }
+}
+</style>
+<!-- <div class="row mt-4">
+        <div class="col-12">
+          <img class="" style="width: 100%; height: auto;position: relative; filter: blur(5px);" src="{{ url_for('static', filename='piggybank.jpg') }}">
+          <div class="" style="position: absolute;top: 0; width: 100%; height: 100%; background-color: black; opacity: 0.7;"></div>
+          <div class="text-center" style="position: absolute; top: 9em; left:7em;">
+            <p class="display-4 mb-3 text-light" style="margin-left: 80px;">The Trible Box PIGGYBANK</p>
+            <p style="font-size: 22px; margin-left: 80px;" class=" text-light mb-3 ">Because your every action values here</p>
+            
+          </div>
+        </div>
+      </div> -->
+      <div class="container1">
+          <img src="{{ url_for('static', filename='piggybank.jpg') }}" alt="piggybank" style="width:100%;max-height: 400px; object-fit: cover;">
+          <div class="" style="position: absolute;top: 0; width: 100%; height: 100%; background-color: black; opacity: 0.7;"></div>
+          
+          <div class="centered" style="color:white;">
+            <p class="text-light mb_txt1">The Trible Box PIGGYBANK</p>
+            <p class="mb_txt2">Because your every action values here</p>
+          </div>
+        </div>
+ <div class="container" style="overflow:hidden;">      
+  <!-- <div style="margin-top: 10%"> -->
+    <div class="row">
+      <div class="col-12" style="padding-top:28px;">
+   <div style="margin-left: 5%;" class="d-flex align-items-center">
+
+        <div class="">
+            <img style="height:40%; width:40%;" class="rounded-circle" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+        </div>
+
+        <div class="">
+            <h4>Hi&#xA0;{{ current_user.username }}</h4>
+            <h6 class="text-secondary">Welcome to Your PiggyBank !</h6>
+            <p class="text-dark">Psst..don't tell anyone how much you have in here.. </p>
+        </div>
+    </div>
+    </div> <!--.col-12-->
+  </div>
+  <div class="row">
+    <div class="col-12 mb_col">
+      <hr>
+      <div class="" style="margin-bottom: 10px;">
+      <div class="float-left"><span class="text-dark">COINS BALANCE</span><br><small style="font-size: 26px; color: #ce0d54; margin-left: 20px;"><i class="fas fa-hryvnia"></i>&#xA0;{{ tota }}</small> </div>
+      <div style="margin-top: 3px;" class="float-right">
+
+        <small style="font-family: 'Comic Sans MS', cursive, sans-serif; color: rgba(35, 161, 33, 0.94);" data-toggle="collapse" data-target="#demo">View Ledger&#xA0;<i class="fas fa-arrow-right"></i></small>
+        <p class="text-muted"> BTW, 1 Coin gives 10 Rs Discount</p>
+        
+      </div>
+    </div>
+    <div class="clear"></div>
+
+  <div id="demo" class="collapse" style="margin-top:10%;">
+  <h2>Your Piggybank Ledger </h2>
+  <p>Use thes Coins to avail up to 10% off on your purchase at the selected partners</p>
+  <br>            
+  <table style="font-size: 12px;" class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Action</th>
+      <th scope="col">Points</th>
+      <th scope="col">Transaction ID</th>
+      <th scope="col">At</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reward in reward %}
+    <tr>
+      <th scope="row">{{ reward.id }}</th>
+      <td>{{ reward.action }}</td>
+      <td style="color: rgba(25, 155, 23, 0.94);"><i class="fas fa-hryvnia"></i>&#xA0;{{ reward.points }}</td>
+      <td>{{ reward.address }}</td>
+      <td>{{ moment(reward.timestamp).format('Do MMMM YYYY') }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+  </div>
+
+
+ 
+    </div> <!--col-12-->
+    
+    <hr>
+</div>  <!--.row2-->  
+ <section class="home-campaign section-bg-white" style="margin-top:4rem;border-top:1px solid rgba(0,0,0,.1)" >
+       <div class="container">
+    
+            <div class="row" data-aos="zoom-in">
+                <div class="col-12">
+                    <h2 class="section-title">How it Works</h2>
+                </div>
+            </div>
+            <div class="row probootstrap-gutter60">
+                    <div class="col-md-4 col-sm-12" data-aos="fade-right">
+                      <div class="service hover_service text-center">
+                        <div class="icon"><i class="fas fa-hryvnia"></i></div>
+                        <div class="text">
+                          <h3 style="font-size: 16px;">Earn Rewards on every action</h3>
+                          <p>Click and earn reward coins in your piggybank with every action you on our platform.</p>
+                        </div>  
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-12" data-aos="fade-left">
+                      <div class="service hover_service text-center">
+                        <div class="icon"><i class="fas fa-fire"></i></div>
+                        <div class="text">
+                          <h3 style="font-size: 16px; "">Burn at Piggybank Partners</h3>
+                          <p>Use this Coins to avail up to 10% off on your order at a wide choice of exclusive partners</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12" data-aos="fade-right">
+                            <div class="service hover_service text-center"style="height:92%;">
+                              <div class="icon"><i class="far fa-grin-beam"></i></div>
+                              <div class="text">
+                                <h3 style="font-size: 16px;">Share Smiles</h3>
+                                <p>Every time you need to purchase using piggybank, we donate 1 RS on your behalf to our crowdfunding foundation</p>
+                              </div>
+                            </div>
+                          </div>
+          
+                
+                 
+                  </div>
+    
+    
+        </div>
+    </section>
+
+<div  class="row">
+  <div class="text-center px-5 py-5" style="margin:auto;" data-aos="fade-up">
+    <h3 class="pb-3">EARN, BURN & Repeat
+    </h3>
+    <span style="border-top: 3px solid gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <p>Use your piggybank coins to get up to 10% off across all Our partner brands in 17 cities
+    </p>
+  </div>
+</div>
+
+
+    
+  	
+  <!-- </div> margin top -->
+</div>
+
+{% endblock content %}

@@ -1,0 +1,441 @@
+{% extends "layout.html" %} 
+<head>
+    {% block head %}
+    <meta property="og:title" content="{{ donationreason.goal }}">
+    <meta property="og:description" content="{{ donationreason.short }}">
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}">
+    <meta name="twitter:card" content="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}">
+    <meta name="twitter:title" content="{{ donationreason.goal }}">
+    <meta name="twitter:description" content="{{ donationreason.short }}">
+    
+    {{ super() }}
+    {% endblock head %}
+    </head>
+
+{% block content %}
+<link type="text/css" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery-social-share-bar.css') }}" > -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-social-share-bar.js') }}"></script>
+<style>
+  #share-bar {
+    
+    background: white;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+  #share-bar .sharing-providers > li {
+    display: inline-block;
+  }
+  #share-bar.animate .sharing-providers > li:hover {
+    transform: translateX(0px) !important;
+    transform: translateY(-5px) !important;
+  }
+
+  .sharing-providers.circle > li {
+  border-radius: 50%;
+  margin: 2px;
+}
+#share-bar.left {
+ right: 0;
+}
+#share-bar.left .sharing-providers > li {
+ margin-left: 0;
+}
+#share-bar.right {
+ right: 0;
+}
+#share-bar.right .sharing-providers > li {
+ margin-right: 0;
+}
+
+.sharing-providers > li > a {
+  text-decoration: none !important;
+  font-family: 'FontAwesome';
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  display: block;
+}
+.sharing-providers.circle > li > a {
+  border-radius: 50%;
+}
+.sharing-providers > li > a {
+  color: white;
+  font-size: 25px;
+}
+.sharing-providers > li > a,
+.sharing-providers > li > a:hover {
+  text-decoration: none;
+}
+
+#share-bar.animate .sharing-providers > li:hover {
+  transform: translateX(5px);
+}
+
+#share-bar.right.animate .sharing-providers > li:hover {
+  transform: translateX(-5px);
+}
+
+.sharing-providers > li.facebook:hover {
+  background: #4267B2;
+  
+}
+
+.sharing-providers > li.googleplus:hover {
+  background: #d14836;
+}
+
+.sharing-providers > li.twitter:hover {
+  background: #1DA1F2;
+}
+
+.sharing-providers > li.linkedin:hover {
+  background: #0077B5;
+}
+
+.sharing-providers > li.tumblr:hover {
+  background: #2c4762;
+}
+
+.sharing-providers > li.digg:hover {
+  background: #333333;
+}
+
+.sharing-providers > li.reddit:hover {
+  background: #5f99cf;
+}
+
+.sharing-providers > li.pinterest:hover {
+  background: #cb2027;
+}
+
+.sharing-providers > li.stumbleupon:hover {
+  background: #EB4924;
+}
+
+.sharing-providers > li.email {
+  background: #E3A129;
+}
+.circle{
+  border:none;
+}
+ 
+.container1 {
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 100%;
+  /* padding-right: 15px; */
+}
+.centered {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content-margin{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50% , -50%);
+}
+
+.main_font{
+  font-size: 33px;
+}
+.sub_font{
+  font-size: 18px;
+}
+.explore_btn{
+  font-size: 14px;
+  border: 2px solid blue;
+  color: blue;
+ }
+ .request_btn{
+  font-size: 14px;
+  border: 2px solid blue;
+ }
+ div.circle_share{
+    font-size: 34px;
+    right: 20px;
+    line-height: 44px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.17)
+ }
+ div.circle_share{
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    right: 30px;
+    margin-top: -54px;
+    border: 3px solid #FBFBFB;
+    background-color: #fff;
+    text-align: center;
+    padding: 18px;
+    font-size: 34px;
+    line-height: 44px;
+    z-index: 1;
+}
+.circle_share, .circle_share img{
+    border-radius: 50%;
+    position: relative;
+    backface-visibility: hidden;
+    transform: scale(1);
+}
+@media only screen and (max-width:375px) {
+   .main_font{
+     font-size: 18px;
+   }
+   .sub_font{
+     font-size: 12px;
+   }
+   .explore_btn{
+    font-size: 16px;
+    border: 2px solid blue;
+    color: blue;
+    padding: 7px !important;
+   }
+   .request_btn{
+    font-size: 14px;
+    border: 2px solid blue;
+    padding: 6px !important;
+   }
+}
+@media only screen and (max-width:620px) {
+    .main_font{
+     font-size: 20px;
+   }
+   .sub_font{
+     font-size: 12px;
+   }
+   .explore_btn{
+    font-size: 16px;
+    border: 2px solid blue;
+    color: blue;
+    padding: 7px !important;
+   }
+   .request_btn{
+    font-size: 14px;
+    border: 2px solid blue;
+    padding: 6px !important;
+   }
+   .content-margin{
+   position: absolute;
+   top: 50%;
+   left: 0%;
+   transform: translate(14% , -50%);
+   }
+}
+@media screen and (max-width: 810px) and (min-width: 650px)  {
+    .home-category-box .title > a {
+    color: #fff;
+    font-size: 20px;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    line-height: 150px;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+   }
+   .service p {
+    font-size: 16px;
+   }
+}
+</style>
+<div class="row">
+        <div class="col-12">
+          <img class="" style="width: 100%; max-height: 360px;position: relative;" src="{{ url_for('static', filename='la.jpg') }}">
+          <div class="" style="position: absolute;top: 0; width: 100%; height: 100%; background-color: black; opacity: 0.5;"></div>
+          <div class="text-center content-margin" style="">
+            <p class="text-light main_font">The Trible Box Campaign Program</p>
+            <p  class=" text-light sub_font mb-3">Because every dream matter</p>
+            <button class="btn bg-light explore_btn" type="button"
+                data-toggle="modal" data-target="#myModal">View Demo<i class="fas fa-play-circle ml-3"></i></button>
+            {% if current_user.is_role == 'Creators' %}
+            <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn bg-primary request_btn">Request Donation</a>
+            {% else %}
+            <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn bg-primary request_btn">Create Donation</a>
+            {% endif %}
+          </div>
+        </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="home-campaign section-bg-white" style="padding-top:25px;" >
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">Why choose us </h2>
+            </div>
+        </div>
+        <div class="row probootstrap-gutter60">
+                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-right">
+                  <div class="service hover_service text-center">
+                    <div style="color:black !important;" class="icon"><i class="fa fa-lock"></i></div>
+                    <div class="text">
+                      <h3>Secure</h3>
+                      <p>Your transaction and data are secure and you have nothing to be worried about. We are giving world
+                        class security.</p>
+                    </div>  
+                  </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-left">
+                  <div class="service hover_service text-center">
+                    <div class="icon"><i class="fa fa-history"></i></div>
+                    <div class="text">
+                      <h3>Flexible</h3>
+                      <p>You can donate any amount, whatever you want. There is no fixed amount in the campaigns.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-right">
+                  <div class="service hover_service text-center">
+                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                    <div class="text">
+                      <h3>Easy</h3>
+                      <p>Create a campaign or donate in less than 5 minutes. So, just create campaign, get funds  make
+                        your dream come true.</p>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-left">
+                  <div class="service hover_service text-center">
+                    <div class="icon"><i class="fa fa-gift"></i></div>
+                    <div class="text">
+                      <h3>Supports reward</h3>
+                      <p>Campaign owners can offer rewards. So the backers will get rewarded for their donations.</p>
+                    </div>  
+                  </div>
+                </div>
+             
+              </div>
+
+
+    </div>
+</section>
+
+<section class="home-campaign section-bg-gray new-home-campaigns" data-aos="fade-up">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title"> New campaigns </h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for donationreason in donationreason %}
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pt-3">
+                <div class="shadow p-2">
+                    <div class="row">
+
+                    </div>
+                    <div class="row p-2" style="margin-top:-20px">
+                        <div class="newimage">
+                            <!-- Iframe -->
+
+                            <a href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}"><img class="d-block img-fluid" style="display: block;position: relative;width: 100%;height: 100%;" src="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}"></a>
+
+
+                            <div class="overlaynew"><a class="info" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">View Details</a></div>
+                        </div>
+                    </div>
+                    <div class="circle_share" data-toggle="dropdown"><i class="fas fa-share-alt"></i></div>
+                    <div class="dropdown-menu">
+                        <!-- Social Icons -->
+                        <div id="share-bar" class="sharebar"></div>
+                      </div>
+                    <!-- categories -->
+                   
+
+                    <div class="col-12 pt-0 d-flex" style="height: 50px;margin-top:11%; ">
+                        <h6 style="font-size: 0.8em;max-height:56px; overflow: hidden;" class="align-left text-dark"><a class="article-title text-uppercase" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">{{ donationreason.goal }}</a></h6>
+                        <br>
+                    </div>
+                    <p class="ml-2"> {{ donationreason.short }} </p>
+
+                    <br>    
+                    
+                    
+                    <div style="margin-left: 12px; margin-right: 12px; margin-top: 10px;" class=" d-flex justify-content-between">
+                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Ends</span><br>{{ moment(donationreason.end_date).fromNow()}}
+                            </div>
+
+                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Target</span><br>Rs. {{ "{:,}".format(donationreason.target_amount)
+                            }}</div>
+
+                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Funded</span><br>Rs. {{"{:,}".format(donation)}}</div>
+                    </div>
+                    <br>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-footer">
+                    <a href="javascript:;" class="section-action-btn" onclick="return alert('No more results')"> <span></span> Show more results</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if current_user.is_administrator() %}
+<section class="footer-campaign-stats" data-aos="zoom-in">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3><b class="statistic-counter">{{donationreason.count()}} </b></h3>
+                <h4>Campaigns</h4>
+            </div>
+            <div class="col-md-4">
+                <h3>Rs.<b class="statistic-counter">{{"{:,}".format(tota)}} </b></h3>
+                <h4>Funds Raised</h4>
+            </div>
+            <div class="col-md-4">
+                <h3><b class="statistic-counter">{{donations.count()}}</b></h3>
+                <h4>Backers</h4>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- <br>
+<br>  -->
+<script>
+ $('.sharebar').share();
+</script>
+{% endblock content %}

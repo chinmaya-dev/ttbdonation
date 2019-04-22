@@ -1,0 +1,474 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+.subheading{
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #7a7a7a;
+    margin: 0px auto 25px;
+    max-width: 310px;
+}
+.brandheading{
+    text-align: center;
+    padding: 25px;
+    padding-bottom: 0px;
+}
+.brand_card{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+.brand_card p {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #7a7a7a;
+}
+.brand_card h5{
+    text-align: center;
+}
+.brand_card .points {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #3b373a;
+    padding: 0 0 0 35px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+.brand_card .points li {
+    margin: 10px 0;
+    position: relative;
+}
+.brand_card .points li:after {
+    content: " ";
+    width: 7px;
+    height: 16px;
+    border-right: 1px solid orange;
+    border-bottom: 1px solid orange;
+    top: 3px;
+    left: -32px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.bottom_button a.click_button {
+    display: block;
+}
+.click_button {
+    background-color: orange;
+    color: #fff;
+    border: 1px solid orange;
+}
+a.click_button {
+    -moz-box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    vertical-align: middle;
+}
+.click_button {
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.12);
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 10px;
+    white-space: nowrap;
+    -webkit-transition: color .2s ease-in,background-color .2s ease-in,border .2s ease-in;
+    -o-transition: color .2s ease-in,background-color .2s ease-in,border .2s ease-in;
+    transition: color .2s ease-in,background-color .2s ease-in,border .2s ease-in;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+a.click_button:hover {
+     text-decoration: none;
+     color: #fff
+}
+hr.space {
+    border: none !important;
+    clear: both;
+    height: 70px;
+    margin: 0;
+}
+hr.space.xlg {
+    height: 50px;
+}
+hr.space.m {
+    height: 30px;
+}
+.roiCalculator h2{
+    text-transform: uppercase;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.67;
+    letter-spacing: 3px;
+    text-align: center;
+    color: orange;
+}
+ .roiHeader{
+    margin-bottom: 30px;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: #3b373a;
+}
+/* for slider start */
+.rangeslider{ 
+    width: 100%;
+    text-align: center;
+} 
+.price_data{
+    font-size: 35px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: center;
+    margin-bottom: 30px;
+    color: orange;
+}
+.myslider { 
+    -webkit-appearance: none;
+    width: 70%;
+    background: #f0f3f4;
+    height: 8px;
+    border-radius: 7px;
+    opacity: 2;
+} 
+.myslider:focus{
+    outline: none;
+}  
+  
+input[type="range"] { 
+    -webkit-appearance: none;
+    /* position: relative; */
+    overflow: hidden;
+    height: 13px;
+    width: 70%;
+    border-radius: 70px;
+    cursor: pointer;
+    opacity: 2;
+}
+
+::-webkit-slider-runnable-track {
+    background: #ddd;
+    height: 20px;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 20px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw orange;
+    border: 2px solid #999; /* 1 */
+}
+
+
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw orange;
+    box-sizing: border-box;
+}
+
+::-ms-fill-lower { 
+    background: orange;
+}
+
+::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+::-ms-ticks-after { 
+    display: none; 
+}
+
+::-ms-ticks-before { 
+    display: none; 
+}
+
+::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip { 
+    display: none;
+}
+:focus{
+    outline: none;
+}
+.myslider:hover { 
+    opacity: 1; 
+} 
+.expect{
+    position: relative;
+    background-color: #f8f8f8;
+    padding: 20px 0 115px;
+    text-align: center;
+}
+.expect .stats{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+}
+.stats .stat:not(:last-of-type) {
+    border-bottom: 0;
+    border-right: 1px solid #e4e4e4;
+}
+/* .stats .stat:not(:last-of-type) {
+    border-bottom: 1px solid #e4e4e4;
+} */
+.stats .stat:first-of-type {
+    padding-left: 0;
+}
+.stats .stat {
+    padding: 0 4.5%;
+}
+.stats .stat .value {
+    font-size: 60px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: #3b373a;
+}
+.stats .stat .label {
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #3b373a;
+}
+@media (min-width: 980px){ 
+ .subheading {
+    max-width: none;
+    font-size: 1.25vw;
+    line-height: 1.78;
+ }
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="brandheading">Only pay for the content you love</h1>
+            <p class="subheading">Create a campaign and get beautiful content upfront before committing a cent.</p>
+        </div>
+    </div>
+    <hr class="space m">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+            <div class="brand_card">
+                  <h5>People's Campaign</h5>
+                  <p>Influencers visually celebrate your product. You then approve the content you love and they post it to their social feed.</p>
+                  <ul class="points">
+                      <li> No upfront costs</li>
+                      <li> No minimum spend</li>
+                      <li> Content upfront before you buy</li>
+                      <li> Credit card & invoice</li>
+
+                  </ul>
+                  <div class="bottom_button">
+                      <a class="click_button" href="#">
+                        Learn More
+                      </a>
+                  </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="brand_card">
+                      <h5>Content Campaign</h5>
+                      <p>Influencers visually celebrate your product. You then approve the content you love and they post it to their social feed.</p>
+                      <ul class="points">
+                          <li> No upfront costs</li>
+                          <li> No minimum spend</li>
+                          <li> Content upfront before you buy</li>
+                          <li> Credit card & invoice</li>
+    
+                      </ul>
+                      <div class="bottom_button">
+                          <a class="click_button" href="#">
+                            Learn More
+                          </a>
+                      </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="brand_card">
+                          <h5>Sponsorship</h5>
+                          <p>Influencers visually celebrate your product. You then approve the content you love and they post it to their social feed.</p>
+                          <ul class="points">
+                              <li> No upfront costs</li>
+                              <li> No minimum spend</li>
+                              <li> Content upfront before you buy</li>
+                              <li> Credit card & invoice</li>
+                          </ul>
+                          <div class="bottom_button">
+                              <a class="click_button" href="#">
+                                Learn More
+                              </a>
+                          </div>
+                    </div>
+                </div>
+    </div>
+</div>
+    <hr>
+<div class="container">    
+    <div class="row">
+        <div class="col-12">
+            <div class="roiCalculator">
+                <h2>CALCULATE THE ROI OF YOUR CAMPAIGN</h2>
+                <div class="roiSlider">
+                      <div class="roiHeader">What's your budget?</div>
+                      <div class="rangeslider"> 
+                      <p class="price_data">$<span id="demo"></span>,000</p> 
+                            <input type="range" min="1" max="70" value="5"
+                                             id="sliderRange"> 
+                            <div class="filler"></div>                
+                          </div> 
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div> 
+<hr class="space xlg">
+<div class="expect">
+    <div class="roiHeader">What to expect from The Tribal Box</div>
+    <hr class="space m">
+    <div class="stats">
+        <div class="stat">
+             <div class="value"><span id="demo1"></span></div>
+             <div class="label">Creator Posts</div>
+        </div>
+        <div class="stat">
+                <div class="value"><span  id="demo2"></span></div>
+                <div class="label">AVG. SOCIAL REACH </div>
+        </div>
+        <div class="stat">
+                <div class="value"><span  id="demo3"></span></div>
+                <div class="label">EST. ENGAGEMENT</div>
+        </div>
+        <div class="stat">
+                <div class="value"><span  id="demo4"></span></div>
+                <div class="label">AVG. COST PER ENGAGEMENT</div>
+        </div>
+    </div>
+</div>   
+ <div class="text-center my-5">
+
+<a class="click_button" href="{{ url_for('users.roleupdatebrands',id=current_user.id) }}" style="width:70%;padding: 12px 50px;"> GET STARTED FOR FREE</a></a>
+</div>
+<script> 
+        var rangeslider = document.getElementById("sliderRange"); 
+        var output = document.getElementById("demo"); 
+        var output1 = document.getElementById("demo1");
+        var output2 = document.getElementById("demo2"); 
+        var output3 = document.getElementById("demo3"); 
+        var output4 = document.getElementById("demo4"); 
+
+        output.innerHTML = rangeslider.value;
+        output1.innerHTML = rangeslider.value;
+        output2.innerHTML = rangeslider.value; 
+        output3.innerHTML = rangeslider.value; 
+        output4.innerHTML = rangeslider.value; 
+ 
+        rangeslider.oninput = function() { 
+          output.innerHTML = this.value; 
+          output1.innerHTML = rangeslider.value + 10;
+          output2.innerHTML = rangeslider.value + 5; 
+          output3.innerHTML = rangeslider.value + 8; 
+          output4.innerHTML = rangeslider.value + 7; 
+        } 
+        
+</script> 
+
+
+{% endblock content %}

@@ -1,0 +1,363 @@
+{% extends "layout.html" %} 
+<head>
+    {% block head %}
+    <meta property="og:title" content="{{ donationreason.goal }}">
+    <meta property="og:description" content="{{ donationreason.short }}">
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}">
+    <meta name="twitter:card" content="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}">
+    <meta name="twitter:title" content="{{ donationreason.goal }}">
+    <meta name="twitter:description" content="{{ donationreason.short }}">
+    
+    {{ super() }}
+    {% endblock head %}
+    </head>
+{% block content %}
+<link type="text/css" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery-social-share-bar.css') }}" >
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-social-share-bar.js') }}"></script>
+<style>
+  .circle{
+    border:none !important;
+  }
+  .shareDesktop{
+    display:block;
+  }
+  .shareMobile{
+    display:none;
+  }
+@media only screen and (max-width: 620px) {
+    .mb_tabs{
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+    
+}
+</style>
+
+
+<div class="single-campaign-header">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="single-campaign-title">{{ donationreason.title }}</h1>
+        </div>
+    </div>
+    <div class="single-campaign-menu">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="mb_tabs">
+                        <li><a style="color: #666666 !Important;" id="campaignHome" href="#"> Campaign Home </a> </li>
+                        <li><a style="color: #666666 !Important;" id="Backer" href="#"> Backers ({{donations.count()}}) </a> </li>
+                        <li>
+                            <a style="color: #666666 !Important;" id="Updates" href="#"> Updates</a></li>
+                        <li>
+                            <a style="color: #666666 !Important;" id="Faq" href="#"> Faq's   </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+  <!-- Social Icons -->
+  <div id="share-bar"></div>
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="campaign-decription">
+
+
+                <div class="single-campaign-embeded">
+
+
+
+                    <div class="campaign-feature-img">
+
+                    </div>
+
+
+                </div>
+                <div id="description">
+                <p style="text-align: justify; "><span style="color: rgb(34, 34, 34); font-size: small;">{{ donationreason.description|safe }}</p>
+                </div>
+
+
+
+                    <div id="update">
+    {% if current_user.is_authenticated %}
+    {% if donationreason.Protagonist == current_user %}
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ form2.hidden_tag() }}
+      <fieldset class="form-group">
+        <div class="form-group">
+          {{ form2.body(class="form-control form-control-lg", placeholder=form2.body.label.text) }}
+          <div class="form-check-input">
+            {% for error in form2.body.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          <br>
+          <div class="form-group">
+            {{ form2.submit(class="btn btn-outline-info") }}
+          </div>
+      </fieldset>
+    </form>
+    {% else %}
+
+    {% endif %}
+    {% endif %}
+
+    <br>
+          <div class="col">
+            {% for donationupdate in donationupdate %}
+            <div class="row p-2 d-flex">
+              <!-- profile pic -->
+              <!-- name, last, active, like -->
+              <div class="">
+               
+                <p class="text-dark">{{ donationupdate.body }}</p>
+
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+                </div>
+
+
+                <div id="faq">
+    {% if current_user.is_authenticated %}
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <div class="form-group">
+          {{ form.body(class="form-control form-control-lg", placeholder=form.body.label.text) }}
+          <div class="form-check-input">
+            {% for error in form.body.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          <br>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+      </fieldset>
+    </form>
+    {% else %}
+
+    {% endif %}
+
+    <br>
+          <div class="col">
+            {% for donationcomment in donationcomment %}
+            <div class="row p-2 d-flex">
+              <!-- profile pic -->
+              <div class=" " style="margin-top:-2%;">
+                <img class="article-img" src="{{ url_for('static', filename='profile_pics/' + donationcomment.Protagonist.image_file) }}" style="font-weight: 700 !important;">
+              </div>
+              <!-- name, last, active, like -->
+              <div class="">
+                {% if current_user.is_authenticated %}
+                <h4><a href="{{ url_for('users.user', id=donationcomment.Protagonist.id) }}" class="text-dark"></a>
+                  <a href="{{ url_for('users.user', id=donationcomment.Protagonist.id) }}" class="text-dark">{{
+                    donationcomment.Protagonist.username }}</a>&#xA0;<small class="text-muted" style="font-size: 12px;"> {{
+                    moment(donationcomment.timestamp).fromNow() }}</small></h4>
+                {% else %}
+                {{ donationcomment.Protagonist.username }}
+                {% endif %}
+                <p class="text-dark">{{ donationcomment.body }}</p>
+
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+                </div>
+
+                <div id="backers">
+                    <table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for donations in donations %}
+    <tr>
+      <th scope="row">{{ donations.id }}</th>
+      <td>{{ donations.Protagonist.username }}</td>
+      <td>{{ donations.amount }}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+                    
+                </div>
+                                
+        
+                            </div>
+        
+                        </div>
+        
+                        <div class="col-md-4">
+                            <div class="single-donate-wrap">
+        
+            <h3 class="campaign-single-sub-title">{{ donationreason.goal }}</h3>
+        
+            <div class="single-author-box">
+                <img src="{{ url_for('static', filename='profile_pics/' + donationreason.Protagonist.image_file) }}">
+                <p style="font-size:25px;">{{ donationreason.Protagonist.username }}<br>    </p>
+            </div>
+        
+                    <div class="campaign-tag-list" style="margin-top:3%;margin-bottom:2%;">
+                            {% if donationreason.category=='Sports' %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i>Sports </a>
+                            {% endif %} {% if donationreason.category=='Art & Culture' %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i> Art & Culture </a>
+                            {% endif %} {% if donationreason.Protagonist.category=='Travel for a cause' %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i> Travel for a cause </a>
+                           
+                            {% endif %} {% if donationreason.category=="Design & Technology" %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i> Design & Technology </a>
+                            
+                            {% endif %} {% if donationreason.category=='Environment' %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i> Environment </a>
+                          
+                            {% endif %} {% if donationreason.category=='Defence' %}
+                            <a href="#" style="color:black !Important;font-size:0.8em;"><i class="fas fa-tag" style="font-size:0.8em;"></i> Defence </a>                            
+                            {% endif %}
+                   
+                </div>
+            
+            <div class="campaign-progress-info">
+                {% if donation == None %}
+                <h4>Rs. 0 <small>raised of Rs. {{ donationreason.target_amount }} Goal</small></h4>
+                 {% else %}
+                <h4>Rs. {{donation}} <small>raised of Rs. {{ donationreason.target_amount }} Goal</small></h4>
+                 {% endif %}
+        
+                <div class="progress">
+                                {% if donation == None %}
+                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="40" aria-valuemin="{{donation}}" aria-valuemax="{{ donationreason.target_amount }}"
+                            style="width:{{ 100*(0/donationreason.target_amount) }}%">
+
+                        </div>
+                        {% else %}
+                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="40" aria-valuemin="{{donation}}"
+                            aria-valuemax="{{ donationreason.target_amount }}" style="width:{{ 100*(donation/donationreason.target_amount) }}%">
+                        
+                        </div>
+                        {% endif %}
+                </div>
+        
+                <ul>
+                    <li><span style="font-size:15px;font-weight:bold;">Ends</span> <span style="font-size:15px;">{{ moment(donationreason.end_date).fromNow() }}</span></li>
+                    <li><span style="font-size:15px;font-weight:bold;">{{donations.count()}}</span> <span style="font-size:15px;">Backers</span></li>
+                </ul>
+            </div>
+        
+            <hr>
+        
+        
+            <div class="input-group">
+                <input type="text" id="campaign_url_input" class="form-control" value="{{donationreason.link}}" readonly>
+                <div class="d-flex pb-2">
+                    <button class="blue-gradient" id="campaign_url_copy_btn" style="margin-left:4%;height:35px;width:67px;border-radius:4px !Important;color:white !Important;font-size:10px;">Copy Link</button>
+                </div>
+            </div>
+        
+            <hr>
+        
+            <div id="shareDesk" style="width:100%;">
+
+                <div class="sharethis-inline-share-buttons"></div>
+
+            </div>
+        <br>
+            
+            <div class="donate_form">
+                      {% if current_user.is_role != 'Creators' %}
+                    <div class="d-flex justify-content-left pb-2 ">
+                            <a href="{{ url_for('donation.donation', donationreason_id=donationreason.id) }}" title="Donate" class="shadow btn btn-lg blue-gradient waves-effect btn-rounded"
+                                style="width:100%;">Donate</a>&#xA0;&#xA0;&#xA0;
+                           
+                        </div>
+                        {% endif %}
+        
+                
+            </div>
+        
+        
+            
+        </div>                </div>
+        
+                    </div>
+                </div>
+
+<br>
+<br>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c24f961d02b6e0010eca35d&product=inline-share-buttons' async='async'></script>
+
+<script type="text/javascript">
+ $('#share-bar').share();
+$(document).ready(function () {
+ 
+    $("#faq").hide();
+    $("#backers").hide();
+    $("#update").hide();
+
+    $("#Backer").click(function () {
+        $("#description").hide();
+        $("#faq").hide();
+        $("#backers").show();
+        $("#update").hide();
+
+    });
+    $("#Updates").click(function () {
+        $("#description").hide();
+        $("#faq").hide();
+        $("#backers").hide();
+        $("#update").show();
+
+    });
+    $("#Faq").click(function () {
+        $("#description").hide();
+        $("#faq").show();
+        $("#backers").hide();
+        $("#update").hide();
+
+    });
+    $("#campaignHome").click(function () {
+        $("#description").show();
+        $("#faq").hide();
+        $("#backers").hide();
+        $("#update").hide();
+
+    });
+  
+    var alterClass1 = function() {
+    var ww = document.body.clientWidth;
+    if (ww < 680) {
+      $('#shareDesk').addClass('shareDesktop');
+      $('#shareDesk').removeClass('shareMobile');
+    } else if (ww >= 681) {
+      
+      $('#shareDesk').addClass('shareMobile');
+      $('#shareDesk').removeClass('shareDesktop');
+     };
+   };
+    $(window).resize(function(){
+      alterClass1();
+    });
+    alterClass1();
+});
+
+    </script>
+{% endblock content %}

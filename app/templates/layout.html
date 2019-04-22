@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" href="{{ url_for('static', filename='badage.png') }}">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <!-- Latest Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Close Bootstrap CSS -->
+
+  <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5c24f961d02b6e0010eca35d&product=inline-share-buttons'
+    async='async'></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css">
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"> -->
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nav.css') }}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}"> -->
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/testinomial.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/timelinecss.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/donation.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sponsor.css') }}">
+  <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}"> -->
+   <!--for progress loader start-->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/loader.css') }}">
+   
+   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <style>
+ 
+  /* loader css start  */
+  .loader,
+.loader:before,
+.loader:after {
+  background: #ffc184;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #ffc184;
+  text-indent: -9999em;
+  /* margin: 88px auto; */
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  z-index: 1;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+/* loader css end */
+
+    
+
+    .colorchange>small>a:hover {
+      color: #FF5200;
+    }
+
+    
+
+
+    
+
+    .dropdown:hover>.dropdown-menu {
+      display: block;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+      pointer-events: none;
+    }
+
+    
+    .probootstrap-footer {
+      padding: 7em 0;
+      background: #000;
+      color: #000
+    }
+
+    .probootstrap-footer a {
+      color: rgba(255, 255, 255, .2)
+    }
+
+    .probootstrap-footer a:hover {
+      color: #fff
+    }
+
+    .probootstrap-footer .copyright {
+      margin-top: 50px
+    }
+
+    @media screen and (max-width:768px) {
+      .probootstrap-footer {
+        padding: 3em 0
+      }
+      .probootstrap-footer .copyright {
+        margin-top: 0
+      }
+    }
+
+    .probootstrap-footer .copyright p {
+      line-height: 20px
+    }
+
+    .probootstrap-footer .copyright p .icon {
+      position: relative;
+      top: 2px
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget {
+      float: left;
+      width: 100%;
+      margin-bottom: 30px
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget h3 {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget ul {
+      margin: 0;
+      padding: 0
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget ul li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+
+    
+
+    .probootstrap-footer {
+      padding: 7em 0;
+      background: #1d1d1d;
+      color: rgba(255, 255, 255, .3)
+    }
+
+    .probootstrap-footer a {
+      color: rgba(255, 255, 255, .2)
+    }
+
+    .probootstrap-footer a:hover {
+      color: #fff
+    }
+
+    .probootstrap-footer .copyright {
+      margin-top: 50px
+    }
+
+    @media screen and (max-width:768px) {
+      .probootstrap-footer {
+        padding: 3em 0
+      }
+      .probootstrap-footer .copyright {
+        margin-top: 0
+      }
+    }
+
+    .probootstrap-footer .copyright p {
+      line-height: 20px
+    }
+
+    .probootstrap-footer .copyright p .icon {
+      position: relative;
+      top: 2px
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget {
+      float: left;
+      width: 100%;
+      margin-bottom: 30px
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget h3 {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget ul {
+      margin: 0;
+      padding: 0
+    }
+
+    .probootstrap-footer .probootstrap-footer-widget ul li {
+      margin: 0;
+      padding: 0;
+      list-style: none
+    }
+
+    
+
+
+
+    
+
+    
+
+    .btnactive {
+      color: white;
+      font-weight: bold;
+    }
+
+    .list-group-item:hover {
+      color: #FF5200 !important;
+    }
+
+
+
+   
+    .linkcolor {
+      color: rgba(235, 235, 235, 1);
+    }
+
+    
+
+   
+
+    .footer-width {
+      margin-left: 65px !important;
+    }
+    /* sponsorship section */
+
+    section.forbrand {
+      background: url(../static/img/brandpage.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 6em 0;
+    }
+    .project-tab {
+    
+    margin-top: 15%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.tabfade {
+    transition: opacity .15s linear;
+ }
+
+ .mobile_logo{
+   display: none;
+ }
+ .lap_logo1{
+   display: block;
+ }
+ .overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active1 {
+    display: block;
+    opacity: 1;
+}
+ /* for responsive navbar design */
+ /* @media only screen and (max-width: 450px) {
+   .navbar-nav{
+      display: flex;
+      flex-direction: row;
+   }
+   .mobile_search{
+     margin-right: 10px;
+   }
+   .mobile_logo{
+     display: block;
+   }
+   .lap_logo{
+     display: none;
+   }
+   .laptop_nav{
+     display: none;
+   }
+} */
+@media only screen and (max-width: 320px) {
+  .mobile_font{
+    font-size: 14px !important;
+  }
+  
+}
+
+
+
+
+/*new sidebar */
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper1.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+
+.maincontentop{
+  margin-top: 5%;
+}
+.sidebarstyle{
+  position:fixed;
+  max-height: calc(100vh - 9rem); 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.show {display: block;}
+@media (min-width: 781px) {
+  #menu-toggle {
+    display:block;
+  }
+  .mb_overflowhidden{
+    overflow-x: hidden;
+  }
+  /* .list-group-item{
+      font-size: 1.8em !important;
+    } */
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper1.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+.mdbgroup {
+    position: relative;
+}
+.mdbgroup:before {
+  
+    font-family: FontAwesome;
+    content: "\f002";
+    position: absolute;
+    font-size: 20px;
+    top: 5px;
+    left: 8px;
+  }
+  .mdbinput {
+    font-size: 16px;
+    height: 36px;
+    display: block;
+    width: 300px;
+    border: none;
+    background: #eeeeee;
+    border-radius: 44px;
+}
+.mdbinput:focus{
+  background-color: white;
+  outline:none;
+  border: 2px solid #eeeeee
+}
+
+.search-icon {
+    padding-left: 35px;
+    background-repeat: no-repeat;
+    background-position-x: 4px;
+    background-position-y: 4px;
+}
+.scrollTop {
+  position: fixed;
+  right: 3%;
+  bottom: 10px;
+  background-color: #FF5200;
+  padding: 20px;
+  opacity: 0;
+  z-index: 11;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.scrollTop a {
+  font-size: 18px;
+  color: #fff;
+}
+.signoutpadding{
+  padding: 10% 37%;
+}
+.signoutmobilepadding{
+  padding: 10% 18%;
+}
+.footerlinksection{
+  margin-left:4%;
+}
+.text-xs.circle, .text-xs.square {
+    width: 27px;
+    height: 27px;
+    padding: 0;
+    line-height: 27px;
+}
+.text-xs {
+    font-size: 12px !important;
+    line-height: 16px;
+}
+.circle, .circle img {
+    border-radius: 50%;
+    position: relative;
+    backface-visibility: hidden;
+    transform: scale(1);
+    text-align: center;
+    border: 1px solid  #000;
+}
+/* .sidenavbar{
+  position: sticky;
+    left: 0;
+    top: 10px;
+    height: 100vh;
+    width: 23%;
+    float: left;
+}
+.pagecontentstyle{
+  position: relative;
+  width: 77%;
+  right: 0;
+} */
+.d-flex {
+    display: flex!important;
+    position: relative;
+}
+@media only screen and (max-width: 375px) {
+  .mdbinput::placeholder{
+     font-size: 10px;
+   }
+   .mdbinput {
+    font-size: 23px;
+    height: 30px;
+    display: block;
+    width: 300px;
+    border: none;
+    background: #eeeeee;
+    border-radius: 44px;
+}
+}
+
+
+/* paralax Footer effect */
+
+.pmain {
+/* background-color: #fff; */
+/* z-index: 1051; */
+/* position: relative; */
+/* margin-bottom: 250px !important; */
+/* box-shadow: 0 3px 6px #d6d6d6; */
+}
+/* footer {
+position: absolute;
+bottom: 0;
+width: 82%;
+height: 250px;
+z-index: 0;
+} */
+
+
+
+
+/* side bar */
+.ttbsidenav {
+height: 100%;
+width: 250px;
+position: fixed;
+z-index: 0;
+top: 0;
+left: 0;
+background-color: #fff;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 65px;
+}
+
+.ttbsidenav a {
+padding: 12px 1px 6px 25px;
+text-decoration: none;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.ttbsidenav a:hover {
+background-color: #818181;
+color: white;
+}
+
+#open{
+display: none;
+}
+
+#close{
+display: inline;
+}
+
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+#main {
+margin-left: 250px;
+transition: margin-left .5s;
+}
+
+@media screen and (max-width: 1024px) {
+  .ttbsidenav {
+width: 0;
+  }
+
+#close{
+display: none;
+}
+
+#open{
+display: inline;
+}
+
+#main {
+margin-left: 0;
+transition: margin-left .5s;
+}
+}
+
+body { padding-right: 0 !important }
+
+  </style>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P67RV8S');
+  </script>
+  <!-- End Google Tag Manager -->
+  
+  {{ moment.include_jquery() }} {{ moment.include_moment() }} {% block scripts %}
+  
+  {% endblock %} {% if title %}
+  <title>{{ title }} | The Tribal Box </title>
+  {% else %}
+  <title>The Tribal Box</title>
+  {% endif %}
+  
+</head>
+
+<body>
+ 
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c24f961d02b6e0010eca35d&product=inline-share-buttons'
+      async='async'></script>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P67RV8S" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '268153730556085',
+          xfbml: true,
+          version: 'v3.2'
+        });
+        FB.AppEvents.logPageView();
+      };
+  
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- <div class="laptop_nav"> -->
+    <!-- <div id="loader" class="loader">Loading...</div>     
+    <div style="display:none;" id="myDiv"> -->
+    <div class="d-flex" id="wrapper1">
+<!-- Side Nav Bar -->
+<div id="mySidenav" class="ttbsidenav">
+  
+
+  <a href="{{ url_for('donation.donation_view') }}">
+    <img src="{{ url_for('static', filename='donation.svg') }}" style="width: 25px;height: 20px;">
+    <span class="ml-2" style="font-weight: 400 !important; font-size: 0.9em !important;">
+      Crowdfunding
+    </span>
+  </a>
+
+  
+</div>
+      <!-- Page Content -->
+      <div class="pagecontentstyle" id="page-content-wrapper">
+          <nav id="topnavbar" class="navbar navbar-expand-lg navbar-light nav_width fixed-top nav-color">            
+<span style="font-size:20px;cursor:pointer" id="open" onclick="openNav()"><i class="fa fa-bars"></i></span>
+<span style="font-size:20px;cursor:pointer" id="close" onclick="closeNav()"><i class="fa fa-bars"></i></span>
+            <span id="toplogo">
+              
+              <a class="navbar-brand" href="#">
+                <img id="navbarimage" src="{{ url_for('static', filename='logo_big.png') }}" class=""
+                  style="height: 30px;width: 200px; " /> </a>
+            </span>
+            <div id="navbarSupportedContent">
+                <div class="navbar-collapse">
+                  
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-link mobile_search">
+                      {% if g.search_form %}
+                      <form class="" method="get" action="{{ url_for('main.search') }}">
+                        
+                          <div class="mdbgroup" style="margin-right: 9px;">
+                            {{ g.search_form.q(size=23, class='mdbinput search-icon', placeholder=g.search_form.q.label.text)}}
+                          </div>
+                        
+                      </form>
+                      {% endif %}
+                    </li>
+      
+                    <!-- Dropdown -->
+                    {% if current_user.is_role != None %}
+                    <li class="nav-item dropdown">
+                      <a title="create"  class="nav-link dropdown" href="#" id="navbardrop" data-toggle="dropdown">
+                        <img class=" img-fluid" style="height: 30px; width: 20px !important;"
+                          src="{{ url_for('static', filename='upload.svg') }}">
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        
+                       
+                       
+                        <a style="font-size:14px;" class="dropdown-item" title="New campaign "
+                          href="{{ url_for('donation.create_donation', id=current_user.id) }}">
+                          <img class=" img-fluid" style="height: 30px; width: 20px !important;"
+                            src="{{ url_for('static', filename='cdonation.svg') }}">&#xA0;&#xA0;&#xA0;Ask Donation</a>
+                    
+                        
+                        
+                      </div>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown" href="#" id="navbardrop" data-toggle="dropdown">
+                        <img class="rounded-circle img-fluid" style="height: 30px;"
+                          src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+      
+                        <a style="font-size:14px;" class="dropdown-item" href="{{ url_for('users.user', id=current_user.id) }}"><img
+                            class="adss" src="{{ url_for('static', filename='userp.svg') }}" width="25" height="25"
+                            style="border-radius: 50%;">&#xA0;&#xA0;&#xA0;&#xA0;Profile</a>
+                        <a style="font-size:14px;" class="dropdown-item" title="Settings"
+                          href="{{ url_for('users.account',id=current_user.id) }}"><img src="{{ url_for('static', filename='settings.svg') }}"
+                            style="width: 25px;height: 20px;">&#xA0;&#xA0;&#xA0;Settings</a>
+                        <a style="font-size:14px;" class="dropdown-item" href="{{ url_for('auth.logout') }}"><img
+                            src="{{ url_for('static', filename='logout.svg') }}" style="width: 25px;height: 20px;">&#xA0;&#xA0;&#xA0;Logout
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+      
+              <div id="navbarmobileContent" style="display:none;align-items: center !important;">
+                  <div class="navbar-collapse" style="display: inline-flex;">
+                      
+                    {% if g.search_form %}
+                    <ul class="navbar-nav ml-auto" style="display: flex;flex-direction: row;align-items: center;">
+                      <li class="nav-link mobile_search">
+                        <form class="" method="get" action="{{ url_for('main.search') }}">
+                          <div class="d-flex">
+                              <div class="mdbgroup" style="margin-right: 15px;">
+                                  {{ g.search_form.q(size=10, class='mdbinput search-icon', placeholder="search", style="width:90% !important;")}}
+                                </div>
+                          </div>
+                        </form>
+                        
+                      </li>
+                      </ul>
+                      {% endif %}
+                      <button id="hoverbutton" class="navbar-toggler" type="button" style="border:none !important;" onclick="dropFunction()">
+                          <img class="rounded-circle img-fluid" style="height: 45px;"  src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+                      </button>
+                   
+                      <!-- Dropdown -->
+        
+                      <div id="settingMobileView" class="dropdown-menu" style="display: none;position:absolute !important;float:right !important;right: 0 !important; ">
+        
+                        
+                        
+                        <a class="dropdown-item" title="New campaign "
+                          href="{{ url_for('donation.create_donation', id=current_user.id) }}">Ask Donation</a>
+                        
+                        <div class="dropdown-divider"></div>
+        
+                        <a class="dropdown-item" href="{{ url_for('users.user', id=current_user.id) }}"><i
+                            class="fas fa-user"></i>&#xA0;Profile</a>
+                        <a class="dropdown-item" href="{{ url_for('auth.logout') }}"><i
+                            class="fas fa-power-off"></i>&#xA0;Logout
+                        </a>
+                      </div>
+                     
+                  </div>
+                  
+                </div>
+            </nav>
+  
+<main id="main" role="main" class="maincontento maincontentop" style="max-width: 100vw;">
+                <div class="pmain">
+                   
+                {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+                {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+                </div>
+                <footer id="footer" style="padding: 14px;">
+                  
+                      <div class="row">
+                        <div class="col-12 text-center">
+                          <img src="{{ url_for('static', filename='logo_big.png') }}" style="width: 400px;height: 65px;">
+                          <p style="font-size:0.7e;color: #b6b1b1;margin: 0;">Engaging, Collaborating, Empowering & Inspiring our Community</p>
+                          
+                          <p class="pt-3" style="margin: 0;"><small style="color: #b6b1b1;">&copy; 2019 <a href="#" style="color: #000; font-weight: 600">Quantamix Solutions</a>. All Rights
+                              Reserved. | <a href="{{ url_for('main.tandc') }}" style="color: #000; font-weight: 500">Terms and Condition</a></small></p>
+                              <ul class="probootstrap-footer-social" style="border-color:  rgba(255, 255, 255, .3); padding-top: 12px;">
+                                <li><a class="f-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="f-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="f-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a class="f-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="f-youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+                              </ul>
+                          <p style="font-size:0.7e;color: #b6b1b1;padding-top: 12px;margin: 0;">Not {{ current_user.username }} ?
+                            <a href="{{ url_for('auth.logout') }}" style="color: #000;">Sign Out</a> </p>
+                        </div>
+                      </div>
+                </footer>
+                
+              </main>
+
+</div>
+
+
+  <div id="stop" class="scrollTop">
+      <span style="color:white;"><a><i class="fas fa-angle-up"></i></a></span>
+    </div>
+  </div>    
+
+<script>
+
+  if (matchMedia){
+  const mq = window.matchMedia( "(min-width: 1000px)" );
+  mq.addListener(WidthChange);
+  WidthChange(mq);
+  }
+
+  function WidthChange(mq){
+  if ( mq.matches ){
+  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("main").style.marginRight = "0px";
+  } else {
+  document.getElementById("main").style.marginRight = "-250px";
+  }
+  }
+  
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("open").style.display = "none";
+    document.getElementById("close").style.display = "inline";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("open").style.display = "inline";
+    document.getElementById("close").style.display = "none";
+  }
+  $("#close").click(function() {
+    $('.abc').each(function(){
+      $('.abc').removeClass('col-lg-4');
+      $('.abc').addClass('col-lg-3');
+    })
+  });
+
+  $("#open").click(function() {
+    $('.abc').each(function(){
+      $('.abc').removeClass('col-lg-3');
+      $('.abc').addClass('col-lg-4');
+    })
+  });
+
+</script>
+
+
+
+
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function dropFunction() {
+      
+      $('#settingMobileView').toggle();
+      
+    }
+    </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <!-- <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script> -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+    /******************************
+        BOTTOM SCROLL TOP BUTTON
+     ******************************/
+  
+    // declare variable
+    var scrollTop = $(".scrollTop");
+  
+    $(window).scroll(function() {
+      // declare variable
+      var topPos = $(this).scrollTop();
+  
+      // if user scrolls down - show scroll to top button
+      if (topPos > 100) {
+        $(scrollTop).css("opacity", "1");
+  
+      } else {
+        $(scrollTop).css("opacity", "0");
+      }
+  
+      }); // scroll END
+    });
+    //Click event to scroll to top
+    $(".scrollTop").click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+  
+    }); // click() scroll top EMD
+      $('#sidebarCollapse').on('click', function () {
+        $("#sidebar-wrapper").toggleClass("sidebar-width");
+        // $('.overlay').addClass('active1');
+        $("#main").toggleClass("maincontent-width");
+        $("#footersection").toggleClass("footer-width");
+        if ($('#logo-large').is(":visible")) {
+          $('#logo-mini').show();
+          $('#logo-large').hide();
+        }
+        else {
+          $('#logo-mini').hide();
+          $('#logo-large').show();
+        }
+      });
+    </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#sidebarCollapse").click(function () {
+      $("#show-hide1").toggle();
+      $("#show-hide2").toggle();
+      $("#show-hide3").toggle();
+      $("#show-hide4").toggle();
+      $("#show-hide5").toggle();
+      $("#show-hide6").toggle();
+      $("#show-hide7").toggle();
+      $("#show-hide8").toggle();
+      $("#show-hide9").toggle();
+      $("#show-hide10").toggle();
+      $("#show-hide11").toggle();
+      $("#show-hide12").toggle();
+      $("#show-hide13").toggle();
+      $("#show-hide").toggle();
+      });
+    
+    var alterClass = function() {
+    var ww = document.body.clientWidth;
+    if (ww < 780) {
+      
+      $('#mobProfile').show();
+      $('#deskProfile').hide();
+      $('#mobileprofile').show();
+      $('#desktoprofile').hide();
+      $('#menu-toggle').show();
+      // $('.mb_msglink').show();
+      // $('.desktop_msglink').hide();
+      $('#navbarSupportedContent').hide();
+        $('#navbarmobileContent').show();
+      $('#sidebar-wrapper').removeClass('sidenavbar');
+      $('#page-content-wrapper').removeClass('pagecontentstyle');
+      $('#navbarSupportedContent').removeClass('navbar-collapse');
+      $('#topnavbar').removeClass('fixed-top');
+      $('#toplogo').hide();
+      $('#sidebar-wrapper').removeClass('sidebarstyle');
+      $('#maindiv').removeClass('maincontentpadding');
+      $('#maindiv').removeClass('maincontentop');
+      $('#footersection').removeClass('maincontentpadding');
+      // $('#footerSignout').removeClass('signoutpadding');
+      $('#footerSignout').addClass('signoutmobilepadding');
+      $('#aboutsection').removeClass('col-md-4');
+      $('#featuresection').removeClass('col-md-4');
+      $('#aboutsection').addClass('col-xs-4 mr-5');
+      $('#featuresection').addClass('col-xs-4');
+      $('#aboutsection').addClass('footerlinksection');
+    } else if (ww >= 781) {
+
+      $('#mobProfile').hide();
+      // $('.mb_msglink').hide();
+      // $('.desktop_msglink').show();
+      $('#mobileprofile').hide();
+      $('#desktoprofile').show();
+      $('#deskProfile').show();
+      $('#navbarmobileContent').hide();
+      $('#navbarSupportedContent').show();
+      $('#sidebar-wrapper').addClass('sidenavbar');
+      $('#page-content-wrapper').addClass('pagecontentstyle');
+      $('#navbarSupportedContent').addClass('navbar-collapse');
+      $('#menu-toggle').hide();
+      $('#topnavbar').addClass('fixed-top');
+      $('#toplogo').show();
+      $('#sidebar-wrapper').addClass('sidebarstyle');
+      $('#maindiv').addClass('maincontentpadding');
+      $('#maindiv').addClass('maincontentop');
+      $('#footersection').addClass('maincontentpadding');
+      // $('#footerSignout').addClass('signoutpadding');
+      $('#footerSignout').removeClass('signoutmobilepadding');
+      $('#aboutsection').addClass('col-md-4');
+      $('#featuresection').addClass('col-md-4');
+      $('#aboutsection').removeClass('col-xs-4 mr-5');
+      $('#featuresection').removeClass('col-xs-4');
+      $('#aboutsection').removeClass('footerlinksection');
+     };
+   };
+    $(window).resize(function(){
+      alterClass();
+    });
+    //Fire it when the page first loads:
+    alterClass();
+    var alterClass1 = function() {
+    var ww = document.body.clientWidth;
+    if (ww < 680) {
+      $('.mb_msglink').show();
+      $('.desktop_msglink').hide();
+    } else if (ww >= 681) {
+      $('.desktop_msglink').show();
+      $('.mb_msglink').hide(); 
+     };
+   };
+    $(window).resize(function(){
+      alterClass1();
+    });
+    alterClass1();
+  });
+
+  
+  var timeoutvar;
+
+  // function loaderfunction() {
+  //   timeoutvar = setTimeout(showPage, 1000);
+  // }
+
+  // function showPage() {
+  //   document.getElementById("loader").style.display = "none";
+  //   document.getElementById("myDiv").style.display = "block";
+  // }
+  </script>
+  <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/custom.min.js') }}"></script>
+   <!-- Menu Toggle Script -->
+   <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper1").toggleClass("toggled");
+      });
+    </script>
+</body>
+
+</html>

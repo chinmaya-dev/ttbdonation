@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+  /* .mb_profilepadding{
+    padding-top:3%;
+    padding-right: 148px;
+  } */
+@media only screen and (max-width: 620px) {
+  .mb_tabs{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+  
+}
+@media screen and (max-width: 810px) and (min-width: 650px)  {
+  /* .mb_profilepadding{
+    padding-right: 17px;
+    padding-top:3%;
+  } */
+}
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/campaign.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#div2").hide();
+    $("#preview").click(function () {
+      $("#div2").hide();
+      $("#div1").show();
+    });
+    $("#preview2").click(function () {
+      $("#div1").hide();
+      $("#div2").show();
+    });
+   	$('ul.tabs li').click(function(){
+		  var tab_id = $(this).attr('data-tab');
+  		$('ul.tabs li').removeClass('current');
+	  	$('.tab-content').removeClass('current');
+  		$(this).addClass('current');
+	  	$("#"+tab_id).addClass('current');
+	  })
+
+  });
+</script>
+<!-- Faq Accordian Script Start -->
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".set > span").on("click", function() {
+        if ($(this).hasClass("active")) {
+          $(this).removeClass("active");
+          $(this)
+            .siblings(".content")
+            .slideUp(200);
+          $(".set > span i")
+            .removeClass("fa-chevron-down")
+            .addClass("fa-greater-than");
+        } else {
+          $(".set > span i")
+            .removeClass("fa-chevron-down")
+            .addClass("fa-greater-than");
+          $(this)
+            .find("i")
+            .removeClass("fa-greater-than")
+            .addClass("fa-chevron-down");
+          $(".set > span").removeClass("active");
+          $(this).addClass("active");
+          $(".content").slideUp(200);
+          $(this)
+            .siblings(".content")
+            .slideDown(200);
+        }
+      });
+    });
+    
+    </script>
+    <!-- Faq Accordian Script End -->
+<div class="container py-5">
+        <div class="row" style="padding-top:2%;"> 
+                <div class="col-md-8">
+                    <div class="container1">
+                   <img class="mx-auto mt-2 img-fluid" src="{{ url_for('static', filename='event_pics/' + events.image_file) }}" style="    width: 819px;
+                   height: 338px; border: 1px solid black;border-radius: 6px;"> 
+                   <div class="top-left">
+                    <p style="margin-top: 5px; font-size: 13px; color:white;">{{ moment(events.event_start_date).format('Do') }}</p>
+                    <p style="font-size:13px; color:white;">{{ moment(events.event_start_date).format('MMM') }}</p>
+                   </div>
+                   <div class="bottom-right"> 
+                        {% if events.event_category=='Beauty & Fashion' %}
+                        <p><span class="badge badge-danger" style="width:100%;">Beauty & Fashion</span></p>
+                        {% endif %}
+                        {% if events.event_category=='Gaming & Apps' %}
+                        <p><span class="badge badge-danger" style="width:100%;">Gaming & Apps</span></p>
+                        {% endif %}
+                        {% if events.event_category=='Health & Fitness' %}
+                        <p><span class="badge badge-danger" style="width:100%;">Health & Fitness</span></p>
+                        {% endif %}
+                        {% if events.event_category=="Tech" %}
+                        <p><span class="badge badge-danger" style="width:100%;">Tech</span></p>
+                        {% endif %}
+                        {% if events.event_category=='Entertainment' %}
+                        <p><span class="badge badge-danger" style="width:100%;">Entertainment</span></p>
+                        {% endif %}
+                        {% if events.event_category=='Others' %}
+                        <p><span class="badge badge-danger" style="width:100%;">Others</span></p>
+                        {% endif %}
+                   </div>
+                    </div>     
+                </div>
+                <div class="col-md-4" style="margin-top:9px;">
+                   <!-- evvent name -->
+                   <div style="display: flex;">
+                    <div>
+                    <p><a class="text-uppercase ahover" style="color:black; font-size: 18px;" href="#">{{events.event_name }}</a></p>
+                   </div>
+                    </div> 
+                     <!-- eventname end -->
+                    <div id="share" tyle="margin-left:-6%;">
+          
+                        <div class="sharethis-inline-share-buttons" style="padding-top:4%;"></div>
+          
+                    </div> <!--share social media-->
+                    <div style="padding:17px 0px; display: flex;">
+                      <div style="padding: 1%;">
+                        {% if current_user.has_in_events(events) %}
+                        <a href="{{ url_for('users.eventin_action', events_id=events.id, action='out') }}"> <button type="button" class="btn btn-danger" style="padding: 0%;
+                          font-size: 9px;height: 27px;
+              width: 84px; ">CANCEL&#xA0;&#xA0; {{events.intrest.count() }}</button></a>  
+                         {% else %}
+                         <a href="{{ url_for('users.eventin_action', events_id=events.id, action='in') }}"> <button type="button" class="btn btn-success" style="padding: 0%;
+                          font-size: 9px; height: 27px;
+              width: 84px;background-color: white !important;color: black;border: 1px solid black;">GOING&#xA0;&#xA0; {{ events.intrest.count() }}</button></a>
+                         {% endif %}
+                      </div>
+                         
+                    </div>
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-12"> -->
+                         
+                         <div>
+                                {% if current_user.is_authenticated %}
+                                
+                                <img class="float-left rounded-circle"
+                                  src="{{ url_for('static', filename='profile_pics/' + events.Protagonist.image_file) }}"
+                                  style="width: 56px;height: 57px;">
+                                  <div class="text-left mt-2">
+                                  <p><a class="text-dark ml-2" href="{{ url_for('users.user', id=events.Protagonist.id) }}">By {{ events.Protagonist.username }}</a></p>
+                                  <p><a class="text-dark ml-2 text-capitalize" style="font-size:14px;" href="http://maps.google.com/?q={{events.event_location }}">{{events.event_location }}</a></p>
+                                    </div>
+                                {% else %}
+                                  <h4 class="text-capitalize text-dark company-name"> By {{ events.Protagonist.username }}
+                                    <br>
+                                    <small style="font-size: 9px;padding-right: 10%;" class="text-muted">
+                                      <b>Created {{ moment(events.event_start_date).fromNow() }}</b>
+                                    </small>
+                                  </h4>
+                                  
+                                {% endif %}
+                            <!-- following -->
+                             </div>
+                         <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+             </div> <!--row2-->
+   </div>
+   <div class="container-fluid" style="padding:0px;">
+        <div class="bordor_top1"></div>
+        <ul class="tabs mb_tabs">
+          <li class="tab-link current" data-tab="tab-1">About</li>
+          <li class="tab-link" data-tab="tab-2">FAQ&#xA0;&#xA0;<small style="color:#FF8000;">{{ bbq.count() }}</small></li>
+          <li class="tab-link" data-tab="tab-3">Community</li>
+          <li class="tab-link" data-tab="tab-4">People&#xA0;&#xA0;<small style="color:#FF8000;">{{ intrested.count() }}</small></li>
+        </ul>
+        <div class="bordor_top"></div> 
+     </div>  <!--.container-fluid1-->  
+     <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">     
+               <!-- <hr class="hrtag"> -->
+                <div id="tab-1" class="tab-content current">
+                    <h5>About</h5>
+                    <p class="text-muted" style="text-align: justify;">{{events.event_description|safe }}</p>
+                 </div>
+                 <div id="tab-2" class="tab-content">
+                    {% if events.Protagonist == current_user %}
+                    {% if current_user.is_authenticated %}
+                    <form method="POST" action="" enctype="multipart/form-data">
+                      {{ form.hidden_tag() }}
+                      <fieldset class="form-group">
+                    
+                        <div class="form-group">
+                          {{ form.que(class="form-control form-control-lg", placeholder=form.que.label.text) }}
+                          <div class="form-check-input">
+                            {% for error in form.que.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                    
+                          <div class="form-group">
+                            {{ form.ans(class="form-control form-control-lg", placeholder=form.ans.label.text) }}
+                            <div class="form-check-input">
+                              {% for error in form.ans.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                            </div>
+                    
+                            <br>
+                            <div class="form-group">
+                              {{ form.submit(class="btn btn-outline-info") }}
+                            </div>
+                      </fieldset>
+                    </form>
+                    {% else %}
+                    
+                    {% endif %}
+                    {% endif %}
+
+                    {% for bbq in bbq %}
+                    <div class="row">
+                            <div class="col-sm-12 col-md-6 " >
+                              <div class="accordion-container">
+                                <div class="set">
+                                  <span>
+                                    {{ bbq.que }}
+                                  </span>
+                                  <div class="content">
+                                    <p>{{  bbq.ans }}</p>
+                                    <p class="text-muted">Last Update : {{ moment(bbq.timestamp).format('Do MMMM YYYY') }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                </div>
+                 <div id="tab-3" class="tab-content">
+
+                  <div style="margin:auto;" class="col-sm-12 col-md-6 jumbotron purple-gradient mb_community">
+                  
+                  
+                    <p style="font-size:18px;" class="text-center text-white">{{ moment(events.event_start_date).format('Do MMMM YYYY') }}<br>Event Started</p>
+                  </div>
+                    
+                    <div style="margin:auto;margin-top: 15px;" class=" col-sm-12 col-md-6 jumbotron aqua-gradient mb_community">
+   
+                       
+                      <p style="font-size:18px;" class="text-center text-white">{{ events.intrest.count() }} Creator is intrested  in joining  <br> {{ events.Protagonist.username  }} in this event</p>
+                  </div>
+                <div style="margin:auto;margin-top: 15px;" class=" col-sm-12 col-md-6 jumbotron peach-gradient mb_community">
+                
+                
+                  <p style="font-size:18px;" class="text-center text-white">
+                    {{ moment(events.event_end_date).format('Do MMMM YYYY') }} Event Ended</p>
+                </div>
+               </div>
+              <div id="tab-4" class="tab-content "> 
+         <table style="font-size:12px; margin-left: 20%;" class=" col-6 table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for intrested in intrested %}
+    <tr>
+      <th scope="row">{{ intrested.id }}</th>
+      <td>{{ intrested.Protagonist.username }}</td>
+      <td>{{ intrested.Protagonist.email }}</td>
+    </tr>
+
+     {% endfor %}
+    
+  </tbody>
+</table>
+                </div><!--.col-12-->   
+               </div> 
+      </div> <!--.container-fluid2-->              
+
+
+
+
+{% endblock content %}

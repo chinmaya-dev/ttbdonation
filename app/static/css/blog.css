@@ -1,0 +1,27 @@
+.round_pic{
+    border-radius: 50%;
+    /* width: 100%; */
+    height: 54%;
+}
+.profile_detail{
+    display: flex;
+    flex-direction: column;
+}
+.user_name{
+    font-size: 17px;
+    /* padding-left: 6%; */
+    font-weight: 400;
+    letter-spacing: 0;
+}
+.text-muted1{
+    color: #6c757d!important;
+    font-size: 17px !important;
+    padding-top: 20px;
+}
+.follow_button{
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.68);
+    padding: 0 10px;
+    color: rgba(0,0,0,0.68);
+}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="" style="margin-top: 70px;height: 100vh;">
+  <div class="text-center">
+  <h1>Payment</h1> 
+  <p>you are just one step closer help {{ donation.Protagonist.username }}</p>
+<form action="{{ url_for('donation.pay', donationreason_id=donationreason.id) }}" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_fd7KSTfZFHdU4HkhmuD7NGPh"
+    data-amount= {{donation.amount }}00
+    data-name={{ donation.Protagonist.username }}
+    data-description="Widget"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+</form>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+<div class="col-md-12">
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img style="width: 100%" src="{{ url_for('static', filename='sports1.jpg') }}" alt="Los Angeles">
+    </div>
+    <div class="carousel-item">
+      <img  style="width: 100%" src="{{ url_for('static', filename='sports2.jpg') }}" alt="Chicago">
+    </div>
+    <div class="carousel-item">
+      <img  style="width: 100%" src="{{ url_for('static', filename='sports3.jpg') }}" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 p-4">
+    <div class="text-center pt-5">
+    <h3>Sports</h3>
+      <p><em>The Tribal Box for sports and adventures </em></p>
+      <p>The Tribal Box hosts and showcase inspiring stories and talents from across the sports and adventures block. The Tribal Box One Stop Platform brings sports to mainstream by connecting, collaborating and networking sportsperson with sports clubs, sports associations, local coaches, providing information on health and fitness infrastrucure, training facilities and integrate brands and sponsors to provide funds, donations, crowdfunding and sponsorships so that sportspersons can avail international quality equipments, sports gear and fund thier training needs. Our mail goals is to help talented sportspersons to achieve their life dreams. </p>
+      <br>
+    </div>
+    </div>
+  </div>
+
+  
+
+<h2 class="p-3 shadow" style="font-family:Arial, cursive, sans-serif">Latest stories</h2>
+<div class="row">
+  {% for post in posts.items %}
+    <div class="col-lg-4 col-12 pt-3">
+      <div class="shadow p-3">
+        <div class="row">
+<!-- Profile pic -->
+          <div class="col-md-2 col-sm-2 col-2">
+            <img class="rounded-circle img-fluid"  src="{{ url_for('static', filename='profile_pics/' + post.Protagonist.image_file) }}" style="min-height: 40px; min-width: 40px;">
+          </div>
+<!-- Name, Last active, location -->
+          <div class="col-md-7 col-sm-7 col-7">
+            <div class="row">
+
+              {% if current_user.is_authenticated %}
+                <div class="col-12">
+                  <h4 style="font-size: 14px;"><a class="text-primary text-capitalize text-dark" href="{{ url_for('users.user', id=post.Protagonist.id) }}"> {{ post.Protagonist.username }}</a>&#xA0;<small class="text-muted" style="font-size: 7px;"><b> {{ moment(post.date_posted).fromNow() }}</b></small></h4>
+                </div>
+              {% else %}
+                <div class="col-1">
+                  <h4 style="font-size: 14px;" class="text-capitalize text-dark">{{ post.Protagonist.username }}&#xA0;<small class="text-muted" style="font-size: 7px;"><b> {{ moment(post.date_posted).fromNow() }}</b></small></h4>
+                </div>
+              {% endif %}
+            
+            
+              <div class="col-1 float-right">
+                <a class="text-dark text-capitalize" href="http://maps.google.com/?q={{post.city }}">&#xA0;{{post.city }}</a>
+              </div>
+            
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-3 col-3">
+            {% if post.category=='Sports' %}
+              <h8 style="font-size: 13px;" ><span class="badge badge-success">Sports</span></h8>
+            {% endif %}
+            {% if post.category=='Design' %}
+              <h8 style="font-size: 13px;" ><span class="badge badge-warning">Design</span></h8>
+            {% endif %}
+            {% if post.category=='Travel' %}
+                <h8 style="font-size: 13px;" ><span class="badge badge-primary">Travel</span></h8>
+            {% endif %}
+            {% if post.category=="People's Corner" %}
+              <h8 style="font-size: 12px;" ><span class="badge badge-dark">People's<br>Corner</span></h8>
+            {% endif %}
+            {% if post.category=='Music' %}
+              <h8 style="font-size: 13px;" ><span class="badge badge-danger">Music</span></h8>
+            {% endif %}
+            {% if post.category=='Others' %}
+              <h8 style="font-size: 13px;" ><span class="badge badge-light">Others</span></h8>
+            {% endif %}
+          </div>
+        </div>
+      
+        <div class="row p-3">
+<!-- Iframe -->
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe  class="iframe embed-responsive-item" scrolling="yes" src="https://www.youtube.com/embed/{{post.youtube_link.split("=")[1]}}" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="col-12 pt-2 d-flex" style="height: 80px; ">
+          <h6 style="font-size: 14px;" class="align-self-center text-dark"><a class="article-title text-uppercase" href="{{ url_for('posts.postn', post_id=post.id) }}">{{post.story_line }}</a></h6>
+        </div>
+
+
+        <div class=" d-flex justify-content-between">
+          <div class="">
+            <a href="{{ url_for('posts.postn', post_id=post.id) }}#comments" style="text-decoration: none;">
+            <span style="font-size: 17px;" class="label text-dark"><i class="far fa-comment">&nbsp</i>{{ post.comments.count() }}</span></a>
+          </div>
+
+          <div class="">
+            <span style="font-size: 17px;" class="label text-dark">
+              {% if current_user.has_liked_post(post) %}
+                <a  href="{{ url_for('posts.postlike_action', post_id=post.id, action='unlike') }}"><i  class="fas fa-heart text-danger"></i></a>
+              {% else %}
+                <a href="{{ url_for('posts.postlike_action', post_id=post.id, action='like') }}"><i class="far fa-heart text-dark"></i></a>
+              {% endif %}
+              {{ post.likes.count() }}
+            </span>
+          </div>
+
+          <div class="">
+            <span style="font-size: 17px;" class="label text-dark">
+              <i class="fas fa-share dropdown" data-toggle="dropdown"></i>
+              <div class="dropdown-menu">
+                <div class="sharethis-inline-share-buttons"></div>
+              </div>
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+<div class="row"> 
+  <div class="col text-center">
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+      {% if posts.page == page_num %}
+        <a style="border-radius: 20px;" class="btn btn-dark mb-4-sm" href="{{ url_for('main.sports', page=page_num) }}">{{ page_num }}</a>
+      {% else %}
+        <a style="margin-left: 8px; border-radius: 20px;" class="btn btn-outline-dark mb-4-sm" href="{{ url_for('main.sports', page=page_num) }}">{{ page_num }}</a>
+      {% endif %}
+    {% else %}
+    <b> ...</b>
+    {% endif %}
+  {% endfor %}
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-5">
+  <div class="container-fluid bg-light">
+    <div class="container text-center text-md-left pt-5">      
+      <div class="row py-5 clearfix">
+
+        <div class="col-md-4 text-center">
+          <h5 class="text-uppercase">The Tribal Box</h5>
+          <p>@2019 All Rights Reserved</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <p><b>Powerd By -</b> Qantamix Solutions</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <p class="text-dark"><a href="{{ url_for('main.tandc') }}"> <u>Terms & Conditions</u></a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+  <!-- Footer -->
+{% endblock content %}

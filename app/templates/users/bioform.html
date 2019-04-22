@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='wizardform.css') }}">
+<style>
+    .content{
+        display: block !important;
+    }
+
+</style>
+<div class="bg-light">
+    <div class="container" style="margin-top: 60px">
+
+    <div class="signup-content">
+        <div class="signup-desc">
+            <div class="signup-desc-content">
+                <h2>We want to know more about you</h2>
+                <!-- <p class="title">Please provide us some more information about u</p> -->
+                <p class="desc">
+                        Please provide us some more information about you
+                </p>
+                <img src="images/signup-img.jpg" alt="" class="signup-img">
+            </div>
+        </div>
+        <div class="signup-form-conent">  
+            <form method="POST" action="" id="signup-form" class="signup-form" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 1 / 9</span>
+                <div class="form-group">
+                        {{ form.goal.label(class="form-control-label") }}
+                       {% if form.goal.errors %}
+                       {{ form.goal(class="form-control is-invalid") }}
+                       <div class="invalid-feedback">
+                           {% for error in form.goal.errors %}
+                           <span>{{ error }}</span>
+                           {% endfor %}
+                       </div>
+                       {% else %}
+                       {{ form.goal(class="form-control") }}
+                       {% endif %}
+                   </div>
+            </fieldset>
+
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 2 / 9</span>
+                <div class="form-group">
+                        {{ form.hurdles.label(class="form-control-label") }}
+                        {% if form.hurdles.errors %}
+                        {{ form.hurdles(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.hurdles.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.hurdles(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 3 / 9</span>
+                <div class="form-group">
+                        {{ form.rank.label(class="form-control-label") }}
+                        {% if form.rank.errors %}
+                        {{ form.rank(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.rank.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.rank(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 4 / 9</span>
+                <div class="form-group">
+                        {{ form.accomplished.label(class="form-control-label") }}
+                        {% if form.accomplished.errors %}
+                        {{ form.accomplished(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.accomplished.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.accomplished(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 5 / 9</span>
+                <div class="form-group">
+                        {{ form.fear.label(class="form-control-label") }}
+                        {% if form.fear.errors %}
+                        {{ form.fear(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.fear.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.fear(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 6 / 9</span>
+                <div class="form-group">
+                        {{ form.finance.label(class="form-control-label") }}
+                        {% if form.finance.errors %}
+                        {{ form.finance(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.finance.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.finance(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 7 / 9</span>
+                <div class="form-group">
+                        {{ form.market.label(class="form-control-label") }}
+                        {% if form.market.errors %}
+                        {{ form.market(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.market.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.market(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 8 / 9</span>
+                <div class="form-group">
+                        {{ form.other.label(class="form-control-label") }}
+                        {% if form.other.errors %}
+                        {{ form.other(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.other.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.other(class="form-control") }}
+                        {% endif %}
+                    </div>
+            </fieldset>
+            <h3></h3>
+            <fieldset>
+                <span class="step-current">Step 9 / 9</span>
+                <div class="form-group">
+                        {{ form.motivate.label(class="form-control-label") }}
+                        {% if form.motivate.errors %}
+                        {{ form.motivate(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.motivate.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.motivate(class="form-control") }}
+                        {% endif %}
+                    </div>
+                    
+            </fieldset>
+            <div class="form-group btn-group-sm text-right" style="display:none;">
+                    {{ form.submit(class="btn btn-info shadow-sm",id="submitform") }}
+                    <a href="{{ url_for('main.home') }}" class="btn btn-info shadow-sm">skip</a>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='js/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-validation/dist/additional-methods.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/jquery-steps/jquery.steps.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/jquery-steps/main.js') }}" ></script>
+
+{% endblock content %}

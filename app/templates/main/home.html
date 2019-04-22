@@ -1,0 +1,629 @@
+{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"> </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"> </script>
+<style>
+.card-img {
+    width: 100%;
+    border-radius: calc(.25rem - 1px);
+    height: 200px;
+    max-height: 100%;
+}
+.shadow_card{
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.13) !important;
+  border: none;
+}
+.post{
+  padding: 10px;
+  border: none;
+}
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 27px;
+  left: 16px;
+  color: white;
+}
+.bottom-left1{
+  position: absolute;
+  bottom: 2px;
+  left: 16px;
+}
+.caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0) 60%) !important;
+    transform: translate3d(0,0,0);
+}
+
+  @media only screen and (max-width: 620px) {
+    .mb_tabs {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+    }
+
+  }
+
+  ul.tabs {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  ul.tabs li {
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px;
+    /* line-height: 35.5px; */
+    
+  }
+
+  ul.tabs li.current {
+    color: #222;
+    border-bottom: 1px solid black;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 15px;
+  }
+
+  .tab-content.current {
+    display: inherit;
+  }
+
+  .st-btn {
+    display: inline-block !important;
+  }
+
+  .table_font {
+    word-wrap: break-word;
+    top: 0;
+    font-size: 15px;
+    padding: 19px 0px 0px 13px;
+    margin: 0px;
+  }
+
+  .quote {
+    margin: 0px;
+    font-size: 18px;
+  }
+
+  .owl-item {
+    margin: 0px;
+  }
+
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-caption h3 {
+    color: white;
+  }
+
+  .single-campaign-header1 {
+    background: #f7f7f7;
+    border-bottom: 3px solid #1aa7db;
+    margin-bottom: 20px;
+  }
+
+  .single-campaign-menu1 {
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .feedback-image {
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  .testimonial-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-transform: uppercase;
+}
+.testimonialpost::before {
+    content: "";
+    width: 30px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #d3d3d3;
+}
+.testimonialpost {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.tabfont{
+  font-size: 14px;
+  font-weight:500;
+}
+.cool-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    
+}
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #000;
+    transition: width .3s;
+    
+}
+
+.cool-link:hover::after {
+    width: 100%;
+    line-height: 35.5px;
+}
+.play-button-div {
+  position: relative;
+  display: inline-block;
+}
+.play-button-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+}
+.play-button-icon {
+    font-size: 38px;
+    color: #ffffff;
+    left: 43%;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transition: all 0.5s ease 0s, visibility 0s ease 0s;
+    -ms-transition: all 0.5s ease 0s, visibility 0s ease 0s;
+    -webkit-transition: all 0.5s ease 0s, visibility 0s ease 0s;
+    -moz-transition: all 0.5s ease 0s, visibility 0s ease 0s;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.play-button-div .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0) 60%) !important;
+    transform: translate3d(0,0,0);
+}
+.play-button-div .after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
+
+.boxed-inverse,  .advs-box.boxed-inverse:not(.shadow-1), .header-base {
+    background-color: #f4f9fe;
+}
+
+.advs-box.boxed-inverse{
+border-radius: 6px !important;
+}
+.advs-box-top-icon-img.boxed-inverse .advs-box-content {
+    padding: 30px;
+    border: none;
+}
+.advs-box-top-icon-img.niche-box-post {
+    padding-top: 0 !important;
+    text-align: left;
+    margin-top: 0 !important;
+    border: none;
+}
+.advs-box .advs-box-content .btn, .advs-box .advs-box-content .btn-text {
+    margin-top: 15px;
+}
+.btn-sm {
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.btn{
+  color: #fff;
+  background-color: #5584ff;
+}
+.niche-box-post .img-box {
+    margin: 0;
+}
+.img-box:not(.circle){
+  border-radius: 6px !important;
+}
+.advs-box-top-icon-img .img-box{
+    z-index: 1;
+    max-height: 350px;
+    max-width: 100%;
+    display: block;
+}
+.grid-item > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+.grid-box.row {
+    margin: -20px;
+    width: calc(100% + 40px);
+}
+.grid-box > .grid-item {
+    padding: 20px;
+}
+.icon-box {
+    display: table;
+}
+.icon-box-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 16px;
+}
+.icon-box-cell i.text-xl {
+    width: 55px;
+}
+
+.icon-box.icon-box-top-bottom .icon-box-cell > i {
+    margin: 0px 0 15px 0;
+}
+
+.icon-box-top-bottom .icon-box-cell label {
+    margin-bottom: 10px;
+}
+
+.icon-box label {
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+.carousel-caption {
+    max-width: 100%;
+    width:100%;
+    left:0;
+    
+}
+  @media screen and (max-width: 810px) and (min-width: 700px) {
+    .quote {
+      margin: 0px;
+      font-size: 25px;
+    }
+  }
+
+  .c-modal {
+  max-width: 800px;
+  margin: 1.75rem auto;
+  }
+
+  .t-back{
+    background-color: rgba(0, 0, 0, 0);
+    border: 0 !important;
+  }
+  .topcard{
+    text-align: center;
+  }
+  .topcard svg{
+    position: relative;
+    left: auto;
+    margin: 0;
+    box-shadow: none !important;
+    font-size: 100px;
+    line-height: 110px;
+    height: 81px;
+    width: 100px;
+    padding: 0;
+    background: none;
+    text-align: center;
+    box-sizing: initial;
+  }
+  .topcard h3{
+    margin-top: 9px;
+    margin-bottom: 13px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 35px;
+  }
+  .topcard p{
+    font-size: 16px;
+    line-height: 20px;
+    color: #8492af;
+    text-align: center;
+    margin: auto;
+  }
+  hr.space {
+      border: none !important;
+      clear: both;
+      height: 25px;
+      margin: 0;
+    }
+</style>
+<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script type="text/javascript" src=" https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js"></script>
+<script>
+  jQuery(document).ready(function ($) {
+    $('.statistic-counter').counterUp({
+      delay: 10,
+      time: 2000
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#div2").hide();
+    $("#preview").click(function () {
+      $("#div2").hide();
+      $("#div1").show();
+    });
+    $("#preview2").click(function () {
+      $("#div1").hide();
+      $("#div2").show();
+    });
+    $('ul.tabs li').click(function () {
+      var tab_id = $(this).attr('data-tab');
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
+      $(this).addClass('current');
+      $("#" + tab_id).addClass('current');
+    })
+
+  });
+</script>
+<!-- corousel -->
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    {% for campaign in campaign.items %}
+    <li data-target="#demo" data-slide-to="{{ campaign.id }}" ></li>
+    {% endfor %}
+  </ul>
+    <div class="carousel-inner">
+      {% for campaign in campaign.items %}
+      <div class="carousel-item {% if loop.index == 1 %} active{% endif %}">
+        <img src="{{ url_for('static', filename='campaign_pics/' + campaign.image_file) }}" alt="{{campaign.headline_1}}" style="max-height: 400px; object-fit: contain;">
+        <div class="carousel-caption" style="background-color: rgba(4, 4, 4, 0.7);background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0) 100%);">
+
+          {% if campaign.action=='Your Profile' %}
+          <a  href="{{ url_for('users.user', id=campaign.campaign_author.id) }}" style="color:white !important;"><h3>Learn More</h3></a>
+          {% endif %}
+
+          {% if campaign.action=='Your Website' %}
+          <a  href="{{campaign.campaign_author.web_url}}" style="color:white !important;"><h3>Visit us</h3></a>
+          {% endif %}
+
+          {% if campaign.action=='Your StoreFront' %}
+          <a href="http://maps.google.com/?q={{campaign.campaign_city }}" style="color:white !important;"><h3>Shop</h3> </a>
+          {% endif %}
+
+          {% if campaign.action=='Your Direct Messages' %}
+          <a href="{{ url_for('messages.send_message', id=campaign.campaign_author.id) }}" style="color:white !important;"><h3>Contact us</h3></a>
+          {% endif %}
+          
+          <a  href="{{ url_for('campaign.campaignn', campaign_id=campaign.id) }}" style="color:white !important;"><p>{{campaign.headline_1}}&#xA0;|&#xA0;{{campaign.headline_2}}</p></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+{% if current_user.is_role == None %}
+<div class="container-fluid">
+<hr class="space xxs">
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-12">
+    <div class="topcard">
+        <svg height="60pt" viewBox="-9 0 511 512" width="60pt" xmlns="http://www.w3.org/2000/svg"><path d="m468.109375 469.859375c0 23.273437-18.867187 42.140625-42.140625 42.140625s-42.140625-18.867188-42.140625-42.140625 18.867187-42.140625 42.140625-42.140625 42.140625 18.867188 42.140625 42.140625zm0 0" fill="#b4d7dc"/><path d="m472.917969 294.234375-60.109375-32.726563v-21.226562h-107.699219v247.320312c0 13.472657 10.925781 24.398438 24.398437 24.398438 13.476563 0 24.402344-10.925781 24.402344-24.398438v-195.03125h14.691406c1.101563.875 65.332032 36 65.332032 36l-14.589844 76.097657c-2.535156 13.234375 6.136719 26.019531 19.371094 28.554687 13.230468 2.539063 26.019531-6.132812 28.554687-19.367187l17.945313-93.601563c2-10.425781-2.972656-20.945312-12.296875-26.019531zm0 0" fill="#80391b"/><path d="m489.675781 175.691406-35.984375-54.132812c-9.109375-14.722656-25.457031-23.84375-42.785156-23.84375-11.246094 0-93.910156 0-106.308594 0-26.8125 0-48.738281 21.476562-48.871094 47.875v.101562 149.378906c0 11.230469 9.105469 20.332032 20.335938 20.332032s20.332031-9.101563 20.332031-20.332032v-149.3125c.042969-3.863281 3.941407-7.378906 8.203125-7.378906h.511719v154.191406h107.699219v-41.152343c.078125.003906.15625.007812.234375.007812 4.199219 0 8.433593-1.296875 12.070312-3.984375l59.714844-44.144531c8.714844-6.441406 10.84375-18.582031 4.847656-27.605469zm-76.867187 30.273438v-67.371094c2.609375.53125 4.945312 2.121094 6.347656 4.4375.332031.550781 7.992188 12.050781 25.945312 39.0625zm0 0" fill="#80391b"/><path d="m453.691406 121.558594c-9.109375-14.722656-25.457031-23.84375-42.785156-23.84375h-22.382812c0 16.207031-13.140626 29.34375-29.347657 29.34375s-29.34375-13.136719-29.34375-29.34375h-25.234375c-26.8125 0-48.734375 21.476562-48.867187 47.875v48.890625s40.375.015625 40.664062.042969v-48.765626c.042969-3.863281 3.941407-7.378906 8.203125-7.378906h.511719v154.191406h107.699219v-153.976562c2.609375.53125 4.945312 2.121094 6.347656 4.4375.289062.480469 21.160156 31.867188 21.160156 31.867188l33.734375-22.710938zm0 0" fill="#64afff"/><path d="m401.316406 42.140625c0 23.273437-18.867187 42.140625-42.140625 42.140625-23.273437 0-42.140625-18.867188-42.140625-42.140625s18.867188-42.140625 42.140625-42.140625c23.273438 0 42.140625 18.867188 42.140625 42.140625zm0 0" fill="#80391b"/><path d="m450.84375 282.214844-38.035156-20.707032v-3.167968h-107.699219v105.359375h48.800781v-71.128907h14.691406c.769532.613282 57.367188 31.640626 57.367188 31.640626zm0 0" fill="#414b82"/><path d="m428.101562 194.660156-27.160156 20.082032c-9.03125 6.675781-10.941406 19.40625-4.265625 28.4375 3.988281 5.394531 10.136719 8.246093 16.367188 8.246093 4.199219 0 8.433593-1.296875 12.070312-3.984375l24.867188-18.382812zm0 0" fill="#80391b"/><path d="m334.523438 188.214844v-16.914063c0-10.980469 6.832031-15.066406 15.644531-15.066406 8.808593 0 15.703125 4.082031 15.703125 15.066406v16.914063c0 10.980468-6.894532 15.066406-15.703125 15.066406-8.8125 0-15.644531-4.085938-15.644531-15.066406zm21.386718-16.914063c0-4.40625-2.171875-6.386719-5.746094-6.386719-3.574218 0-5.679687 1.980469-5.679687 6.386719v16.914063c0 4.40625 2.105469 6.386718 5.679687 6.386718 3.574219 0 5.746094-1.980468 5.746094-6.386718zm0 0" fill="#fff"/><path d="m374.808594 167.339844-1.851563 1.148437c-.574219.386719-1.148437.511719-1.597656.511719-1.847656 0-3.125-1.976562-3.125-3.957031 0-1.339844.574219-2.617188 1.851563-3.382813l8.425781-5.109375c.511719-.316406 1.148437-.445312 1.851562-.445312 2.042969 0 4.40625 1.214843 4.40625 3.128906v40.601563c0 2.042968-2.492187 3.0625-4.980469 3.0625-2.492187 0-4.980468-1.019532-4.980468-3.0625zm0 0" fill="#fff"/><g fill="#ffb69e"><path d="m207.394531 145.589844c-.132812-26.398438-22.054687-47.875-48.867187-47.875-26.285156 0-90.972656 0-109.160156 0-26.8125 0-48.734376 21.476562-48.867188 47.875v.101562 149.378906c0 11.230469 9.105469 20.332032 20.332031 20.332032 11.230469 0 20.335938-9.101563 20.335938-20.332032v-149.3125c.042969-3.863281 3.941406-7.378906 8.199219-7.378906h.730468v154.191406h107.699219v-154.191406h.730469c4.261718 0 8.160156 3.515625 8.203125 7.378906v149.3125c0 11.230469 9.101562 20.332032 20.332031 20.332032s20.332031-9.101563 20.332031-20.332032v-149.378906c0-.03125 0-.066406 0-.101562zm0 0"/><path d="m133.394531 512c-13.476562 0-24.398437-10.925781-24.398437-24.398438v-195.03125c0-13.472656 10.921875-24.398437 24.398437-24.398437 13.476563 0 24.402344 10.921875 24.402344 24.398437v195.03125c0 13.472657-10.925781 24.398438-24.402344 24.398438zm0 0"/><path d="m74.5 511.984375c-13.476562 0-24.398438-10.925781-24.398438-24.402344l-.003906-195.011719c0-13.476562 10.925782-24.414062 24.402344-24.414062s24.398438 10.921875 24.398438 24.398438v195.027343c0 13.476563-10.921876 24.402344-24.398438 24.402344zm0 0"/></g><path d="m98.898438 364.359375v-71.789063h10.097656v71.789063h48.800781l.003906-107.691406h-107.703125v107.691406zm0 0" fill="#414b82"/><path d="m207.394531 145.589844c-.132812-26.398438-22.054687-47.875-48.867187-47.875h-24.929688c-.390625 15.820312-13.371094 28.570312-29.28125 28.570312-15.914062 0-28.894531-12.75-29.28125-28.570312h-25.667968c-26.8125 0-48.734376 21.476562-48.867188 47.875v.101562 48.796875h40.667969v-48.730469c.042969-3.863281 3.941406-7.378906 8.199219-7.378906h.730468v130.113282h107.699219c0-16.050782 0-113.980469 0-130.113282h.730469c4.261718 0 8.160156 3.515625 8.203125 7.378906v48.730469h40.664062v-48.796875c0-.03125 0-.066406 0-.101562zm0 0" fill="#64afff"/><path d="m70.660156 186.554688v-16.917969c0-10.980469 6.832032-15.066407 15.640625-15.066407 8.808594 0 15.707031 4.085938 15.707031 15.066407v16.917969c0 10.980468-6.894531 15.066406-15.707031 15.066406-8.808593 0-15.640625-4.085938-15.640625-15.066406zm21.386719-16.917969c0-4.40625-2.171875-6.382813-5.746094-6.382813s-5.679687 1.976563-5.679687 6.382813v16.917969c0 4.402343 2.105468 6.382812 5.679687 6.382812s5.746094-1.980469 5.746094-6.382812zm0 0" fill="#fff"/><path d="m126.90625 187.191406v-1.210937c0-4.277344-2.617188-5.109375-6.128906-5.109375-2.171875 0-2.871094-1.914063-2.871094-3.828125 0-1.917969.703125-3.832031 2.871094-3.832031 2.425781 0 4.980468-.320313 4.980468-5.488282 0-3.703125-2.109374-4.597656-4.722656-4.597656-3.128906 0-4.726562.765625-4.726562 3.257812 0 2.167969-.957032 3.636719-4.660156 3.636719-4.59375 0-5.167969-.957031-5.167969-4.023437 0-4.976563 3.574219-11.425782 14.554687-11.425782 8.105469 0 14.234375 2.9375 14.234375 11.554688 0 4.660156-1.722656 9-4.914062 10.46875 3.765625 1.40625 6.511719 4.214844 6.511719 9.386719v1.210937c0 10.46875-7.214844 14.429688-16.152344 14.429688-10.980469 0-15.195313-6.703125-15.195313-12.066406 0-2.875 1.214844-3.640626 4.722657-3.640626 4.085937 0 5.109374.894532 5.109374 3.320313 0 3 2.808594 3.703125 5.679688 3.703125 4.339844 0 5.875-1.59375 5.875-5.746094zm0 0" fill="#fff"/><path d="m146.085938 42.140625c0 23.273437-18.863282 42.140625-42.136719 42.140625-23.273438 0-42.140625-18.867188-42.140625-42.140625s18.867187-42.140625 42.140625-42.140625c23.273437 0 42.136719 18.867188 42.136719 42.140625zm0 0" fill="#ffb69e"/></svg>
+        <h3>Creators</h3>
+        <p>
+            Receive beautiful content crafted for you, before paying a cent.
+        </p>
+        <a class="btn btn-sm mt-3" style="border-radius: 25px;" href="{{ url_for('users.roleupdatecreators',id=current_user.id) }}">I'M A CREATOR</a>
+    </div>
+</div>
+<div class="col-md-4 col-sm-4 col-12">
+    <div class="topcard">
+        <svg  height="60pt"  width="60pt"version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+        y="0px" viewBox="0 0 291.319 291.319" style="enable-background:new 0 0 291.319 291.319;" xml:space="preserve">
+        <g>
+          <path style="fill:#3D9AE8;" d="M145.659,0c80.44,0,145.66,65.219,145.66,145.66c0,80.45-65.219,145.659-145.66,145.659
+          S0,226.109,0,145.66C0,65.219,65.219,0,145.659,0z" />
+          <path style="fill:#FFFFFF;" d="M54.631,154.672l53.557,33.729l37.48-30.161l-54.003-32.173L54.631,154.672z M108.179,63.717
+          l-53.548,33.72l37.034,28.631l54.003-32.173C145.669,93.896,108.179,63.717,108.179,63.717z M236.697,97.437l-53.557-33.72
+          l-37.48,30.17l54.003,32.173C199.663,126.059,236.697,97.437,236.697,97.437z M145.66,158.241l37.48,30.161l53.557-33.729
+          l-37.034-28.613C199.663,126.059,145.659,158.241,145.66,158.241z M145.623,181.983l-38.254,26.401l-16.368-8.913v19.09
+          l54.622,27.238l54.613-27.238v-19.09l-16.368,8.913L145.623,181.983z" />
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+      </svg>
+        <h3>Brands</h3>
+        <p>
+            Immediately access hundreds of live campaigns and promote.
+        </p>
+        <a class="btn btn-sm mt-3" style="border-radius: 25px;"
+        href="{{ url_for('main.brandoffer') }}">I'M A BRAND</a>
+    </div>
+</div>
+<div class="col-md-4 col-sm-4 col-12">
+    <div class="topcard">
+        <svg height="60pt" viewBox="1 -44 511.99998 511" width="60pt" xmlns="http://www.w3.org/2000/svg"><path d="m205.3125 412.675781v-84.070312h101.625v84.070312" fill="#919196"/><path d="m310.3125 53.308594h191.5625v275.296875h-491.75v-275.296875h195.386719" fill="#00d7df"/><path d="m257.683594 158.695312c-29.695313 0-53.773438-24.074218-53.773438-53.773437v-40.523437c0-29.699219 24.078125-53.773438 53.773438-53.773438 29.699218 0 53.773437 24.074219 53.773437 53.773438v40.523437c0 29.699219-24.074219 53.773437-53.773437 53.773437zm0 0" fill="#f2d1a5"/><path d="m123.277344 328.605469v-58.019531c0-27.980469 8.058594-55.363282 23.214844-78.882813 13.285156-20.617187 36.132812-33.074219 60.660156-33.074219h99.726562c24.527344 0 47.375 12.457032 60.660156 33.074219 15.15625 23.519531 23.214844 50.902344 23.214844 78.882813v58.019531zm0 0" fill="#f5f0eb"/><path d="m259.894531 10.625c-30.914062 0-55.972656 25.058594-55.972656 55.96875v4.375c0 2.007812 1.359375 3.761719 3.304687 4.257812 13.753907 3.511719 29.230469 5.921876 38.585938 2.472657 19.851562-7.316407 36.484375-15.492188 52.449219-11.738281 2.78125.65625 6.609375-.601563 10.972656-3.179688 1.410156-.832031 2.214844-2.410156 2.105469-4.042969-1.78125-26.867187-24.125-48.113281-51.445313-48.113281zm0 0" fill="#919196"/><path d="m501.875 43.183594h-183.300781c-8.070313-24.839844-31.488281-42.683594-58.683594-42.683594-.371094 0-.734375.023438-1.101563.027344-.371093-.003906-.734374-.027344-1.105468-.027344-27.796875 0-51.492188 17.851562-60.261719 42.683594h-187.296875c-5.59375 0-10.125 4.535156-10.125 10.125v275.296875c0 5.589843 4.53125 10.125 10.125 10.125h185.0625v63.875h-29.410156c-5.589844 0-10.125 4.535156-10.125 10.125 0 5.589843 4.535156 10.125 10.125 10.125h175.496094c5.589843 0 10.125-4.535157 10.125-10.125 0-5.589844-4.535157-10.125-10.125-10.125h-24.210938v-63.875h184.8125c5.59375 0 10.125-4.535157 10.125-10.125v-275.296875c0-5.589844-4.53125-10.125-10.125-10.125zm-241.8125 105.320312h-4.757812c-22.964844-1.238281-41.269532-20.308594-41.269532-43.578125v-17.753906c7.683594 1.546875 14.4375 2.332031 20.296875 2.332031 5.84375 0 10.820313-.769531 14.980469-2.300781 3.089844-1.140625 6.09375-2.296875 8.992188-3.410156 14.566406-5.601563 27.140624-10.441407 37.636718-7.972657 1.722656.40625 3.515625.53125 5.390625.378907v28.726562c0 23.269531-18.304687 42.339844-41.269531 43.578125zm40.417969-92.695312c-.21875.070312-.40625.128906-.527344.15625-16.347656-3.601563-32.175781 2.484375-48.917969 8.925781-2.839844 1.09375-5.746094 2.210937-8.726562 3.308594-2.480469.914062-10.015625 2.445312-28.261719-1.734375.070313-24.851563 20.015625-45.097656 44.742187-45.6875 20.632813.515625 37.757813 15.410156 41.691407 35.03125zm-280.230469 7.625h173.5625c-.003906.320312-.023438.640625-.023438.964844v40.527343c0 16.832031 6.550782 32.15625 17.230469 43.578125h-3.863281c-28.097656 0-53.953125 14.101563-69.175781 37.714844-16.242188 25.207031-24.828125 54.378906-24.828125 84.367188v47.894531h-92.902344zm276.566406 339.171875h-81.378906v-63.875h81.378906zm43.160156-84.125v-70c0-5.589844-4.53125-10.125-10.125-10.125-5.589843 0-10.121093 4.535156-10.121093 10.125v70h-124.089844v-70c0-5.589844-4.53125-10.125-10.125-10.125-5.589844 0-10.125 4.535156-10.125 10.125v70h-41.988281v-47.894531c0-26.089844 7.46875-51.46875 21.597656-73.398438 11.476562-17.804688 30.972656-28.433594 52.152344-28.433594h40.40625v39.519532c0 5.589843 4.535156 10.125 10.125 10.125 5.59375 0 10.125-4.535157 10.125-10.125v-39.519532h39.070312c21.183594 0 40.679688 10.628906 52.152344 28.433594 14.132812 21.929688 21.601562 47.308594 21.601562 73.398438v47.894531zm151.773438 0h-90.867188v-47.894531c0-29.988282-8.585937-59.160157-24.832031-84.367188-15.21875-23.613281-41.074219-37.714844-69.171875-37.714844h-2.527344c10.675782-11.421875 17.230469-26.746094 17.230469-43.578125v-40.527343c0-.324219-.019531-.644532-.023437-.964844h170.191406zm0 0"/><path d="m120.679688 95.839844c0-5.59375-4.53125-10.125-10.125-10.125h-49.410157c-5.589843 0-10.125 4.53125-10.125 10.125v51.757812c0 5.589844 4.535157 10.125 10.125 10.125 5.59375 0 10.125-4.535156 10.125-10.125v-41.632812h39.285157c5.59375 0 10.125-4.535156 10.125-10.125zm0 0"/><path d="m144.390625 103.796875.265625.203125c1.832031 1.390625 3.984375 2.066406 6.121094 2.066406 3.054687 0 6.074218-1.378906 8.066406-3.996094 3.382812-4.449218 2.519531-10.800781-1.929688-14.1875l-.265624-.203124c-4.453126-3.386719-10.800782-2.519532-14.1875 1.929687-3.386719 4.449219-2.523438 10.800781 1.929687 14.1875zm0 0"/><path d="m264.082031 240.523438-.265625-.203126c-4.453125-3.382812-10.804687-2.519531-14.1875 1.929688-3.386718 4.449219-2.523437 10.800781 1.925782 14.1875l.269531.203125c1.832031 1.390625 3.984375 2.066406 6.121093 2.066406 3.054688 0 6.074219-1.375 8.066407-3.996093 3.382812-4.449219 2.519531-10.800782-1.929688-14.1875zm0 0"/></svg>
+
+        <h3>Mentors</h3>
+        <p>
+            Share your ideas and knowledge teach people's new skill.
+        </p>
+        <a class="btn btn-sm mt-3" style="border-radius: 25px;" href="#">I'M A MENTOR</a>
+    </div>
+</div>
+</div>
+</div>
+{% endif %}
+<hr class="space xxs">
+<!-- our social status -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <ul id="category" class="tabs mb_tabs text-left">
+            <li class="tab-link current tabfont" data-tab="tab-6"><a data-filter="Post" style="padding:0;line-height: 36px;">All</a></li>
+            <li class="tab-link tabfont" data-tab="tab-1"><a data-filter="Music" style="padding:0;line-height: 36px;">
+                Music</a></li>
+            <li class="tab-link tabfont" data-tab="tab-2"><a data-filter="Sports" style="padding:0;line-height: 36px;">Sports</a></li>
+            <li class="tab-link tabfont" data-tab="tab-3"><a data-filter="Travel" style="padding:0;line-height: 36px;">Travel</a></li>
+            <li class="tab-link tabfont" data-tab="tab-4"><a data-filter="Peoples-Corner" style="padding:0;line-height: 36px;">People's Corner</a></li>
+            <li class="tab-link tabfont" data-tab="tab-5"><a data-filter="Design" style="padding:0;line-height: 36px;">Design</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  <div style="" class="container-fluid">
+  <h3 class="p-3" style="font-family:Arial, cursive, sans-serif">Latest stories</h3>
+    <div class="row">
+      {% for post in posts.items %}
+      <div class="post {{ post.category }} col-12 col-sm-6 col-md-4 col-lg-4 abc" id="homecard" style="margin-top:2%;">
+          <div class="card-deck">
+            <div class="card shadow_card">
+              <div class="play-button-div">
+              <img src="{{ url_for('static', filename='thumbnail/' + post.image_file) }}" class="card-img" style="object-fit: cover;" alt="...">
+
+
+<div class="play-button-icon d-md-block d-block d-sm-block d-lg-none" id="sm-show">
+  <a href="{{ url_for('posts.postn', post_id=post.id) }}" class="js-video-button" data-video-id='NILlCqOqyNI'
+    style="color:white">
+    <i class="fa fa-play"></i>
+  </a>
+</div>
+
+               <div id="lg-show" class="play-button-icon d-none d-lg-block d-xl-block" data-toggle="modal" data-target="#myModal{{post.id}}">
+                  <p style="color:white; font-size: 40px;">
+                  <i class="fa fa-play"></i>
+                 </p>
+               </div>
+
+               <div class="modal fade" id="myModal{{post.id}}"> 
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#FFF !important;">
+                      <span aria-hidden="true" style="font-size: 40px;border-radius:20px; ">&times;</span>
+                  </button>
+                 <div class="modal-dialog modal-lg modal-dialog-centered">
+                   <div class="modal-content bg-dark">
+                     <div class="modal-body p-0">
+                       <div class="embed-responsive embed-responsive-16by9" style="width:100%;">
+                         <iframe class="embed-responsive-item"
+                           src="https://www.youtube.com/embed/{{post.youtube_link.split("=")[1]}}">
+                          </iframe>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <script>
+                  $('#myModal{{post.id}}').on('shown', function() {
+                    alert("hi");
+                     $("body").removeAttr("style");
+                  })
+                  </script>
+                <div class="after"></div>
+               <div class="">
+                  <a class="text-uppercase bottom-left" href="{{ url_for('posts.postn', post_id=post.id) }}" style="text-decoration: none;    text-decoration: none;
+                  font-size: 11px;
+                  color: white; font-weight: bold;">{{post.story_line }}</a>
+                  <span class="bottom-left1" style="color:white;">
+                      {% if post.category=='Sports' %}
+                      <h8 style="font-size: 11px;"><span>Sports</span></h8>
+                      {% endif %}
+                      {% if post.category=='Design' %}
+                      <h8 style="font-size: 11px;"><span>Design</span></h8>
+                      {% endif %}
+                      {% if post.category=='Travel' %}
+                      <h8 style="font-size: 11px;"><span>Travel</span></h8>
+                      {% endif %}
+                      {% if post.category=="Peoples-Corner" %}
+                      <h8 style="font-size: 11px;"><span>People's<br>Corner</span></h8>
+                      {% endif %}
+                      {% if post.category=='Music' %}
+                      <h8 style="font-size: 11px;"><span>Music</span></h8>
+                      {% endif %}
+                      {% if post.category=='Others' %}
+                      <h8 style="font-size: 11px;"><span>Others</span></h8>
+                      {% endif %}
+                    </span>
+               </div>
+
+            </div>
+                 
+            </div>
+          </div>
+        </div>
+<script>
+        var posts = $('.post');
+        posts.show();
+
+        $("#category li a").click(function () {
+
+          var customType = $(this).data('filter');
+           if (customType == 'Post') {
+             posts.show();
+           }
+           else {
+             posts.hide();
+             $("." + customType).show();
+           }
+ 
+        });
+
+      </script>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock content %}

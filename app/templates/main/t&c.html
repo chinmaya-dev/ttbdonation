@@ -1,0 +1,915 @@
+﻿
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="Webflow" name="generator">
+  <title>Terms and Conditions TTB</title>
+  <!-- <link rel="stylesheet" href="https://stackedit.io/style.css" /> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles-merged.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"></script> -->
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <style>
+    .portfolio_description {
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  background-color:rgba(255, 255, 255, 0.5);
+}
+
+.portfolio-block {
+  position: relative;
+}
+
+
+
+a:hover,a:focus{
+  outline: none;
+  text-decoration: none;
+}
+.tab{ text-align: center; }
+.tab .nav-tabs{
+  display: inline-block;
+  border-bottom: none;
+  position: relative;
+}
+.tab .nav-tabs li{
+  margin-bottom: 0;
+}
+.tab .nav-tabs li a{
+  display: block;
+  padding: 20px;
+  border: none;
+  border-radius: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #444;
+  margin-right: 0;
+  text-align: center;
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+}
+.tab .nav-tabs li a i{
+  display: block;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+.tab .nav-tabs li.active a,
+.tab .nav-tabs li a:hover{
+  border: none;
+  background: transparent;
+}
+.tab .nav-tabs li a:before,
+.tab .nav-tabs li a:after{
+  content: "";
+  width: 0;
+  border-top: 3px solid #00a6ff;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  transition: all 0.3s ease 0s;
+}
+.tab .nav-tabs li a:after{
+  left: auto;
+  right: 0;
+}
+.tab .nav-tabs li.active a:before,
+.tab .nav-tabs li a:hover:before,
+.tab .nav-tabs li.active a:after,
+.tab .nav-tabs li a:hover:after{
+  width: 50%;
+}
+.tab .tab-content{
+  padding: 20px;
+  margin-top: -5px;
+  border-radius: 0 0 5px 5px;
+  
+  font-size: 15px;
+  color: #757575;
+  line-height: 30px;
+}
+.tab .tab-content h3{
+  font-size: 24px;
+  margin-top: 0;
+}
+@media only screen and (max-width: 479px){
+  .tab .nav-tabs li{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+  }
+  .tab .nav-tabs li a,
+  .tab .nav-tabs li a:hover{ border-bottom: 1px solid #dfdfdf; }
+  .tab .tab-content{ border-top: none; }
+}
+.parallax{
+ /* The image used */
+ background-image:url("/static/img/influence-cloud-bg.png");
+ /* background-color: rgba(255, 255, 255, 0.5); */
+ /* Set a specific height */
+ min-height: 500px;
+ width: 100%;
+ /* Create the parallax scrolling effect */
+ 
+}
+.parallax::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.88);
+  /* z-index: 9; */
+}
+.bgimg-1, .bgimg-2, .bgimg-3,.bgimg-4 {
+position: relative;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+.bgimg-1 {
+background-image: url("img/brandphoto.jpeg");
+min-height: 100vh;
+}
+
+.bgimg-2 {
+background-image: url("img/travel.jpg");
+min-height: 100vh;
+}
+
+.bgimg-3 {
+background-image: url("img/brandpage.png");
+min-height: 100vh;
+}
+
+.bgimg-4 {
+background-image: url("img/travel.jpg");
+min-height: 100vh;
+}
+
+.caption {
+position: absolute;
+left: 0;
+top: 10%;
+width: 100%;
+color: #000;
+}
+
+.caption_heading{
+color: orange;
+padding: 18px;
+font-size: 35px;
+letter-spacing: 5px;
+}
+
+h3 {
+letter-spacing: 5px;
+text-transform: uppercase;
+font: 20px "Lato", sans-serif;
+color: #111;
+}
+
+.caption_text {
+  transition: 0.3s ease-out;
+}
+
+.caption_text:hover {
+  transform: scale(1.05);
+  background-color:orange; 
+  padding: 25px;
+  box-shadow: 0 2px 8px black;
+}
+
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+.bgimg-1, .bgimg-2, .bgimg-3,.bgimg-4 {
+  background-attachment: scroll;
+}
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+border: 0px;
+}
+
+#tab-section>.nav-item>li{
+border: 0px;
+width: 14%;
+}
+
+.skill_bottom_content {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+.separator_small {
+  width: 30px;
+  height: 2px;
+  margin: 20px 0px;
+  background: #ff6863;
+}
+.skill_bottom_item .separator_small {
+  margin: 20px auto;
+}
+.section-header .section-title {
+font-size: 32px;
+color: #111;
+text-align: center;
+font-weight: 400;
+}
+
+.section-header .section-description {
+text-align: center;
+padding-bottom: 40px;
+color: #777;
+font-style: italic;
+}
+
+
+
+
+
+#features {
+background: #fff;
+padding: 60px 0 0 0;
+overflow: hidden;
+}
+
+#features .features-img {
+text-align: center;
+padding-top: 20px;
+}
+
+@media (min-width: 769px) {
+#features .features-img {
+  padding-top: 120px;
+  margin-top: -200px;
+}
+}
+
+#features .features-img img {
+max-width: 100%;
+}
+
+#features .box {
+margin-bottom: 15px;
+text-align: center;
+}
+
+#features .icon {
+margin-bottom: 10px;
+}
+
+#features .icon i {
+color: #666666;
+font-size: 40px;
+transition: 0.5s;
+}
+
+#features .icon i:before {
+background: #1dc8cd;
+background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+background-clip: border-box;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+#features .title {
+font-weight: 300;
+margin-bottom: 15px;
+font-size: 22px;
+}
+
+#features .title a {
+color: #111;
+}
+
+#features .description {
+font-size: 14px;
+line-height: 24px;
+margin-bottom: 10px;
+}
+
+#features .section-description {
+padding-bottom: 10px;
+}
+
+
+
+
+#more-features {
+padding: 60px 0 60px 0;
+overflow: hidden;
+}
+
+#more-features .box {
+padding: 40px;
+margin-bottom: 30px;
+box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+background: #fff;
+transition: 0.4s;
+}
+
+#more-features .icon {
+float: left;
+}
+
+#more-features .icon i {
+color: #666666;
+font-size: 80px;
+transition: 0.5s;
+line-height: 0;
+}
+
+#more-features .icon i:before {
+background: #1dc8cd;
+background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+background-clip: border-box;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+#more-features h4 {
+margin-left: 100px;
+font-weight: 700;
+margin-bottom: 15px;
+font-size: 18px;
+}
+
+#more-features h4 a {
+color: #111;
+}
+
+#more-features p {
+font-size: 14px;
+margin-left: 100px;
+margin-bottom: 0;
+line-height: 24px;
+}
+
+@media (max-width: 767px) {
+#more-features .box {
+  margin-bottom: 20px;
+}
+#more-features .icon {
+  float: none;
+  text-align: center;
+  padding-bottom: 15px;
+}
+#more-features h4, #more-features p {
+  margin-left: 0;
+  text-align: center;
+}
+}
+.social{
+    color: blue;
+    font-size:30px;
+    cursor: pointer;
+}
+
+.parallaximg{
+/* The image used */
+background-image: url("/static/img/pexels-photo-934062.jpeg");
+/* background-color: rgba(255, 255, 255, 0.5); */
+/* Set a specific height */
+min-height: 500px;
+width: 100%;
+/* Create the parallax scrolling effect */
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+ 
+}
+.parallaximg::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.88);
+  /* z-index: 9; */
+}
+.button {
+display: inline-block;
+border-radius: 4px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 12px;
+padding: 8px;
+width: 155px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 2px;
+}
+
+.button span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.button span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.button:hover span {
+padding-right: 25px;
+}
+
+.button:hover span:after {
+opacity: 1;
+right: 0;
+}
+.checkboxes label {
+display: block;
+float: left;
+padding-right: 10px;
+white-space: nowrap;
+}
+.checkboxes input {
+vertical-align: middle;
+}
+.checkboxes label span {
+vertical-align: middle;
+}
+
+.vertical-menu {
+  width: 200px;
+  height: 350px;
+  overflow-y: auto;
+  z-index: 100;
+  
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #FF5200;
+  color: white;
+}
+
+</style>
+
+</head>
+
+<body class="stackedit">
+
+    <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar" style="background:#000;">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" title="The Tribal Box">The Tribal Box</a>
+            <!-- <a class="navbar-brand" href="#" style="top:0;">
+              <img src="img/logo.png" width="200" height="200" alt="" >
+              
+            </a>
+           -->
+          </div>
+  
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <!-- <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Pages</a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="portfolio.html">Portfolio</a></li>
+                  <li><a href="portfolio-single.html">Portfolio Single</a></li>
+                  <li class="dropdown-submenu dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="services.html">Services</a></li>
+                </ul>
+              </li>
+              <li><a href="contact.html">Contact</a></li> -->
+              <li class="probootstra-cta-button"><a href="{{ url_for('auth.login') }}"  class="btn" >Log in</a></li>
+              <li class="probootstra-cta-button last"><a href="{{ url_for('auth.register') }}"   class="btn btn-ghost">Sign up</a></li>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <div class="stackedit__html"><ul>
+<li></li>
+</ul>
+<div class="row">
+<div class="col-md-4">
+<div class="vertical-menu" style="margin-left:5%;margin-top:35%;width:85%;">
+    
+      <a id="userTermsbtn">User Terms and Conditions</a>
+      <a id="termsOfServicebtn">Terms of Service</a>
+      <a id="point1btn" >&#xA0;&#xA0;&#xA0;&#xA0;1. This Agreement</a>
+      <a id="point2btn" >&#xA0;&#xA0;&#xA0;&#xA0;2. Your Account and Membership</a>
+      <a id="point3btn" >&#xA0;&#xA0;&#xA0;&#xA0;3. Fees, Payments, and Offers</a>
+      <a id="point4btn" >&#xA0;&#xA0;&#xA0;&#xA0;4. Your Content and Privacy</a>
+      <a id="point5btn" >&#xA0;&#xA0;&#xA0;&#xA0;5. Your Use of Our Platform</a>
+      <a id="point6btn" >&#xA0;&#xA0;&#xA0;&#xA0;6. Release</a>
+      <a id="point7btn" >&#xA0;&#xA0;&#xA0;&#xA0;7. Dispute Resolution</a>
+      <a id="point8btn" >&#xA0;&#xA0;&#xA0;&#xA0;8. Intellectual Property</a>
+      <a id="point9btn">&#xA0;&#xA0;&#xA0;&#xA0;9. Other terms and conditions</a>
+    
+    
+    
+  </div>
+  
+</div>
+<div class="col-md-8">
+<h1 style="margin-top:15%;" id="the-tribal-box-one-stop-platform">The Tribal Box One Stop Platform</h1>
+<div id="usertermsandconditionsection">
+<h1 id="user-terms-and-conditions">User Terms and Conditions</h1>
+<p>Below is our terms of service for our “Platform”, which means any website, application, or service we offer. You should read the complete Terms of Service because that document (and not this overview) is our legally binding agreement.  <em>The Terms of Service includes information about your legal rights and covers areas such as automatic subscription renewals, limitations of liability, resolution of disputes by mandatory arbitration rather than a judge or jury in a court of law, and a class action waiver.</em></p>
+<p>Your Relationship with TheTribalBox</p>
+<ul>
+<li>
+<p>By using our Platform, you are agreeing to our Terms of Service. That is a legally binding agreement between you and TheTribalBox.</p>
+</li>
+<li>
+<p>If you break the rules, we may suspend or terminate your account.</p>
+</li>
+<li>
+<p>We may introduce charges with due notification for certain aspects of our Platform, and some of these fees are billed on a regular and recurring basis (unless you disable auto-renewal or cancel your subscription).</p>
+</li>
+<li>
+<p>Users may establish our membership criteria for registering with our platform.</p>
+</li>
+<li>
+<p>Using our Platform involves meeting real people and doing real things in the real world, which can sometimes lead to unexpected situations. We can’t control what happens in the real world, and  we are not responsible for it. You should use common sense and good judgment when interacting with others.</p>
+</li>
+</ul>
+<p>Your Content and Content of Others</p>
+<ul>
+<li>
+<p>You are responsible for your “Content”, which means any information, material, or other content posted to our Platform. Your Content must comply with our Terms of Service</p>
+</li>
+<li>
+<p>We do not own the Content that you post. However, we do require that  you provide us a license to use this Content in order for us to operate, improve, promote, and protect TheTribalBox and our Platform for the benefit of you and others.</p>
+</li>
+<li>
+<p>We are not responsible for Content that members post or the communications that members send using our Platform. We generally review contents using a moderator and analytics services before it’s posted. If you see Content that violates our Terms of Service, you may  report inappropriate Content to us.</p>
+</li>
+</ul>
+<p>Our Platform</p>
+<ul>
+<li>
+<p>We try hard to make sure that our Platform is always available and working, but we cannot guarantee it will be. Occasionally things may not go exactly as planned. We apologize in advance for any inconvenience.</p>
+</li>
+<li>
+<p>We are continually improving our Platform. This means that we may modify or discontinue portions of our Platform.</p>
+</li>
+<li>
+<p>By using our Platform, you agree to the limitations of liability and release in our Terms of Service. Except as specified in our Terms of Service, you also agree to resolve any disputes you may have with us through arbitration, and you are waiving your right to seek relief from a judge or jury in a court of law, except as otherwise provided for in the Terms of Service.</p>
+</li>
+</ul>
+</div>
+<div id="termsOfServiceSection">
+<h1 id="terms-of-service">Terms of Service</h1>
+<p>Our Terms of Service contain important information about your legal rights. To make it easier to understand, we have provided summaries and tips in these gray boxes. These summaries are not part of the official terms, and it is important for you to read the language in each section carefully.</p>
+<div id="agreementsection">
+<h4 id="this-agreement">1. This Agreement</h4>
+<p>Summary:  You agree to follow some basic rules when using TheTribalBox’s Platform. These rules are described in these Terms of Service, including the related policies and guidelines discussed below. We may change these rules.</p>
+<p>1.1 The Agreement.  The terms “TheTribalBox,” “we,” “us,” and “our” include The Tribal Box. We use the terms “you” and “your” to mean any person using our Platform, and any organization or person using the Platform on an organization’s behalf. We use the word “Platform” to mean any website, application, or service offered by TheTribalBox, including content we offer and electronic communications we send. We provide our Platform to you subject to these Terms of Service. Your use of the Platform signifies that you agree to this Agreement. If you are using the Platform for an organization, you agree to this Agreement on behalf of that organization, and represent you have authority to bind that organization to the terms contained in this Agreement. If you do not or are unable to agree to this Agreement, do not use our Platform.</p>
+<p>1.2 Revisions to this Agreement.  We may modify this Agreement from time to time. When we do, we will provide notice to you by publishing the most current version and revising the date at the top of this page. If we make any material change to this Agreement, we will provide additional notice to you, such as by sending you an email or displaying a prominent notice on our Platform. By continuing to use the Platform after any changes come into effect, you agree to the revised Agreement.</p>
+</div>
+<div id="accountmembersection">
+<h4 id="your-account-and-membership">2. Your Account and Membership</h4>
+<p>Summary:  You need to be at least 18 years old to use our Platform. TheTribalBox Users control the Content and membership of their TheTribalBox groups. However, we may remove any Content you post or terminate your account at any time.</p>
+<p>2.1 Eligibility.  Our Platform is available to anyone who is at least 18 years old. You represent that you are at least 18. Additional eligibility requirements for a particular portion of our Platform may be set by any member who has the ability to moderate or manage that portion of our Platform. For example, the eligibility requirements for a TheTribalBox group or TheTribalBox event may be set by the Users of that group.</p>
+<p>2.2 Suspension of Your Account.  We may modify, suspend or terminate your account or access to the Platform if, in our sole discretion, we determine that you have violated this Agreement, including any of the policies or guidelines that are part of this Agreement, that it is in the best interest of the TheTribalBox community, or to protect our brand or Platform. We also may remove accounts of members who are inactive for an extended period of time.</p>
+<p>A member who has the ability to moderate or manage a particular portion of our Platform also has the ability, in his or her sole discretion, to modify, suspend, or terminate your access to that portion of the Platform.</p>
+<p>2.3 Account Information and Security.  When you register, you provide us with some basic information, including an email address and a password. Keep your email address and other account information current and accurate. Also, you agree to maintain the security and confidentiality of your password (or else we may need to disable your account). You alone are responsible for anything that happens from your failure to maintain that security and confidentiality, such as by sharing your account credentials with others. If someone is using your password, notify us immediately.</p>
+</div>
+<div id="paymentsection">
+<h4 id="fees-payments-and-offers">3. Fees, Payments, and Offers</h4>
+<p>Summary:  We charge for certain features on our Platform. These fees are billed on a regular and recurring basis (unless you disable auto-renewal or cancel your subscription), and may change in the future.</p>
+<p>3.1 Fees Charged by TheTribalBox.  Use of some of the features on our Platform is free, and we charge fees for other features. We may in the future implement a new fee, or modify an existing fee, for certain current or future features of our Platform. If we implement a new or modified fee, we will give you advanced notice such as by posting changes on our Platform or sending you an email. You agree to pay those fees and any associated taxes for your continued use of the applicable service. Unless otherwise stated, all fees and all transactions are in Indian Rupees. All fees are exclusive of applicable central, state, local, or other taxes. Subscriptions to our features are non-transferable.</p>
+<p>3.2 Payments to TheTribalBox.  Users are responsible for paying subscription and any other applicable fees to TheTribalBox on time and through our approved payment methods. Users who allow their User subscription to lapse are subject to removal as the User of the TheTribalBox group or community associated with their account, and their TheTribalBox group (along with all of the information and Content associated with or posted to that TheTribalBox group) may be terminated or transferred to another member. If we terminate, suspend, or remove your account in connection with violation of this Agreement, we are not obligated to refund any User subscription fees paid to TheTribalBox. You may only pay User fees to TheTribalBox using a valid payment method acceptable to us, as specified via the Platform. You represent and warrant that you are authorized to use the payment method you designate via the Platform. You authorize us (and our designated third-party payment processors) to charge your designated payment method for the total amount of any fees you owe to TheTribalBox, including any applicable taxes and other charges. If the payment method cannot be verified, is invalid, or is otherwise not acceptable to us, your payment may be suspended or cancelled. We reserve the right to correct, or to instruct our payment processors to correct, any errors or mistakes, even if payment has already been requested or received. We also may issue refunds, or instruct our payment processors to issue refunds, in accordance with our  polices.</p>
+<p>3.3 Free Trials. We may offer free trials of subscriptions and other products on our Platform. We will inform you of the length of the free trial, your renewal period, and the date and amount of your first payment. After your free trial ends, your paid subscription will begin and we will automatically bill you for each renewal period until cancellation. You can cancel automatic subscription renewals at any time according to the terms and procedures described above.</p>
+<p>3.6 Third Party Payment Processors.  An User that uses the Platform to accept payments from other members, must comply with the terms and conditions of the third party provider of the applicable payment service used to receive the payment. TheTribalBox does not provide those payment services, is not a party to your agreement with the applicable third-party provider, and will not be liable or responsible for your use of those third-party payment services.</p>
+<p>3.7 Third Party Transactions.  TheTribalBox group or its members may receive offers from third parties, such as discounts, sponsorships, or other benefits. TheTribalBox is not involved in any dealings or payments between you and third parties, and these Terms of Service do not govern such transactions.</p>
+</div>
+<div id="privacysection">
+<h4 id="your-content-and-privacy">4. Your Content and Privacy</h4>
+<p>Summary:  You are responsible for the Content you post on our Platform. You give us a license to use this Content to operate, improve, promote, and protect TheTribalBox and our Platform.</p>
+<p>4.1 Your Content.  You are solely responsible for your Content. We use the word “Content” to mean any information, material, or other content posted to our Platform or otherwise provide to us (such as feedback, comments, or suggestions shared with us). You agree that you and your Content shall not violate the rights of any third party (such as copyrights, trademarks, contract rights, privacy rights, or publicity rights).</p>
+<p>Tip:  Search engines can see public areas of the Platform. Your Content within these areas, such as the name and location that you provide during registration, and your membership in public TheTribalBox groups, may appear in search results. Our Platform is designed so that search engines cannot see your Content that is within restricted areas of the Platform, such as private information like email address, telephone number, age and other personal information unless otherwise agreed.</p>
+<p>4.2 Content License from You.  We do not claim ownership of your Content. However, to enable us to operate, improve, promote, and protect TheTribalBox and our Platform, and to ensure we do not violate any rights you may have in your Content, you hereby grant TheTribalBox a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sublicensable, transferable right and license (including a waiver of any moral rights) to use, host, store, reproduce, modify, publish, publicly display, publicly perform, distribute, and create derivative works of, your Content and to commercialize and exploit the copyright, trademark, publicity, and database rights you have in your Content.</p>
+<p>Tip:  This license doesn’t give us ownership of any of your Content. It simply gives us and members the right to use it on or related to the Platform. This license continues even if you close your account, because it’s necessary for us to operate the Platform.</p>
+<p>4.3 Privacy.  TheTribalBox collects registration and other information about you through our Platform.</p>
+<p>Tip:  TheTribalBox has no control over how other members may use information that you provide to them, so you should exercise common sense and good judgment when sharing information with others on our Platform.</p>
+</div>
+<div id="patformsection">
+<h4 id="your-use-of-our-platform">5. Your Use of Our Platform</h4>
+<p>Summary:  We require that that you follow our policies and guidelines when using our Platform. We have no responsibility for Content that anyone posts to our Platform.</p>
+<p>5.1 Our Policies, Guidelines and Applicable Laws.  When you use our Platform, we require that you follow the  Usage and Content Policies. You also agree to comply with all applicable laws, rules and regulations, and to not violate or infringe the rights of any third party. If you do not comply, we may modify, suspend or terminate your account or access to the Platform, in our sole discretion.</p>
+<p>5.2 Content of Others.  TheTribalBox does not control the Content of other members. When we become aware of inappropriate Content on our Platform, we reserve the right to investigate and take appropriate action, but we do not have any obligation to monitor, nor do we take responsibility for, the Content of other members.</p>
+<p>5.3 Interactions with Others.  TheTribalBox is not a party to any offline arrangements made through our Platform. TheTribalBox does not conduct or require background checks on members, and does not attempt to verify the truth or accuracy of statements made by members. TheTribalBox makes no representations or warranties concerning the conduct or Content of any members or their interactions with you.</p>
+<p>5.4 No Resale.  Our Platform contains proprietary and confidential information and is protected by intellectual property laws. Unless we expressly permit it through this Agreement, you agree not to modify, reproduce, sell or charge a fee, offer to sell or charge a fee, make, create derivative works based on, or distribute any part of our Platform, including any data, or Content of others.</p>
+<p>5.5 No Technical Interference with the Platform.  You agree that you will not engage in any activity or post any information or material that interferes with or disrupts, or that is designed to interfere with or disrupt, the Platform or any hardware used in connection with the Platform.</p>
+<p>5.6 Platform Modifications.  We work hard to continuously improve our Platform. This means that we may modify or discontinue portions or all of our Platform with or without notice and without liability to you or any third party.</p>
+<p>5.7 Third Party Sites and Services.  The Platform contains links to third party sites, and is integrated with various third party services, applications and sites that may make available to you their content and products. We don’t control these third parties and aren’t responsible for those sites or services or their content or products. These third parties may have their own terms and policies, and your use of them will be governed by those terms and policies.</p>
+</div>
+<div id="releasesection">
+<h4 id="release">6. Release</h4>
+<p>Summary:  You agree not to hold us responsible for anything that happens related to transactions with third parties, member interactions, or in connection with a TheTribalBox hosted events and campaigns. You also agree not to hold Users responsible for their negligence in connection with their Content, a TheTribalBox group, or TheTribalBox event.</p>
+<p>You agree to release us and our officers, directors, shareholders, agents, employees, consultants, affiliates, subsidiaries, sponsors, and other third-party partners (referred to in this Agreement as “TheTribalBox Parties”) from claims, demands, and damages (direct and consequential) of every kind and nature, known and unknown, now and in the future (referred to in this Agreement as “Claims”), arising out of or in any way connected with any transaction with a third party, your interactions with other members, or in connection with a TheTribalBox group or a TheTribalBox event. You also agree to release Users from Claims based on an User’s negligence arising out of or in any way connected with their Content, a TheTribalBox group, or a TheTribalBox event. You further waive any and all rights and benefits otherwise conferred by any statutory or non-statutory law of any jurisdiction that would purport to limit the scope of a release or waiver.</p>
+</div>
+<div id="disputesection">
+<h4 id="dispute-resolution">7. Dispute Resolution</h4>
+<p>Summary:  If you have a dispute with TheTribalBox, you agree to try to work it out directly with us first.  If we can’t work it out, with limited exceptions, you must submit any dispute with us to a neutral arbitrator instead of taking the claim to a court of law. Claims can only be brought individually, and not as part of a class action.  TheTribalBox has no obligation to get involved with any disputes you have with other members, although we may try to facilitate a resolution.</p>
+<p>7.1 Informal Resolution.  Before making any claim, you and TheTribalBox agree to try to resolve any disputes through good faith discussions. We use the term “claim” in this Section 7 to mean any dispute, claim or controversy arising out of or relating to your use of our Platform or this Agreement, including your participation in TheTribalBox events.</p>
+</div>
+<div id="intellectualsection">
+<h4 id="intellectual-property">8. Intellectual Property</h4>
+<p>8.1 Intellectual Property of TheTribalBox.  TheTribalBox trademarks, logos, service marks, and service names are the intellectual property of TheTribalBox.</p>
+<p>8.2  Intellectual Property of Others.  TheTribalBox respects the intellectual property of others, and we expect our members to do the same. We may, in appropriate circumstances and in our discretion, remove or disable access to material that infringes on the intellectual property rights of others. We may also restrict or terminate access to our Platform to those who we believe to be repeat infringers.</p>
+</div>
+<div id="termssection">
+<h4 id="other-terms-and-conditions">9. Other terms and conditions</h4>
+<p>Summary:  This section contains terms we have added for miscellaneous purposes. Please continue to read this section carefully.</p>
+<p>9.1 Translation.  This Agreement was written in English. It was then translated into other languages. If there is any inconsistency between the English version and a translated version, the English language version controls.</p>
+</div>
+</div>
+<p>Already a member?  <a href="{{ url_for('auth.login') }}">Log in</a>.</p>
+<h3 id="please-read-terms-and-condtions-carefully.">Please read terms and condtions carefully.</h3>
+<p>We wish you unmatched service and experience on behalf of the<br>
+TheTribalBox’s Community Team</p>
+</div>
+</div>
+</div>
+<footer class="probootstrap-footer" style="background: #000;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget">
+            <img src="{{ url_for('static', filename='img/thetribalboxnw1.png') }}">
+            <p>Engaging,Collaborating,Empowering & Inspiring our Community</p>
+            <ul class="probootstrap-footer-social">
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="probootstrap-footer-widget float-right">
+                <h3>About</h3>
+                <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">Our Stories</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Vision & Mission</a></li>
+                  <li><a href="{{ url_for('main.tandc') }}">Terms & Conditions</a></li>
+                </ul>
+              </div>
+            </div>
+       
+  
+          </div>
+        </div>
+  
+  
+      </div>
+      <!-- END row -->
+      <div class="row">
+        <div class="col-md-12 copyright">
+          <p><small>&copy; 2019 <a href="#">Quantamix Solutions</a>. All Rights Reserved.</small></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+        
+    
+        <!-- Modal login -->
+        <div class="modal fadeInUp probootstrap-animated" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+          <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-md vertical-align-center">
+              <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-cross"></i></button>
+                <div class="probootstrap-modal-flex">
+                  <div class="probootstrap-modal-figure" style="background-image: url(img/modal_bg.jpg);"></div>
+                  <div class="probootstrap-modal-content">
+                    <form action="#" class="probootstrap-form">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email">
+                      </div> 
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password">
+                      </div> 
+                      <div class="form-group clearfix mb40">
+                        <label for="remember" class="probootstrap-remember"><input type="checkbox" id="remember"> Remember Me</label>
+                        <a href="#" class="probootstrap-forgot">Forgot Password?</a>
+                      </div>
+                      <div class="form-group text-left">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign In">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group probootstrap-or">
+                        <span><em>or</em></span>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-facebook"><span>connect with</span> Facebook</button>
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-google"><span>connect with</span> Google</button>
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-twitter"><span>connect with</span> Twitter</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END modal login -->
+        
+        <!-- Modal signup -->
+        <div class="modal fadeInUp probootstrap-animated" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+          <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-md vertical-align-center">
+              <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-cross"></i></button>
+                <div class="probootstrap-modal-flex">
+                  <div class="probootstrap-modal-figure" style="background-image: url(img/modal_bg.jpg);"></div>
+                  <div class="probootstrap-modal-content">
+                    <form action="#" class="probootstrap-form">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email">
+                      </div> 
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password">
+                      </div> 
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Re-type Password">
+                      </div> 
+                      <div class="form-group clearfix mb40">
+                        <label for="remember" class="probootstrap-remember"><input type="checkbox" id="remember"> Remember Me</label>
+                        <a href="#" class="probootstrap-forgot">Forgot Password?</a>
+                      </div>
+                      <div class="form-group text-left">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign Up">
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="form-group probootstrap-or">
+                        <span><em>or</em></span>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-facebook"><span>connect with</span> Facebook</button>
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-google"><span>connect with</span> Google</button>
+                            <button class="btn btn-primary btn-ghost btn-block btn-connect-twitter"><span>connect with</span> Twitter</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END modal signup -->
+    
+        <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='style.js') }}"></script>
+        <script>
+          $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+          });
+        </script>
+        <script>
+            $("#termsOfServicebtn").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#termsOfServiceSection").offset().top
+                }, 2000);
+            });
+            $("#userTermsbtn").click(function() {
+              $("#termsOfServicebtn").removeClass("active");
+              $("#userTermsbtn").addClass("active");
+                $('html, body').animate({
+                    scrollTop: $("#usertermsandconditionsection").offset().top
+                }, 2000);
+            });
+            $("#point1btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#agreementsection").offset().top
+                }, 2000);
+            });
+            $("#point2btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#accountmembersection").offset().top
+                }, 2000);
+            });
+            $("#point3btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#paymentsection").offset().top
+                }, 2000);
+            });
+            $("#point4btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#privacysection").offset().top
+                }, 2000);
+            });
+            $("#point5btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#patformsection").offset().top
+                }, 2000);
+            });
+            $("#point6btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#releasesection").offset().top
+                }, 2000);
+            });
+            $("#point7btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#disputesection").offset().top
+                }, 2000);
+            });
+            $("#point8btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#intellectualsection").offset().top
+                }, 2000);
+            });
+            $("#point9btn").click(function() {
+             
+                $('html, body').animate({
+                    scrollTop: $("#termssection").offset().top
+                }, 2000);
+            });
+           
+           
+              </script>
+</body>
+
+</html>
+{% endblock content %}

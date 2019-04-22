@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.text_fontsizeth{
+    font-size:16px;
+}
+.text_fontsizetr{
+    font-size: 13px;
+}
+.theader{
+    background: #e9ecef;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: white !important;
+}
+</style>
+<div class="container" style="padding-top:41px;">
+    
+<div class="row">
+    <div class="col-12">
+        <h2 class="section-title">New verification request</h2>
+    </div>
+</div>
+<div class="row">
+<div class="col-12">
+        <table class="table table-striped">
+                <thead class="theader">
+                  <tr>
+                        <th class="text_fontsizeth" scope="col">#</th>
+                        <th class="text_fontsizeth" scope="col">Name</th>
+                        <th class="text_fontsizeth" scope="col">Requested&#xA0;<small>(Role)</small></th>
+                        <th class="text_fontsizeth" scope="col">Current&#xA0;<small>(Role)</small></th>
+                        <th class="text_fontsizeth" scope="col">on</th>
+                  </tr>
+                </thead>
+                <tbody>
+                        {% for role in role %}
+                        <tr>
+                            <th class="text_fontsizetr" scope="row">{{role.id}}</th>
+                            <td class="text_fontsizetr"><a href="{{ url_for('users.user', id=role.Protagonist.id) }}">{{ role.Protagonist.username}}</a></td>
+                            <td class="text_fontsizetr">{{ role.role}}</td>
+                            <td class="text_fontsizetr">{{ role.Protagonist.is_role}}</td>
+                            <td class="text_fontsizetr">{{ moment(role.timestamp).format('Do MMMM YYYY')  }}</td>
+                        {% endfor %}
+                        </tr>
+                </tbody>
+              </table>
+</div>
+</div>
+</div>
+
+
+
+{% endblock content %}

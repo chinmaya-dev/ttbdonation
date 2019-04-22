@@ -1,0 +1,221 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="bg-light">
+    <div class="container" style="margin-top: 60px">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 shadow-sm border bg-white my-4">
+                <form method="POST" action="" enctype="multipart/form-data" id="prog-form">
+                    {{ form.hidden_tag() }}
+
+                    <legend class="border-bottom mb-4 p-1">{{ legend }}</legend>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <!-- {{ form.title.label(class="form-control-label") }} -->
+                                {% if form.title.errors %}
+                                {{ form.title(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.title(class="form-control", placeholder="Title") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <!-- {{ form.short.label(class="form-control-label") }} -->
+                                {% if form.short.errors %}
+                                {{ form.short(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.short.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.short(class="form-control", placeholder="Please give short description about your crowdfunding campaign") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <!-- {{ form.link.label(class="form-control-label") }} -->
+                                {% if form.link.errors %}
+                                {{ form.link(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.link.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.link(class="form-control", placeholder="Place Youtube or Relevant content link") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <!-- {{ form.goal.label(class="form-control-label") }} -->
+                                {% if form.goal.errors %}
+                                {{ form.goal(class="form-control is-invalid") }}
+                                <div class="invalid-goal">
+                                    {% for error in form.goal.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.goal(class="form-control", placeholder="Goal") }}
+                                {% endif %}
+                            </div>
+
+                                <p class="text-secondary p-1">Upload Picture</p>
+                                <div class="form-group">
+                                    <!-- {{ form.picture.label(class="form-control-label pt-1") }} -->
+                                    {{ form.picture(class="form-control-file") }}
+                                    {% if form.picture.errors %}
+                                    {% for error in form.picture.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                            <p class="text-secondary p-1">Determine how you want complete your compaigns</p>
+                            <div class="form-group">
+                                <!-- {{ form.end_method.label(class="form-control-label") }} -->
+                                {% if form.end_method.errors %}
+                                {{ form.end_method(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.end_method.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.end_method(class="form-control") }}
+                                {% endif %}
+                            </div>
+                            <p class="text-secondary p-1">Category</p>
+                            <div class="form-group">
+                                <!-- {{ form.category.label(class="form-control-label") }} -->
+                                {% if form.category.errors %}
+                                {{ form.category(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.category.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.category(class="form-control") }}
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <!-- {{ form.target_amount.label(class="form-control-label") }} -->
+                                {% if form.target_amount.errors %}
+                                {{ form.target_amount(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.target_amount.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.target_amount(class="form-control", placeholder="Recommended Amount") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <!-- {{ form.amount_prefilled.label(class="form-control-label") }} -->
+                                {% if form.amount_prefilled.errors %}
+                                {{ form.amount_prefilled(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.amount_prefilled.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.amount_prefilled(class="form-control", placeholder="Amount Prefilled") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <!-- {{ form.country.label(class="form-control-label") }} -->
+                                {% if form.country.errors %}
+                                {{ form.amount_prefilled(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.country.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.country(class="form-control", placeholder="Country") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <!-- {{ form.address.label(class="form-control-label") }} -->
+                                {% if form.address.errors %}
+                                {{ form.address(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.address(class="form-control", placeholder="Address") }}
+                                {% endif %}
+                            </div>
+
+                            <h4>Duration</h4>
+                            <p class="text-secondary p-1">Start Date -> End Date</p>
+                            <div class="form-group">
+                                <!-- {{ form.start_date.label(class="form-control-label") }} -->
+                                {% if form.start_date.errors %}
+                                {{ form.start_date(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.start_date.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.start_date(class="form-control", id="prog-bar", required="required") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <!-- {{ form.end_date.label(class="form-control-label") }} -->
+                                {% if form.end_date.errors %}
+                                {{ form.end_date(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.end_date.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.end_date(class="form-control", id="prog-bar", required="required") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary p-1">Please give detailed description about your crowdfunding campaign</p>
+                    <div class="form-group">
+                        <!-- {{ form.description.label(class="form-control-label") }} -->
+                        {% if form.description.errors %}
+                        {{ form.description(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.description.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.description(class="form-control") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group btn-group-sm text-right">
+                        {{ form.submit(class="btn btn-info shadow-sm") }}
+                        <a href="{{ url_for('main.home') }}" class="btn btn-info shadow-sm">skip</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

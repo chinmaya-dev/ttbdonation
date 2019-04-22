@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="jumbotron text-center" style="border-bottom: 3px solid #3fa3ca; margin-top: 30px">
+  <h2 class="don-padd">
+    {{ donationreason.title }}
+  </h2>
+</div>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-8" style="margin-top: 30px">
+    <div class="px-3 mb-3">
+
+      <fieldset class="form-group">
+        <div class="mb-2">
+
+          <P style="font-style: normal; font-size:18px; margin-bottom: 8px;">{{ donationreason.title }} </P>
+          <p style="font-weight: 300; font-size:20px; margin-bottom: 8px;">{{ donationreason.goal }}</p>
+          <p style="font-size: 16px; margin-bottom: 8px;">
+            <strong>Your details</strong>
+          </p>
+
+          <div class="row border-bottom pb-5">
+            <div class="col-md-6 pb-1">
+              <div class="p-1" style="border: 1px solid lightgray; border-radius: 5px;box-shadow: 0 0 3px lightgray inset; overflow: hidden;">
+                {{ current_user.username }}
+              </div>
+            </div>
+            <div class="col-md-6 pb-1">
+              <div class="p-1" style="border: 1px solid lightgray; border-radius: 5px;box-shadow: 0 0 3px lightgray inset; overflow: hidden;">
+                {{ current_user.email }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-4">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div class="" style="border: 1px solid lightgray; border-radius: 5px;">
+        <p class="border-bottom p-2">Summery</p>
+
+        <div class="p-1 d-flex border-bottom">
+          <div class="col-10">
+            <p style="font-size: 0.7em; font-weight: 300;">Donation: {{ donationreason.goal }}</p>
+          </div>
+          <div class="col-2">
+           
+          </div>
+        </div>
+
+        <div class="p-1 d-flex">
+          <div class="col-10">
+            <p style="font-size: 0.7em; margin-bottom: 3px;"><b>Total:</b></p>
+            <p>
+
+
+              <!--Repeat this code block for additional item you want to show  -->
+              <div class="form-group">
+                {{ form.amount.label(class="form-control-label") }}
+                {% if form.amount.errors %}
+                {{ form.amount(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                  {% for error in form.amount.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.amount(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+              <!--Insert here your items in div element for all the data you need  -->
+
+
+            </p>
+            <p>You also acknowledge and agree to Terms of Use and Privacy Policy.</p>
+          </div>
+          <div class="col-2">
+          </div>
+
+        </div>
+        <div class="py-1 px-3 text-center">
+          {{ form.submit(class="btn btn-outline-info w-100") }}
+        </div>
+      </div>
+
+  </div>
+  </form>
+</div>
+{% endblock content %}

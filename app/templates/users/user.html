@@ -1,0 +1,2119 @@
+{% extends "layout.html" %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/campaign.css') }}">
+<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script type="text/javascript" src=" https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js"></script>
+<!-- <link type="text/css" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-social-share-bar.js') }}"></script>
+<script>  
+    jQuery(document).ready(function ($) {
+      $('.statistic-counter').counterUp({
+        delay: 10,
+        time: 2000
+      });
+    });
+  </script>
+<style>
+
+
+  .fab {
+    padding: 9px;
+    font-size: 15px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+
+
+  .fab:hover {
+    opacity: 0.7;
+  }
+
+  .formd {
+    text-align: left !important;
+  }
+
+  .fa {
+    padding: 9px;
+    font-size: 15px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .card_style {
+    margin-top: 50px;
+    margin-left: 164px;
+  }
+
+  /* for campaignview.html start  */
+  .morecontent span {
+    display: none;
+  }
+
+  .morelink {
+    display: block;
+  }
+
+  .campaign-card {
+    padding: 15px 0px;
+  }
+
+  .right-side-sec {
+    width: 50%;
+    float: right;
+    text-align: right;
+  }
+
+  .left-side-sec {
+    width: 50%;
+    float: left;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .padding-right-0 {
+    padding-right: 0px !important;
+  }
+
+  .company-name {
+    font-size: 17px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .bags-tags {
+    font-size: 13px;
+    margin: 0px;
+  }
+
+  .country-name {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .due-days {
+    display: block;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .button-inline-block {
+    display: block;
+    text-decoration: none;
+    /* border-radius: 50px !important; */
+  }
+
+  .button-inline-block:hover {
+    text-decoration: none;
+    /* margin-top: 2px; */
+    -webkit-box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+    -moz-box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+    box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+    transition: 0.7s;
+  }
+
+  .red-btn-bg {
+    background-color: rgba(240, 5, 68, 0.8);
+  }
+
+  .yellow-btn-bg {
+    background-color: rgba(250, 210, 10, 0.9);
+  }
+
+  .min-height {
+    min-height: 46px;
+  }
+
+  /* .badge1{
+  padding: 0.45em .7em !important;
+  font-size: 81% !important;
+  line-height: initial !important; 
+}  */
+  .ahover:hover {
+    text-decoration: none;
+  }
+
+  .justify_text {
+    text-align: justify;
+  }
+
+  .section_title {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  section.section-bg-white {
+    background: #ffffff;
+    padding: 50px 0;
+  }
+
+  h2.section_title::after {
+    background: #dddddd none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+  }
+
+  .why-choose-us-box {
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    padding: 20px;
+    min-height: 209px;
+    max-height: 210px;
+    margin-bottom: 20px;
+  }
+
+  .why-choose-us-box .icon {
+    font-size: 24px;
+  }
+
+  .home-category-box {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    max-height: 192px;
+  }
+
+  .home-category-box img {
+    height: auto;
+    width: 100%;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .home-category-box .title>a {
+    color: #fff;
+    font-size: 28px;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 150px;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .home-category-box .title>a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    /* text-decoration: none; */
+  }
+
+  a:hover {
+    /* color: #2d8dbe; */
+    text-decoration: none;
+  }
+
+  .text-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .my-card {
+    /* -webkit-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  -moz-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  padding: 10px 0px; */
+    margin: 10px 0px;
+  }
+
+  .company-logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .company-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* .compay-details {
+  padding-left: 2px;
+} */
+  .company-name,
+  .country-name {
+    margin: 0;
+    padding: 0;
+  }
+
+  .company-name {
+    font-size: 18px;
+  }
+
+  .small-text {
+    font-size: 12px;
+    /* margin-left: 5px; */
+  }
+
+  p>.badge {
+    font-size: 84% !important;
+    font-weight: 500 !important;
+    line-height: 2 !important;
+  }
+
+  .country-name {
+    font-size: 15px;
+  }
+
+  .body-img1 img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+
+  }
+
+  .visit-btn {
+    padding: 10px 20px;
+    display: block;
+    background: yellow;
+    font-size: 18px;
+    color: #000000;
+    text-decoration: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .visit-btn:after {
+    content: ">";
+    float: right;
+    font-size: 24px;
+    position: relative;
+    top: -5px;
+  }
+
+  .visit-btn:hover {
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0px 15px 20px rgba(255, 251, 3, 0.49);
+    transform: translateY(-7px);
+  }
+
+  .all-details {
+    padding: 15px 15px;
+  }
+
+  .bottom-box {
+    /* -webkit-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  -moz-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35); */
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    max-width: 95%;
+    margin: auto;
+  }
+
+  .all-details h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .all-details p {
+    font-size: 18px;
+  }
+
+  .show-more-btn {
+    display: block;
+    text-decoration: underline;
+  }
+
+  .day-ago {
+    text-align: left;
+  }
+
+  .right-side-sec .label {
+    font-size: 17px;
+    margin-left: 15px;
+  }
+
+  .body-img {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    -webkit-border-radius: .25rem;
+    /* border-radius: .25rem; */
+    border-radius: 2%;
+    position: relative;
+    text-align: center;
+  }
+
+  .counter-body {}
+
+  /* for campaignview end  */
+
+  /* for campaign.html start */
+  ul.tabs {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  ul.tabs li {
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 15px;
+  }
+
+  ul.tabs li.current {
+    color: #222;
+    border-bottom: 3px solid black;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 15px;
+  }
+
+  .tab-content.current {
+    display: inherit;
+  }
+
+  .hrtag {
+    margin-top: -1.5% !important;
+    margin-bottom: 0px !important;
+  }
+
+  .bordor_top {
+    border-top: 1px solid#00000047;
+    margin-top: -1.5% !important;
+  }
+
+  .bordor_top1 {
+    border-top: 1px solid#00000047;
+    /* margin-top: -1.5% !important; */
+  }
+
+  /* .fa, .fab, .fal, .far, .fas {
+    line-height: 3;
+    width:17%;
+} */
+  /* .fas1{
+  color: skyblue;
+  line-height: 3;
+  width:15%;
+}
+.fas2{
+  color: skyblue;
+} */
+  .img-bottom .far:before,
+  .img-bottom .fas:before {
+    color: #000;
+  }
+
+  /* .img-bottom .far {
+  font-size: 20px;
+} */
+  .img-bottom p {
+    font-size: 16px;
+  }
+
+  .img-bottom .fas,
+  .img-bottom .far {
+    margin-right: 10px;
+  }
+
+  .img-bottom {
+    display: flex;
+    align-items: center;
+    padding-top: 13px;
+  }
+
+  .img-bottom>div {
+    flex: 0.2 0.2 auto;
+  }
+
+  /* a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+} */
+  .btn-floating.btn-sm {
+    width: 36.15385px;
+    height: 36.15385px;
+  }
+
+  a.waves-effect,
+  a.waves-light {
+    display: inline-block;
+  }
+
+  .btn-floating {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+    width: -9px;
+    height: 47px;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin: 10px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .waves-effect {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .blue-gradient {
+    background: -webkit-linear-gradient(50deg, #45cafc, #303f9f) !important;
+    background: -o-linear-gradient(50deg, #45cafc, #303f9f) !important;
+    background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+  }
+
+  .btn-floating:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    text-decoration: none;
+    color: #0056b3;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+    .mb_margin{
+     margin-top: -13%;
+     margin-right:3%;
+   }
+   .mb_margintabs{
+     margin-left: 20px;
+   }
+   .mb_padding{
+     padding-left: 28%;
+   }
+   .mb_feed{
+    padding-top:9px;
+    margin-left: -31px;
+   }
+   .mb_location{
+    margin-left: -125px;
+    margin-top: -14px;
+    } 
+    .mb_counter {
+     display: block;
+   }
+   .clear{
+     clear: both;
+   }
+   .mb_counter2{
+     display: none;
+   }
+   .mb_profilepic{
+    position: relative; margin: -80px;
+    margin-left:22%; 
+    background-image: url('{{ image_file }}');
+    width:60%; 
+    height: 150px; 
+    background-size: cover;
+    border:5px solid #E6E6E6;
+   }   
+   
+   .Elevation-2dp {
+			box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+			transition: box-shadow 83ms;
+	}
+  .feed-shared-social-action-bar {
+			height: 40px;
+			justify-content: flex-start;
+			margin: 0;
+	}
+	.social_count{
+			padding: 9px;
+		padding-left: 21px;
+		font-size: 13px;
+		display: flex;
+			flex-direction: row;
+	}
+	.social_count > div {
+		padding: 5px;
+	}
+	.feed-shared-social-action-bar {
+			display: flex;
+			align-items: center;
+			/* justify-content: space-around; */
+			height: 50px;
+			box-sizing: border-box;
+			padding-left: 8px;
+			background-color: transparent;
+	}
+	.feed-shared-social-action-bar .button, .feed-shared-social-action-bar a {
+			white-space: nowrap;
+			font-size: 1.4rem;
+		line-height: 1.42857;
+		padding: 11px;
+			font-weight: 600;
+			color: rgba(0,0,0,.6);
+			/* background-color: #fff; */
+			display: flex;
+	}
+		.social-media{
+			display: flex;
+			flex-direction: row;
+		}
+		.linkdin-card {
+		/* border: 1px solid #000; */
+		box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+			transition: box-shadow 83ms;
+	}
+	.linkdin-card-header {
+			display: flex;
+			align-items: center;
+			padding: 10px 20px;
+	}
+	.lazy-image {
+		width: 10%;
+		margin-right: 10px;
+	}
+	.lazy-image a img {
+		width: 100%;
+		border-radius: 50%;
+	}
+	.feed-shared-actor__meta {
+			width: 85%;
+      text-align: left;
+	}
+	.feed-shared-actor__meta a {
+		color: #000000;
+	}
+	.feed-shared-actor__meta a:hover {
+		text-decoration: none;
+	}
+	.feed-shared-actor__meta h3 {
+			font-size: 20px;
+			margin: 0px;
+	}
+	.feed-shared-actor__meta span {
+			font-size: 12px;
+			display: block;
+	}
+	
+	.dropbtn {
+		color: #000000;
+		font-size: 16px;
+		border: none;
+		background: transparent;
+	}
+	/* .dropdown {
+		position: relative;
+		display: inline-block;
+		width: 5%;
+	} */
+	.dropdown-content {
+    visibility: hidden;
+    position: absolute;    
+    z-index: 3;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 6px 9px rgba(0,0,0,.2);
+    transition: box-shadow 83ms;
+    transition: visibility 0s linear 167ms,opacity 167ms cubic-bezier(.4,0,1,1) 0s,z-index 0s linear 167ms;
+    padding: 4px 0;
+    max-width: 70%;
+    max-height: 548px;
+    box-sizing: border-box;
+    margin-left: -8em;
+}
+				.dropdown-content:before {
+						position: absolute;
+						border-color: transparent;
+						border-style: solid;
+						border-width: 0;
+						content: '';
+						right: 15px;
+						border-right-width: 9px;
+						border-bottom: 9px rgba(0,0,0,0.1) solid;
+						border-left-width: 9px;
+						top: -9px;
+				}
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+	.dropdown-content a:hover {background-color: #ddd;}
+	.dropdown:hover .dropdown-content {
+		/*display: block;*/
+		visibility: visible;
+	}
+	.content1{ 
+		padding: 10px 20px;
+    text-align: left;
+	}
+	.body-img1 img {
+		width: 100%;
+	}
+		/* for new ask question card design start */
+		.group 			  { 
+		position:relative; 
+		margin-bottom:45px; 
+		display: flex;
+		flex-grow: 1;
+		margin: 0;
+		align-items: center;
+		padding: 0px 20px;
+	}
+	input 				{
+		font-size:18px;
+		padding:10px 10px 10px 5px;
+		display:block;
+		width:100%;
+		border:none;
+	}
+	input:focus {
+		outline:none; 
+	}
+	.group label 				 {
+		color:#999; 
+		font-size:18px;
+		font-weight:normal;
+		position:absolute;
+		pointer-events:none;
+		left:50px;
+		top:28px;
+		transition:0.2s ease all; 
+		-moz-transition:0.2s ease all; 
+		-webkit-transition:0.2s ease all;
+		display: flex;
+		align-items: center;
+	}
+	
+	/* active state */
+	input:focus ~ label, input:valid ~ label 		{
+		top:5px;
+		font-size:17px;
+		/* color:#5264AE; */
+		align-items: center;
+	}
+	
+	.share-box__wrapper {
+			position: relative;
+			border-radius: 2px;
+	}
+	.share-box__wrapper--is-closed {
+			margin-bottom: 8px;
+	}
+	.share-box__wrapper {
+			margin: 0;
+			background: #fff;
+			color: #84878a;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			max-height: 100%;
+	}
+	.Elevation-2dp {
+			box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+			transition: box-shadow 83ms;
+	}
+	.display-flex {
+			display: flex;
+	}
+	.share-box__open {
+			display: flex;
+			flex-grow: 1;
+			margin: 0;
+			align-items: center;
+	}
+	
+	.share-box__trigger {
+			color: #696c6f;
+			border-right: 1px solid rgba(0,0,0,.15);
+	}
+	.border-left {
+		border-left: 1px solid rgba(0,0,0,.15)
+	}
+	.p4 {
+			padding: 16px;
+	}
+	.t-16 {
+			font-size: 1.6rem;
+			line-height: 1.5;
+	}
+	.t-bold {
+			font-weight: 600;
+	}
+	.t-black--light {
+			color: rgba(0,0,0,.6);
+	}
+	button {
+			background: 0 0;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+	}
+	li-icon[type$="-icon"] {
+			width: 24px;
+			height: 24px;
+	}
+	.mh2, .mr2 {
+			margin-right: 8px;
+	}
+	li-icon {
+			display: inline-block;
+			width: 300px;
+			height: 150px;
+			overflow: hidden;
+			position: relative;
+	}
+	li-icon[type$="-icon"]>svg {
+			vertical-align: top;
+	}
+	
+	li-icon>svg {
+			display: block;
+			margin: auto;
+	}
+	.tap-target.tap-target {
+			text-decoration: none;
+	}
+	
+	.share-box__trigger {
+			color: #696c6f;
+			border-right: 1px solid rgba(0,0,0,.15);
+	}
+	.share-media-button__label--square {
+			padding: 24px;
+	}
+	
+	.share-media-button__label--square {
+			box-shadow: none;
+			display: inline-flex;
+			color: rgba(0,0,0,.6);
+	}
+	.visually-hidden {
+			display: block;
+			border: 0;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+	}
+	.share-box__article-cta {
+			background-color: #f3f6f8;
+			border-top: 1px solid rgba(0,0,0,.15);
+			padding: 12px 16px;
+	}
+	
+	.t-14 {
+			font-size: 18px;
+			line-height: 1.42857;
+	}
+	.t-normal {
+			font-weight: 400;
+	}
+	.t-black--light {
+			color: rgba(0,0,0,.6);
+	}
+	.link-without-visited-state {
+			text-decoration: none;
+			color: #0073b1;
+	}
+	.inverse-link, .inverse-link-light-background-without-hover-state, .inverse-link-without-hover-state, .link, .link-without-hover-state, .link-without-hover-visited, .link-without-visited-state {
+			font-weight: 600;
+			background-color: transparent;
+			border: 0;
+	}
+
+/*share buttons*/
+#share-bar {
+    
+    background: white;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+  #share-bar .sharing-providers > li {
+    display: inline-block;
+  }
+  #share-bar.animate .sharing-providers > li:hover {
+    transform: translateX(0px) !important;
+    transform: translateY(-5px) !important;
+  }
+
+  .sharing-providers.circle > li {
+  border-radius: 50%;
+  margin: 2px;
+}
+#share-bar.left {
+ right: 0;
+}
+#share-bar.left .sharing-providers > li {
+ margin-left: 0;
+}
+#share-bar.right {
+ right: 0;
+}
+#share-bar.right .sharing-providers > li {
+ margin-right: 0;
+}
+
+.sharing-providers > li > a {
+  text-decoration: none !important;
+  font-family: 'FontAwesome';
+  width: 45px;
+  height: 45px;
+  display: block;
+}
+.sharing-providers.circle > li > a {
+  border-radius: 50%;
+}
+.sharing-providers > li > a {
+  color: white;
+  font-size: 25px;
+}
+.sharing-providers > li > a,
+.sharing-providers > li > a:hover {
+  text-decoration: none;
+}
+
+#share-bar.animate .sharing-providers > li:hover {
+  transform: translateX(5px);
+}
+
+#share-bar.right.animate .sharing-providers > li:hover {
+  transform: translateX(-5px);
+}
+
+.sharing-providers > li.facebook:hover {
+  background: #4267B2;
+  
+}
+
+.sharing-providers > li.googleplus:hover {
+  background: #d14836;
+}
+
+.sharing-providers > li.twitter:hover {
+  background: #1DA1F2;
+}
+
+.sharing-providers > li.linkedin:hover {
+  background: #0077B5;
+}
+
+.sharing-providers > li.tumblr:hover {
+  background: #2c4762;
+}
+
+.sharing-providers > li.digg:hover {
+  background: #333333;
+}
+
+.sharing-providers > li.reddit:hover {
+  background: #5f99cf;
+}
+
+.sharing-providers > li.pinterest:hover {
+  background: #cb2027;
+}
+
+.sharing-providers > li.stumbleupon:hover {
+  background: #EB4924;
+}
+
+.sharing-providers > li.email {
+  background: #E3A129;
+}
+.circle{
+  border:none;
+}
+.toggle-text {
+  margin: 20px auto;
+  text-align: center;
+}
+.toggle-text-content span  {  
+  
+  display: none;  
+
+}
+
+.toggle-text-link {
+    display: block;
+    margin: 20px 0;
+}
+.btn-xl {
+    width:16%;  
+} 
+.linkdin-card-header1{
+  display: flex;
+    /* align-items: center; */
+    padding: 10px 20px
+}
+.feed-shared-actor__meta1 h3 {
+    font-size: 15px;
+    margin: 0px;
+}
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    padding-top: 3px;
+}
+  @media only screen and (max-width: 760px) {
+  .mb_tabs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .mb_counter {
+     padding-top: 10%;
+     display: none;
+   }
+   .mb_margin{
+     margin-top: -32%;
+     margin-right:3%;
+   }
+   .mb_margintabs{
+     margin-left: 0px;
+   }
+   .mb_col{
+         padding-left: 5px;
+       }
+   .mb_padding{
+     padding-left: 0px;
+   }
+   .mb_feed{
+    padding-top: 9px;
+    margin-left: -31px;
+    padding-right: 0px;
+   }
+   .mb_location{
+    margin-left: -97px;
+    margin-top: -19px;
+   }
+   .mb_counter2{
+     display: block;
+   }
+   .mb_profilepic{
+    position: relative;
+    margin: -80px;
+    margin-left: 28%;
+    background-image: url("{{ url_for('static', filename='profile_pics/' + user.image_file) }}");
+    width: 42%;
+    height: 140px;
+    /* height: 146px; */
+    /* kground-size: cover; */
+    border: 5px solid #E6E6E6;
+   } 
+   .mb_userlink {
+      padding-left: 29px;
+   }  
+}
+
+@media screen and (max-width: 810px) and (min-width: 650px)  {
+  .mb_profilepic {
+    position: relative;
+    margin: -80px;
+    margin-left: 30%;
+    background-image: url(/static/profile_pics/38259d5cf6e4f217.jpg);
+    width: 294px;
+    height: 255px;
+    background-size: cover;
+    border: 5px solid #E6E6E6;
+ }
+ .mb_tabs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+.f-popover{
+font-weight: 500;
+font-size: 1em;
+cursor:pointer;
+}
+
+.f-w{
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<!-- Background Image -->
+<div class="container-fluid">
+  <div class="bg-light"
+    style="background-image: url('{{ url_for('static', filename='music1.jpg') }}'); width:103%; min-height: 250px; background-size:cover;">
+
+    <!-- <img scr="" alt="" style="width:100%; min-height: 250px"  class=""> -->
+  </div>
+</div>
+<!-- Profile, Feed, info sections -->
+<div class="container">
+  <div class="row">
+    <!-- Profile section -->
+    <div class="col-lg-3" style="padding-left:30px;">
+      <div class="row shadow-sm border pb-3">
+
+        <!-- profile  image-->
+        <div class=" col-12 rounded-circle text-center">
+          <div class="rounded-circle img-fluid shadow mb_profilepic" style="">
+            <!-- <img scr="" alt="" style="width:100%; min-height: 250px"  class=""> -->
+
+          </div>
+        </div>
+        <!-- follow donate button -->
+        <div class="col-12 text-center pt-5">
+          <div class="pt-5">
+            {% if user != current_user %}
+            {% if not current_user.is_following(user) %}
+            <a href="{{ url_for('users.follow', id=user.id) }}" class="btn btn-primary">Follow</a>
+
+            {% else %}
+            <a href="{{ url_for('users.unfollow', id=user.id) }}" class="btn btn-danger">Unfollow</a>
+            {% endif %}
+
+            {% endif %}
+          </div>
+        </div>
+        <!-- Count(Followers and following) -->
+        <div class="col-12 text-center pt-5 mt-1">
+          <div class="row">
+            <!-- Followers -->
+            <div class="col-6">
+              <h6 data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;">Following</h6>
+              <p class=""><b style="font-size: 14px;">{{ user.followed.count() -1 }}</b></p>
+            </div>
+            <!-- following -->
+            <div class="col-6">
+              <h6 data-toggle="modal" data-target="#exampleModalCenter1" style="cursor: pointer;">Followers</h6>
+              <p class=""><b style="font-size: 14px;">{{ user.followers.count() -1 }}</b></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="borderf"></div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Following</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  {% for follow in follows %}
+                  {% if follow.followed != user %}
+                    <div class="linkdin-card-header"> 
+                        <div class="lazy-image">
+                          <a href="#">    
+                            <img alt="logo" src="{{ url_for('static', filename='profile_pics/' + follow.followed.image_file) }}">
+                          </a>
+                        </div><!-- .lazy-image -->
+                        
+                        <div class="feed-shared-actor__meta">
+                          <a href="#">
+                           
+                            <h3 class="feed-shared-actor__title">{{follow.followed.username}}</h3>
+                            <!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+                          </a>
+                          <span class="feed-shared-actor__sub-description"><span class="">{{ moment(follow.timestamp).fromNow()  }}</span></span>
+                        </div>
+                         
+                        <div class="pop-menu dropdown">
+                          {% if follow.follower != current_user %}
+                          {% if not current_user.is_following(follow.followed) %}
+                          <a class="btn btn-primary" style="margin: 0px;" href="{{ url_for('users.follow', id=follow.followed.id) }}">Follow</a>
+                          {% else %}
+                          <a class="btn btn-danger" style="margin: 0px;" href="{{ url_for('users.unfollow', id=follow.followed.id) }}">Following</a>
+                          {% endif %}
+                          {% endif %}
+                        </div><!-- .pop-menu -->
+                        
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                </div>
+          
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Followers</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                      {% for follow in following %}
+                      
+                      {% if follow.follower != user %}
+                      <div class="linkdin-card-header">
+                        <div class="lazy-image">
+                          <a href="#">
+                            <img alt="logo" src="{{ url_for('static', filename='profile_pics/' + follow.follower.image_file) }}">
+                          </a>
+                        </div><!-- .lazy-image -->
+                      
+                        <div class="feed-shared-actor__meta">
+                          <a href="#">
+                      
+                            <h3 class="feed-shared-actor__title">{{follow.follower.username}}</h3>
+                            <!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+                          </a>
+                          <span class="feed-shared-actor__sub-description"><span
+                              class="">{{ moment(follow.timestamp).fromNow()  }}</span></span>
+                        </div>
+                      
+                        <div class="pop-menu dropdown">
+                          {% if follow.follower != current_user %}
+                          {% if not current_user.is_following(follow.follower) %}
+                          <a class="btn btn-primary" style="margin: 0px;" href="{{ url_for('users.follow', id=follow.follower.id) }}">Follow</a>
+                          {% else %}
+                          <a class="btn btn-danger" style="margin: 0px;"
+                            href="{{ url_for('users.unfollow', id=follow.follower.id) }}">Following</a>
+                          {% endif %}
+                          {% endif %}
+                      
+                        </div><!-- .pop-menu -->
+                      
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+         <!-- Social links -->
+        <div class="col-12">
+
+<div class="d-flex justify-content-around border p-2" style="border-radius: 5px;">
+  <a style="font-size: 10px;" href="https://www.facebook.com/{{links_facebook_id}}">
+    <i class="fa fa-facebook" style="background: #3B5998;color: white;"></i>
+  </a>
+
+  <a style="font-size: 10px;" href="https://twitter.com/{{links.twitter_id}}">
+    <i class="fab fa-twitter" style="background: #55ACEE;color: white;"></i>
+  </a>
+
+  <a style="font-size: 10px;" href="http://www.instagram.com/{{links.instagram_id}}">
+    <i class="fab fa-instagram" style="background: #125688;color: white;"></i>
+  </a>
+
+  <a style="font-size: 10px;" href="https://www.snapchat.com/add/{{links.snapchat_id}}">
+    <i class="fab fa-snapchat" style="background: #fffc00;color: white;"></i>
+  </a>
+</div>
+
+        </div>
+      </div>
+      <div class="row mt-3" id="eventsection">
+          {% for events in events %}
+            <div class="card shadow-sm mb-3 w-100">
+              <img src="{{ url_for('static', filename='event_pics/' + events.image_file) }}" class="card-img-top" alt="event image" style=" height: 161px !important; object-fit: cover;">
+              <div class="p-3">
+                <div class="row">
+                  <div class="col-md-3 col-4">
+                    <p style="color:red;">{{ moment(events.event_start_date).format('MMM') }}</p>
+                    <p class="text-dark">{{ moment(events.event_start_date).format('Do') }}</p>
+                  </div>
+                  <div class="col-md-8 col-7" style="padding:0%;">
+                    <div>
+                      <h6 class="truncate_heading">
+                        <a class="text-uppercase m-link" href="{{ url_for('users.eventsn', events_id=events.id) }}">
+                          {{events.event_name }}
+                        </a>
+                      </h6>
+                    </div>
+                    <div style="margin-top: -4%;
+                      color: rgba(0,0,0,0.68);"><small style="font-size:12px;"><a class="m-link text-capitalize"
+                          href="{{ url_for('users.user', id=events.Protagonist.id) }}">
+                          {{ events.Protagonist.username }}
+                        </a>,
+                        <a class="text-dark text-capitalize" style="font-size:14px;"
+                          href="http://maps.google.com/?q={{events.event_location }}">{{events.event_location }}</a>
+                      </small></div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="align-items:center;">
+                  <div class="col-md-5">
+                    {% if current_user.has_in_events(events) %}
+                    <a class="cls_btnlink"
+                      href="{{ url_for('users.eventin_action', events_id=events.id, action='out') }}">
+                      <div class="cls_btn">CANCEL&#xA0;&#xA0; {{
+                            events.intrest.count() }}</div>
+                    </a>
+                    {% else %}
+                    <a class="cls_btnlink" href="{{ url_for('users.eventin_action', events_id=events.id, action='in') }}">
+                      <div class="cls_btn">GOING&#xA0;&#xA0; {{
+                            events.intrest.count() }}</div>
+                    </a>
+                    {% endif %}
+                    <!-- <div class="cls_btn">Going</div> -->
+                  </div>
+                  <div class="col-md-7">
+                    {% if events.event_category=='Beauty & Fashion' %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class='fas fa-palette mr-2'></i>Beauty & Fashion</span></h5>
+                    {% endif %}
+                    {% if events.event_category=='Gaming & Apps' %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class="fa fa-gamepad mr-2"></i>Gaming & Apps</span></h5>
+                    {% endif %}
+                    {% if events.event_category=='Health & Fitness' %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class="fa fa-child mr-2"></i>Health & Fitness</span></h5>
+                    {% endif %}
+                    {% if events.event_category=="Tech" %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class="fa fa-tachometer mr-2"></i>Tech</span></h5>
+                    {% endif %}
+                    {% if events.event_category=='Entertainment' %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class="fa fa-video-camera mr-2"></i>Entertainment</span></h5>
+                    {% endif %}
+                    {% if events.event_category=='Others' %}
+                    <h5><span class="text-muted" style="
+                            font-size: 12px !important;"><i class='fas fa-spinner mr-2'></i>Others</span></h5>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+          <div class="row" id="crowdsection">
+            {% for donationreason in donationreason %}
+              <div class="shadow-sm border" style="overflow: hidden;">
+                <div class="row" style="margin-top:-16px">
+                  <div class="newimage">
+                    <a href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">
+                      <img class="d-block img-fluid" src="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}">
+                    </a>
+                    <div class="overlaynew">
+                      <a class="info" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">
+                        View Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 mt-2" style="height: 48px;overflow: hidden;">
+                  <h6 style="font-size: 0.8em;" class="text-dark">
+                    <a class="article-title text-uppercase" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">
+                      {{ donationreason.goal }}
+                    </a>
+                  </h6>
+                </div>
+                <p class="p-2"> {{ donationreason.short }} </p>
+    
+                <div class="p-2 d-flex justify-content-between">
+                  <div class="text-muted">
+                    <span class="text-dark" style="font-size:16px;">
+                      Ends
+                    </span>
+                    <br>
+                    {{ moment(donationreason.end_date).fromNow()}}
+                  </div>
+    
+                  <div class="text-muted">
+                    <span class="text-dark" style="font-size:16px;">
+                      Target
+                    </span>
+                    <br>
+                    {{ donationreason.target_amount }}
+                  </div>
+    
+                  <div class="text-muted">
+                    <span class="text-dark" style="font-size:16px;">
+                      Funded
+                    </span>
+                    <br>
+                    Rs. {{donation}}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+              <div class="row">
+                {% for post in posts.items %}      
+                <div class="w-100 mt-3">
+                    <div class="card shadow-sm">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="iframe embed-responsive-item" scrolling="yes"
+                          src="https://www.youtube.com/embed/{{post.youtube_link.split("=")[1]}}" frameborder="0"
+                          allowfullscreen></iframe>
+                      </div>
+                      <div class="card-body" style="padding: 15px !important;">
+                        <div class="d-flex">
+                        <p style="font-size: 14px; overflow: hidden;text-overflow: ellipsis; display: inline;line-height: 16px;max-height: 32px;">
+                          <a class="text-uppercase text-dark text-left" href="{{ url_for('posts.postn', post_id=post.id) }}" style="text-decoration: none;">
+                            <b>{{post.story_line }}</b>
+                          </a>
+                        </p>
+                              <p class="ml-auto">
+                                {% if post.category=='Sports' %}
+                                <h8 style="font-size: 13px;"><span class="badge badge-success">Sports</span></h8>
+                                {% endif %}
+                                {% if post.category=='Design' %}
+                                <h8 style="font-size: 13px;"><span class="badge badge-warning">Design</span></h8>
+                                {% endif %}
+                                {% if post.category=='Travel' %}
+                                <h8 style="font-size: 13px;"><span class="badge badge-primary">Travel</span></h8>
+                                {% endif %}
+                                {% if post.category=="People's Corner" %}
+                                <h8 style="font-size: 12px;"><span class="badge badge-dark">People's<br>Corner</span>
+                                </h8>
+                                {% endif %}
+                                {% if post.category=='Music' %}
+                                <h8 style="font-size: 13px;"><span class="badge badge-danger">Music</span></h8>
+                                {% endif %}
+                                {% if post.category=='Others' %}
+                                <h8 style="font-size: 13px;"><span class="badge badge-light">Others</span></h8>
+                                {% endif %}
+                              </p>
+      </div>
+                        <div class="d-flex mt-2">
+                          <div class="">
+                            <img class="rounded-circle img-fluid"
+                              src="{{ url_for('static', filename='profile_pics/' + post.Protagonist.image_file) }}"
+                              style="height: 40px; width: 40px;">
+                          </div>
+      <div class="">
+                          {% if current_user.is_authenticated %}
+                            <p style="">
+                              <a class="text-capitalize text-dark" href="{{ url_for('users.user', id=post.Protagonist.id) }}">
+                                <b>{{ post.Protagonist.username }}</b>
+                              </a>
+                            </p>
+
+                            <p class="ml-3">
+                              <small class="text-muted">
+                                {{ moment(post.date_posted).fromNow() }}
+                              </small>
+                              <small class="">
+                                <a class="text-dark text-capitalize" style="font-size:12px;" href="http://maps.google.com/?q={{post.city }}">
+                                  {{post.city }}
+                                </a>
+                              </small>
+                            </p>
+                          {% else %}
+                          
+                            <h4 style="font-size: 14px;margin-left: -104px;" class="text-capitalize text-dark">
+                              {{ post.Protagonist.username }}&#xA0;<small class="text-muted" style="font-size: 7px;"><b>
+                                  {{ moment(post.date_posted).fromNow() }}</b></small></h4>
+                                  <p class="card-text"><small
+                                      class="text-muted">{{ moment(post.date_posted).fromNow() }}</small>
+                                    <small class="text-muted">
+                                      <a class="text-dark text-capitalize" style="font-size:12px;"
+                                        href="http://maps.google.com/?q={{post.city }}">&#xA0;{{post.city }}</a>
+                                    </small>
+                                    
+                                  </p>
+                          
+                          {% endif %}
+      </div>
+
+                        </div>
+                        <hr>
+                        <div class=" d-flex justify-content-between">
+                          <div class="">
+                            <a href="{{ url_for('posts.postn', post_id=post.id) }}#comments" style="text-decoration: none;">
+                              <span style="font-size: 17px;" class="label text-dark"><i
+                                  class="far fa-comment">&nbsp</i>{{ post.comments.count() }}</span></a>
+                          </div>
+      
+                          <div class="">
+                            <span style="font-size: 17px;" class="label text-dark">
+                              {% if current_user.has_liked_post(post) %}
+                              <a href="{{ url_for('posts.postlike_action', post_id=post.id, action='unlike') }}"><i
+                                  class="fas fa-heart text-danger"></i></a>
+                              {% else %}
+                              <a href="{{ url_for('posts.postlike_action', post_id=post.id, action='like') }}"><i
+                                  class="far fa-heart text-dark"></i></a>
+                              {% endif %}
+                              {{ post.likes.count() }}
+      
+                            </span>
+                          </div>
+      
+                          <div class="">                            
+                            <span style="font-size: 17px;" class="label text-dark">
+                              <i class="fas fa-share-alt" data-toggle="dropdown"></i>
+                              <div class="dropdown-menu">
+                                  <!-- Social Icons -->
+                                 <div id="share-bar" class="sharebar"></div>
+                               </div>
+                            </span>
+      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                </div>
+                {% endfor %}
+              </div>
+
+            <div class="row" id="blogsection">
+
+                  {% for blog in blogs %}
+                  <div class="border shadow-sm mb-3" style="border-radius: 5px;">
+                  <div class="w-100">
+                    <div class="embed-responsive embed-responsive-21by9">
+                      <iframe class="iframe embed-responsive-item" src="https://www.youtube.com/embed/{{blog.blog_youtube_link.split("=")[1]}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="text-left p-3">
+                      <div>
+                        <h6><a class="article-title text-uppercase"
+                            href="{{ url_for('blog.blogn', blog_id=blog.id) }}">{{blog.blog_story_line }}</a></h6>
+                      </div>
+                      <div class="" style="font-size:14px;">
+                        {{ moment(blog.blog_date_posted).format('Do MMMM ') }}
+                      </div>
+        
+                    </div>
+                  </div>
+                  </div>
+                  {% endfor %}
+                
+              </div>
+
+
+              <div class="row" id="sponsorsection">
+
+                  {% for sponsorship in sponsorships %}
+                  <div class="">
+                    <div class="my-3 border shadow-sm" style="border-radius: 5px; ">
+                      <img class="" src="{{ url_for('static', filename='sponsorship_pics/' + sponsorship.image_file) }}"
+                        style="height: 250px;width: 100%; object-fit: cover;border-radius: 5px 5px 0 0;">
+                      <p class="mt-1 px-2" style="height: 50px; overflow: hidden; font-size: 0.8em;">
+                        <a class="text-uppercase m-link"
+                          href="{{ url_for('sponsorship.sponsorshipn', sponsorship_id=sponsorship.id) }}"><b>{{sponsorship.name }}</b></a>
+                      </p>
+                      <div class="d-flex justify-content-between mt-1 px-2">
+                        <div>
+                          <p class="">{{ moment(sponsorship.start_date).fromNow() }}</p>
+                        </div>
+                        <div>
+                          {% if sponsorship.category=='Beauty & Fashion' %}
+                            <p><b>#Beauty &pashion</b></p>
+                          {% endif %}
+
+                          {% if sponsorship.category=='Gaming & Apps' %}
+                            <p><b>#Gaming &ppps</b></p>
+                          {% endif %}
+
+                          {% if sponsorship.category=='Health & Fitness' %}
+                            <p><b>#Health &pitness</b></p>
+                          {% endif %}
+
+                          {% if sponsorship.category=="Tech" %}
+                            <p><b>#Tech</b></p>                          
+                            {% endif %}
+
+                          {% if sponsorship.category=='Entertainment' %}
+                            <p><b>#Entertaipent</b></p>
+                          {% endif %}
+
+                          {% if sponsorship.category=='Others' %}
+                            <p><b>#Others</b></p>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <p class="text-muted px-2"
+                        style="text-align: justify; height: 62px; overflow: hidden; font-size: 0.8em !important;">
+                        {{sponsorship.concept }}</p>
+          
+                      <hr style="padding: 0; margin: 0;">
+                      <div class="d-flex p-2">
+                        <div class="mr-auto p-1">
+                          <p class="text-muted mr-auto" style="font-size: 16px !important;"><i class="far fa-clock"></i>{{
+                          moment(sponsorship.end_date).fromNow() }}</p>
+                        </div>
+                        <span class="label text-dark">
+                            <i class="fas fa-share-alt dropdown" data-toggle="dropdown"></i>
+                            <div class="dropdown-menu">
+                               <!-- Social Icons -->
+                              <div id="share-bar" class="sharebar"></div>
+                            </div>
+                          </span>
+          
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+          
+                  {% for sponsorshiprequest in sponsorshiprequest %}
+                  
+                    <div class="border shadow-sm mt-3" style="border-radius: 5px;">
+                      <div class="creatorimage" style="height: 200px !important">
+                        <a href="{{ url_for('sponsorship.sponsorshiprequestn', sponsorship_request_id=sponsorshiprequest.id) }}">
+                          <img class="" src="{{ url_for('static', filename='sponsorshiprequest_pics/' + sponsorshiprequest.image_file) }}" style="height: 200px;width: 100%; object-fit: cover;border-radius: 5px 5px 0 0;">
+                        </a>
+                        <div class="creatoroverlay">
+                          <a class="infolink" href="{{ url_for('sponsorship.sponsorshiprequestn', sponsorship_request_id=sponsorshiprequest.id) }}">
+                            View Details
+                          </a>
+                        </div>
+                      </div>
+                            <p class="" style="height: 50px; overflow: hidden; font-size: 1em;">
+                              <a class="text-uppercase m-link" href="{{ url_for('sponsorship.sponsorshiprequestn', sponsorship_request_id=sponsorshiprequest.id) }}">
+                                {{sponsorshiprequest.title }}
+                              </a>
+                              
+                              <div class="d-flex mt-1 px-2">
+                                <p class="mr-auto p-1">
+                                  {{ moment(sponsorshiprequest.start_date).format('Do MMMM YYYY') }}</p>
+                                {% if sponsorshiprequest.Category=='Sports' %}
+                                <h5><span class="badge badge-success"></span>Sports</span></h5>
+                                {% endif %}
+                                {% if sponsorshiprequest.Category=='Design' %}
+                                <h5><span class="badge badge-warning">Design</span></h5>
+                                {% endif %}
+                                {% if sponsorshiprequest.Category=='Travel' %}
+                                <h5><span class="badge badge-primary">Travel</span></h5>
+                                {% endif %}
+                                {% if sponsorshiprequest.Category=="People's Corner" %}
+                                <h5><span class="badge badge-dark">People's<br>Corner</span></h5>
+                                {% endif %}
+                                {% if sponsorshiprequest.Category=='Music' %}
+                                <h5><span class="badge badge-danger">Music</span></h5>
+                                {% endif %}
+                                {% if sponsorshiprequest.Category=='Others' %}
+                                <h5><span class="badge badge-light">Others</span></h5>
+                                {% endif %}
+                              </div>
+                              <div class="d-flex p-2">
+
+                              </div>
+                              <hr style="padding: 0; margin: 0;">
+                              <div class="d-flex p-2">
+                                <div class="mr-auto p-1">
+                                  <p class="text-muted mr-auto" style="font-size: 16px !important;"><i
+                                      class="far fa-clock"></i> {{
+                        moment(sponsorshiprequest.end_date).fromNow() }}</p>
+                                </div>
+                                <span class="label text-dark">
+                                    <i class="fas fa-share-alt dropdown" data-toggle="dropdown"></i>
+                                    <div class="dropdown-menu">
+                                       <!-- Social Icons -->
+                                      <div id="share-bar" class="sharebar"></div>
+                                    </div>
+                                  </span>
+                      </div>
+                      
+          
+                        </div>
+                    
+                  {% endfor %}
+                </div>
+
+
+                <div class="row" id="campaignsection">
+                  {% for campaign in campaign %}
+                  <div class="">
+                    <div class="mb-3">
+                      <div class="body-img">
+                        <img src="{{ url_for('static', filename='campaign_pics/' + campaign.image_file) }}">
+                        <div class="overlaynew"><a class="info"
+                            href="{{ url_for('campaign.campaignn', campaign_id=campaign.id) }}">View Details</a></div>
+                      </div><!-- .body-img -->
+                      <!-- <a href="#" class="visit-btn"> -->
+                      <div class="bottom-box">
+                        {% if campaign.action=='Your Profile' %}
+                        <p class=""><a class="text-white text-center card-footer shadow button-inline-block yellow-btn-bg"
+                            href="{{ url_for('users.user', id=campaign.campaign_author.id) }}">Learn More</a></p>
+                        {% endif %}
+                        {% if campaign.action=='Your Website' %}
+                        <p class=""><a class="text-dark text-center card-footer shadow button-inline-block yellow-btn-bg "
+                            href="{{campaign.campaign_author.web_url}}">Visit us</a></p>
+          
+                        {% endif %}
+                        {% if campaign.action=='Your StoreFront' %}
+                        <p class=""><a class="text-white text-center card-footer shadow button-inline-block red-btn-bg "
+                            href="http://maps.google.com/?q={{campaign.campaign_city }}">Shop </a></p>
+          
+                        {% endif %}
+                        {% if campaign.action=='Your Direct Messages' %}
+                        <p class=""><a class="card-footer text-center shadow text-white button-inline-block red-btn-bg "
+                            href="{{ url_for('messages.send_message', id=campaign.campaign_author.id) }}">Contact us</a></p>
+                        <!-- </div> -->
+                        <!-- <div class="shadow" style="background-color: rgba(3, 5, 125, 0.86);"></div> -->
+                        <!-- <div class="shadow" style="background-color:rgba(240, 5, 68, 0.8);"></div> -->
+          
+                        {% endif %}
+                        <!-- </a> -->
+                        <div class="all-details text-center">
+                          <h5>
+                            <a class="text-uppercase  text-dark" style="font-size: 15px;"
+                              href="{{ url_for('campaign.campaignn', campaign_id=campaign.id) }}">{{campaign.headline_1}}&#xA0;|&#xA0;{{campaign.headline_2}}</a>
+                          </h5>
+                          <hr>
+                          <!-- <div class="row"> -->
+                          <div class="left-side-sec">
+                            <p class="day-ago"><small><i class="far fa-clock"></i>
+                                {{ moment(campaign.campaign_end_date).fromNow() }}</small></p>
+                          </div><!-- .left-side-sec -->
+          
+          
+          
+                          <div class="right-side-sec">
+                            <!-- like -->
+                            <span class="label text-dark">
+                              {% if current_user.has_liked_campaign(campaign) %}
+                              <a href="{{ url_for('campaign.campaignlike_action', campaign_id=campaign.id, action='unlike') }}"><i
+                                  class="fas fa-heart text-danger"></i></a>
+                              {% else %}
+                              <a href="{{ url_for('campaign.campaignlike_action', campaign_id=campaign.id, action='like') }}"><i
+                                  class="far fa-heart text-dark"></i></a>
+                              {% endif %}
+                              {{ campaign.likes.count() }}
+                            </span>
+                            <span class="label text-dark">
+                              <i class="fas fa-share-alt dropdown" data-toggle="dropdown"></i>
+                              <div class="dropdown-menu">
+                                 <!-- Social Icons -->
+                                <div id="share-bar" class="sharebar"></div>
+                              </div>
+                            </span>
+                          </div><!-- .right-side-sec -->
+                          <div class="clear"></div>
+                          <!-- </div> -->
+                          <!-- .row -->
+                        </div><!-- .all-details -->
+                      </div>
+                      <!-- bottom-box -->
+                    </div><!-- .col -->
+                  </div>
+                  {% endfor %}
+                </div>
+    </div>
+
+    <!-- post, name, feeds, info sections  -->
+    <div class="col-md-12 col-lg-9">
+
+      <!-- Name and About -->
+      <h3 class="text-left pt-3 text-capitalize text-dark">{{ user.username }}</h3>
+      <br>
+      <p style="float:left;">{{ user.about_me}}</p>
+      <br>
+      {% if current_user.is_administrator() %}
+        <a href="{{ url_for('users.account',id=user.id) }}" class="btn btn-danger float-right"  style="margin-top:-11%;">Edit</a>
+        {% endif %}
+        <a href="{{ url_for('messages.send_message',id=user.id) }}" class="btn btn-success float-right"
+          style="margin-top:-11%;margin-right:8%;">Message </a>
+          <hr>
+          <div class="toggle-text text-left">
+                
+                  <b class="text-bold pr-2">Username</b>{{user.username}}<br>
+                  <b class="text-bold pr-2">Email</b>{{user.email}}<br>
+                  <b class="text-bold pr-2">Member since</b>{{ moment(user.member_since).format('L') }}<br>
+                  <b class="text-bold pr-2">Born</b>{{ moment(user.date_of_birth).format('L') }}<br>
+                  <b class="text-bold pr-2">Gender</b>{{user.gender}}<br>
+                  <b class="text-bold pr-2">Phone Number</b>{{user.contact_number}}<br>
+                  <b class="text-bold pr-2">Education</b>{{user.education_level}}<br>
+                  <b class="text-bold pr-2">Education Institution</b>{{user.education_institution}}</p>
+              </div>
+     <div class="clear"></div>
+      <div class="mb_counter">   
+      <div class="skill_bottom_content text-center">
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+            {% if socialdash.likes !=None %}
+            <h4 class="statistic-counter">{{ socialdash.likes}}</h4>
+            {% else %}
+            <h4  class="statistic-counter">0</h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Likes</em></h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+            {% if socialdash.views !=None %}
+            <h4 class="statistic-counter">{{ socialdash.views}}</h4>
+            {% else %}
+            <h4 class="statistic-counter">0</h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Views</em></h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+             {% if socialdash.comment !=None %}
+            <h4 class="statistic-counter">{{ socialdash.comment}}</h4>
+            {% else %}
+            <h4 class="statistic-counter">0</h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Comments</em></h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+             {% if socialdash.share !=None %}
+            <h4 class="statistic-counter">{{ socialdash.share}}</h4>
+            {% else %}
+            <h4 class="statistic-counter">0</h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Share</em></h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+             {% if socialdash.engagments !=None %}
+            <h4 class="statistic-counter1">{{ socialdash.engagments}}&#xA0;%</h4>
+            {% else %}
+            <h4 class="statistic-counter1">0&#xA0;%</h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Engagment Rate</em></h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="skill_bottom_item">
+             {% if socialdash.category !=None %}
+            <h4 class="statistic-counter1">{{ socialdash.category}}</h4>
+            {% else %}
+            <h4 class="statistic-counter1"></h4>
+            {% endif %}
+            <div class="separator_small"></div>
+            <h5><em>Category</em></h5>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!-- for mobile view counter start -->
+    <div class="container mb_counter2">
+    <div class="row">
+      <div class="col-12" style="display:flex; padding-top:24px;">
+          <div class="col-4">
+              <div class="skill_bottom_item">
+                  {% if socialdash.likes !=None %}
+                  <h6 class="statistic-counter">{{ socialdash.likes}}</h6>
+                  {% else %}
+                  <h6 class="statistic-counter">0</h6>
+                  {% endif %}
+                  <div class="separator_small"></div>
+                  <h6><em>Likes</em></h6>
+                </div>
+          </div>
+          <div class="col-4">
+              <div class="skill_bottom_item">
+                  {% if socialdash.views !=None %}
+                  <h6 class="statistic-counter">{{ socialdash.views}}</h6>
+                  {% else %}
+                  <h6 class="statistic-counter">0</h6>
+                  {% endif %}
+                  <div class="separator_small"></div>
+                  <h6><em>Views</em></h6>
+                </div>
+          </div>
+          <div class="col-4">
+              <div class="skill_bottom_item">
+                  {% if socialdash.comment !=None %}
+                 <h6 class="statistic-counter">{{ socialdash.comment}}</h6>
+                 {% else %}
+                 <h6 class="statistic-counter">0</h6>
+                 {% endif %}
+                 <div class="separator_small"></div>
+                 <h6><em>Comments</em></h6>
+               </div>
+          </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12" style="display:flex; padding-top:24px;">
+            <div class="col-4">
+                <div class="skill_bottom_item">
+                    {% if socialdash.share !=None %}
+                   <h6 class="statistic-counter">{{ socialdash.share}}</h6>
+                   {% else %}
+                   <h6 class="statistic-counter">0</h6>
+                   {% endif %}
+                   <div class="separator_small"></div>
+                   <h6><em>Share</em></h6>
+                 </div>
+            </div>
+            <div class="col-4">
+                <div class="skill_bottom_item">
+                    {% if socialdash.engagments !=None %}
+                   <h6 class="statistic-counter1">{{ socialdash.engagments}}&#xA0;%</h6>
+                   {% else %}
+                   <h6 class="statistic-counter1">0&#xA0;%</h6>
+                   {% endif %}
+                   <div class="separator_small"></div>
+                   <h6><em>Engagment Rate</em></h6>
+                 </div>
+            </div>
+            <div class="col-4">
+                <div class="skill_bottom_item">
+                    {% if socialdash.category !=None %}
+                   <h6 class="statistic-counter1">{{ socialdash.category}}</h6>
+                   {% else %}
+                   <h6 class="statistic-counter1"></h6>
+                   {% endif %}
+                   <div class="separator_small"></div>
+                   <h6><em>Category</em></h6>
+                 </div>
+            </div>
+        </div>
+      </div>
+  </div> <!--container-->
+  <!-- for mobile view counter end here -->
+
+      <br>
+     <!-- Display Feeds and info section -->
+      <div id="div1" class="col-md-12 pt-3">
+
+        <div class="row mb_margintabs">
+          <!-- Form -->
+
+          <!-- <div class="col-md-3"></div> -->
+          <!-- All Posts -->
+          <!-- For loop(all post) -->
+          {% for update in update.items %}
+          <div class="col-md-10 pt-3">
+            <div class="linkdin-card"> 
+              <div class="linkdin-card-header"> 
+                <div class="lazy-image">
+                  <a href="#">    
+                    <img alt="logo" src="{{ url_for('static', filename='profile_pics/' + update.update_author.image_file) }}">
+                  </a>
+                </div><!-- .lazy-image -->
+                {% if current_user.is_authenticated %}
+                <div class="feed-shared-actor__meta">
+                  <a href="{{ url_for('users.user', id=update.update_author.id) }}">
+                    <h3 class="feed-shared-actor__title">{{ update.update_author.username }}</h3>
+                    <!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+                  </a>
+                  <span class="feed-shared-actor__sub-description">{{ moment(update.update_date_posted).fromNow() }}</span>
+                </div>
+                {% else %}
+                <div class="feed-shared-actor__meta">
+                  <a>
+                    <h3 class="feed-shared-actor__title">{{ update.update_author.username }}</h3>
+                    <!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+                  <span class="feed-shared-actor__sub-description">{{ moment(update.update_date_posted).fromNow() }}</span>
+    
+                  </a>
+                </div>
+                {% endif %}
+                {% if update.update_author == current_user %}
+                <div class="pop-menu dropdown">
+                  <button class="dropbtn"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M2,10H6v4H2V10Zm8,4h4V10H10v4Zm8-4v4h4V10H18Z" class="large-icon" style="fill: currentColor"></path></svg></button>
+                  <div class="dropdown-content">
+                    <a href="{{ url_for('users.update_update', update_id=update.id) }}">Update</a>
+                    <a href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                    <!-- <a href="#">Link 3</a> -->
+                  </div>
+                </div><!-- .pop-menu -->
+                {% endif %}
+              </div><!-- linkdin-card-header -->
+              <div class="content1">
+                <p> {{update.update_text }}</p>
+              </div><!-- .content -->
+              {% if update.image_file != "default.jpg" %}
+              <div class="body-img1">
+                <img src="{{ url_for('static', filename='update_pics/' + update.image_file) }}">
+              </div><!-- .body-img -->
+              {% endif %}
+              <div class="social_count">
+                <div>
+                 <span>{{ update.likes.count() }}</span>
+                 Likes
+                </div>
+                <div>
+                  <span>{{ update.updatecomments.count() }}</span>
+                  Comment
+                </div>
+              </div>
+              <hr style="margin:0px;">
+              <div class="feed-shared-social-actions feed-shared-social-action-bar social-detail-base-social-actions feed-shared-social-action-bar--minimal-padding ember-view">        <span data-control-name="like_toggle" aria-pressed="false" aria-label="Like Mohit Rai’s post" id="ember5270" class="like-button button like feed-shared-social-action-bar__action-btn ember-view"><button id="ember5271" class="social-details-like-button artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+                <span class="artdeco-button__text">
+                {% if current_user.has_liked_update(update) %}
+                <a href="{{ url_for('users.updatelike_action', update_id=update.id, action='unlike') }}">
+                    <li-icon aria-hidden="true" type="like-filled-icon" class="unlike-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M17.51,11L15.36,8a14.81,14.81,0,0,1-2.25-5.29L12.74,1H11.5A2.5,2.5,0,0,0,9,3.5V4.08a9,9,0,0,0,.32,2.39L10,9H4.66A2.61,2.61,0,0,0,2,11.4a2.48,2.48,0,0,0,.39,1.43,2.48,2.48,0,0,0,.69,3.39,2.46,2.46,0,0,0,1.45,2.92,2.47,2.47,0,0,0,0,.36A2.5,2.5,0,0,0,7,22h4.52a8,8,0,0,0,1.94-.24l3-.76H21V11H17.51Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>	
+                  <span aria-hidden="true" class="t-14">Like</span>						  
+                  </a>
+                  {% else %}
+                  <a href="{{ url_for('users.updatelike_action', update_id=update.id, action='like') }}">
+                  <li-icon aria-hidden="true" type="like-icon" class="like-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M17.51,11L15.36,8a14.81,14.81,0,0,1-2.25-5.29L12.74,1H10.5A2.5,2.5,0,0,0,8,3.5V4.08a9,9,0,0,0,.32,2.39L9,9H4.66A2.61,2.61,0,0,0,2,11.4a2.48,2.48,0,0,0,.39,1.43,2.48,2.48,0,0,0,.69,3.39,2.46,2.46,0,0,0,1.45,2.92,2.47,2.47,0,0,0,0,.36A2.5,2.5,0,0,0,7,22h4.52a8,8,0,0,0,1.94-.24l3-.76H21V11H17.51ZM19,19H16.88l-3.41.82A6,6,0,0,1,12,20H7a0.9,0.9,0,0,1-.9-0.89s0-.07,0-0.14l0.15-1-1-.4a0.9,0.9,0,0,1-.55-0.83,0.93,0.93,0,0,1,0-.22L5,15.57,4.27,15a0.9,0.9,0,0,1-.39-0.74A0.88,0.88,0,0,1,4,13.82l0.46-.72L4,12.38a0.88,0.88,0,0,1-.14-0.51,1,1,0,0,1,1-.87H11.5L10.2,6.3a9,9,0,0,1-.33-2.37V3.38a0.5,0.5,0,0,1,.5-0.5h0.95a17.82,17.82,0,0,0,2.52,6.22L16.6,13H19v6Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
+                  <span aria-hidden="true" class="t-14">Like</span>						    
+                </a>
+                  {% endif %}
+                  <!-- <a href="{{ url_for('users.user', id=update.update_author.id) }}" style="text-decoration: none;"> -->
+                  <!-- </a> -->
+                  
+                
+                </span></button></span>
+                    <span data-control-name="comment" id="ember5272" class="button comment feed-shared-social-action-bar__action-btn social-action-btn ember-view"><button id="ember5273" class="feed-shared-social-action-btn artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+                <span class="artdeco-button__text">
+                <a href="{{ url_for('users.user', id=update.update_author.id) }}" style="text-decoration: none;">
+                  <li-icon aria-hidden="true" type="speech-bubble-icon" class="feed-shared-social-action-bar-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M18,10H6V9H18v1Zm4-5V22l-5-4H3a1,1,0,0,1-1-1V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM20,6H4V16H17.7L20,17.84V6Zm-4,6H8v1h8V12Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon><span aria-hidden="true" class="t-14 ml1">Comment</span>
+                  <span class="visually-hidden">
+                  Comment
+                  </span>
+                  </a>
+                
+                </span></button></span>
+                      <span data-control-name="reshare" id="ember5274" class="feed-shared-social-action-bar__action-btn feed-shared-social-action-bar__reshare-button reshare-button button reshare social-action-btn ember-view"><button id="ember5275" class="feed-shared-social-action-button artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+                <span class="artdeco-button__text">
+                  
+                  <li-icon type="share-linkedin-icon" size="large" role="img" aria-label="Share"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M24,12h0a1.18,1.18,0,0,0-.36-0.84L14,2V8H11A10,10,0,0,0,1,18v4H2.87A6.11,6.11,0,0,1,9,16h5v6l9.63-9.14A1.18,1.18,0,0,0,24,12s0,0,0,0h0Zm-8,5.54V14H9a8.15,8.15,0,0,0-6,2.84A8,8,0,0,1,11,10h5V6.48L21.81,12Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
+                
+                  <span aria-hidden="true" class="t-14 ml1 " data-toggle="dropdown">Share</span>
+                  <div class="dropdown-menu">
+                    <!-- Social Icons -->
+                    <div id="share-bar" class="sharebar"></div>
+                  </div>
+                
+                </span></button>
+                <!----></span>
+                <!---->
+                </div>
+            </div><!-- linkdin-card -->
+          </div>
+
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <form action="{{ url_for('users.delete_update', update_id=update.id) }}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- <div class="col-md-2"></div> -->
+        </div>
+      </div>
+
+      <!-- Message button for modal-->
+       
+      <!-- Feed and info button -->
+
+     
+      
+     
+      
+      
+
+
+
+
+    </div>
+    <!-- others -->
+    <div class="col-lg-3">
+      <div class=" pt-5" style="padding-top: 151px !important;"></div>
+    </div>
+  </div>
+</div>
+<!-- Modal for message -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-social-share-bar.js') }}"></script>
+<script>
+  
+
+  $('.sharebar').share();
+  // Show more text option 
+  var showChar = 190;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Read more";
+    var lesstext = "Read less";
+    
+    //Cut content based on showChar length
+    if ($(".toggle-text").length) {
+        $(".toggle-text").each(function() {
+
+            var content = $(this).html();
+            console.log(content);
+     
+            if(content.length > showChar) {
+     
+                var contentExcert = content.substr(0, showChar);
+                var contentRest = content.substr(showChar, content.length - showChar);
+                var html = contentExcert + '<span class="toggle-text-ellipses">' + ellipsestext + ' </span> <span class="toggle-text-content"><span>' + contentRest + '</span><a href="javascript:;" class="toggle-text-link btn btn-primary btn-xl">' + moretext + '</a></span>';
+     
+                $(this).html(html);
+            }
+        });
+    }
+    
+    //Toggle content when click on read more link
+    $(".toggle-text-link").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+ </script>
+
+{% endblock content %}

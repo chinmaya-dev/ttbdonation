@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#nav").hide();
+  });
+</script>
+<body style="background-image: url('{{ url_for('static', filename='bglogin.jpg') }}'); background-size: cover;">
+<div class="container">
+<div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-sm-12 shadow p-5"  style="background-color: rgba(19,20,24 ,0.6)  ">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+             
+            <hr>   
+            
+
+            <div class="form-group">
+                {{ form.is_role.label(class="form-control-label") }}
+                {% if form.is_role.errors %}
+                    {{ form.is_role(class="form-control form-control-lg-bg-transparent is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.is_role.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.is_role(class="form-control form-control-lg-bg-transparent") }}
+                {% endif is_role            </div>
+            
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-link text-white") }}
+        </div>
+        <div class="border-top pt-3">
+    <small class="text-white">
+        Already Have An Account? <a class="text-white" class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
+    </small>
+</div>
+    </form>
+</div>
+
+</div>
+<footer class="page-footer font-small blue pt-5" style="">
+  <div class="container-fluid bg-light">
+    <div class="container text-center text-md-left pt-5">      
+      <div class="row py-5 clearfix">
+
+        <div class="col-md-4 text-center">
+          <h5 class="text-uppercase">The Tribal Box</h5>
+          <p>@2019 All Rights Reserved</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <p><b>Powerd By -</b> Qantamix Solutions</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <p ><a class="text-dark" href="{{ url_for('main.tandc') }}"> <u>Terms & Conditions</u></a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+{% endblock content %}

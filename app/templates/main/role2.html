@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+        .card_top{
+            text-align: center;
+            background: #3fc59d;
+            padding: 68px;
+        }
+        .card_bottom{
+            padding-top: 10px
+        }
+        .card_text{
+            text-align: center;
+            padding-top: 5px;
+        }
+        .card_success{
+            box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+            transition: box-shadow 83ms;
+        }
+        hr.space {
+      border: none !important;
+      clear: both;
+      height: 70px;
+      margin: 0;
+    }
+    hr.space.xs {
+        height: 70px;
+    }
+    hr.space.xxs {
+        height: 30px;
+    }
+    hr.space.sm{
+      height: 20px;
+    }
+    .cont_button{
+        text-align: center;
+    }
+    .cont_link {
+    border: 1px solid black;
+    padding: 8px;
+    padding-left: 27px;
+    padding-right: 27px;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+    .cont_link:hover{
+        text-decoration: none;
+        color: white;
+        background: #3fc59d;
+        border: 1px solid #3fc59d;
+    }
+        </style>
+        <div class="container" style="padding-top:35px;">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-12 col-md-12 col-sm-12 col-lg-8">
+                    <div class="card_success">
+                    <div class="card_top">
+                        <!-- <img src="{{ url_for('static', filename='success.gif') }}"> -->
+                        <i class="far fa-check-circle" style="font-size: 84px;color: white"></i>
+                    </div>
+                    <div class="card_bottom">
+                            <h4 style="text-align:center;" >Congratulations! you are eligible for brands role</h4>
+                            <p class="card_text"> 
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                    recently 
+                            </p>
+                            <hr>
+                            {% if current_user.purpuse == "ok"%}
+                            <p class="cont_button">
+                                <a class="cont_link" href="{{ url_for('users.role', id=current_user.id, action='creators') }}"> Continue</a>
+                                </p>
+                            {% else %}
+                            <p class="card_text" style="text-align: center;font-weight: bold;font-size: 18px; padding-top: 8px;">"please go back and verify your profile"</p>
+                            {% endif %}
+                            <hr class="space sm">
+                    </div>
+                </div>
+                <hr class="space xs">
+                </div>
+            </div>
+        
+        </div>
+
+{% endblock content %}

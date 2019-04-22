@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.header-title{
+    background: url(../static/bg-gradient-4.png);
+    text-align: center;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    max-width: 1140px;
+    margin: auto;
+    margin-top: 80px;
+    border-radius: 6px;
+    height: 410px;
+}
+.title-base {
+    text-align: left;
+    position: relative;
+    margin-top: 115px;
+}
+.title-base h1 {
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.title-base h1:before {
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 150px;
+    bottom: -20px;
+    background: #5584ff;
+    left: 0;
+    margin-left: 0;
+}
+.title-base p {
+    text-align: left;
+    margin-left: 0px;
+    max-width: 500px;
+    margin-top: 50px;
+    margin-right: auto;
+    color: #8492af;
+    font-size: 15px;
+    letter-spacing: .5px;
+    line-height: 25px;
+}
+ .boxed-inverse{
+    border-style: none;
+    padding: 38px;
+    border-radius: 6px;
+    /* margin: 0 40px; */
+ }
+ /* [class*="col-md-"].boxed-inverse {
+    margin: 0 40px;
+} */
+.shadow-1{
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.13) !important;
+}
+hr.space {
+      border: none !important;
+      clear: both;
+      height: 90px;
+      margin: 0;
+    }
+hr.sm{
+    height: 30px;
+}    
+.advs-box {
+    overflow: hidden;
+}
+.advs-box-side-icon {
+    display: table;
+    text-align: left;
+    width: 100%;
+}
+.advs-box h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 35px;
+    color: #0e1a35;
+    transform: translate3d(0,0,0);
+}
+.advs-box p {
+    font-size: 15px;
+    line-height: 24px;
+    color: #8492af;
+}
+.advs-box-side-icon p {
+    text-align: left;
+    margin-left: 0;
+}
+.advs-box a.btn-text {
+    margin-top: 25px;
+}
+.advs-box .btn-text {
+    border: none;
+    font-weight: 400;
+    position: relative;
+    color: #3e6be0;
+    display: inline-table;
+    cursor: pointer;
+    outline: none;
+    transition: all .5s;
+    text-decoration: none;
+}
+.aboutRewards p{
+    margin-top: 35px;
+    margin-bottom: 3px;
+    letter-spacing: .5px;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #8492af;
+}
+.aboutRewards h2{
+    font-size: 40px;
+    line-height: 60px;
+    font-weight: 100;
+}
+.col-center {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    clear: both;
+}
+.col-center h2{
+    font-size: 40px;
+    line-height: 60px;
+    font-weight: 100;
+}
+.col-center p{
+    margin-top: 35px;
+    margin-bottom: 3px;
+    letter-spacing: .5px;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #8492af;
+}
+</style>
+<div class="header-title">
+<div class="container" style="width: auto;padding: 0 80px 0 80px;">
+    <div class="title-base">
+        <h1>About us</h1>
+        <p>If you believe in your talent, we will help you get where you want to. We support your dream by letting
+          you crowd fund, get sponsored, find mentors and reward you through your journey. Sign up here to let
+          us support you.</p>
+    </div>
+</div>
+</div>
+<hr class="space">
+<div class="row">
+    <div class="col-md-8 col-sm-10 col-12 col-center text-center">
+          <h2>Get Started</h2>
+          <p>Starting is easy! Simply sign up on our platform and enter a world made to support you.</p>
+    </div>
+</div>
+<hr class="space">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-12">
+            <div class="boxed-inverse shadow-1">
+                <div class="advs-box advs-box-side-icon no-icon">
+                        <div class="caption-box">
+                            <h3>Crowdfunding</h3>
+                            <p>
+                                    Do not burry your dreams away due to the happy paper. If there is anything that money can fix for you,
+                                    you are in the right place. Run your crowd funding campaign and let the nice people of the internet and
+                                    Tribal Box take of the rest.
+                            </p>
+                            <a href="#" class="btn-text">Learn more</a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        <div class="col-md-4 col-sm-4 col-12">
+                <div class="boxed-inverse shadow-1">
+
+                <div class="advs-box advs-box-side-icon no-icon">
+                        <div class="caption-box">
+                            <h3>Sponsorship</h3>
+                            <p>
+                                    There are a lot of people willing to believe in your talent and fund you through it. We will put you in
+                                    touch with those people, who believe in your potential as much as we do.
+                            </p>
+                            <a href="#" class="btn-text">Learn more</a>
+                        </div>
+                    </div>
+                </div>    
+        </div>
+        <div class="col-md-4 col-sm-4 col-12">
+                <div class="boxed-inverse shadow-1">
+
+                <div class="advs-box advs-box-side-icon no-icon">
+                        <div class="caption-box">
+                            <h3>Mentorship</h3>
+                            <p>
+                                    It is always reassuring to know that we are not the only ones walking the path we paved. We help you
+                                    get in touch with people who walked the path you are walking and coach you through whatever it is you
+                                    need.
+                            </p>
+                            <a href="#" class="btn-text">Learn more</a>
+                        </div>
+                    </div>
+                </div>    
+        </div>
+    </div>
+<hr class="space">
+<div class="row" >
+    <div class="col-md-6 col-sm-6 col-12">
+        <div class="aboutRewards">
+         <h2>Rewards</h2>
+         <p>Every time you support the Tribe, the Tribe rewards you. Every like, share, comment, support leads to exciting rewards from exciting brands.
+        </p>
+    </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-12">
+       <img style="    padding-left: 71px;
+       margin-top: -10px;" src="data:image/png;base64,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">
+    </div>
+</div>  
+<hr class="space sm">
+<div class="row">
+    <div class="col-md-8 col-sm-10 col-12 col-center text-center">
+          <h2>Create!</h2>
+          <p>It is okay if you don’t know where you belong. You can still sign up and let the world inspire you to find who you are.</p>
+    </div>
+</div>
+<hr class="space">
+</div>
+{% endblock content %}

@@ -1,0 +1,323 @@
+.icon1{
+    background-image: url(img/music.png);
+}
+.icon2{
+    background-image: url(img/sport.png);
+}
+.icon3{
+    background-image: url(img/travel1.png);
+}
+.icon4{
+    background-image: url(img/people.png);
+}
+.icon5{
+    background-image: url(img/design.png);
+}
+.icon6{
+    background-image: url(img/other.png);
+}
+.icon{
+    height: 30px;
+    width: 30px;
+    display: block;
+    margin: 0px auto 4px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+/* .nav>li>a span.icon:before  {
+    content: '';
+    display: block;
+    background: #000;
+    opacity: 0.1;
+    height: 100%;
+    border-radius: 50px;
+} */
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: #fff;
+    -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+    background: #00000047;
+}
+.influencer-block {
+    float: left;
+    height: 215px;
+    position: relative;
+    width: 207px;
+    margin: 10px 0px 10px;
+}
+.influencer-block .influencer-img {
+    width: 207px;
+    height: 215px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    overflow: hidden;
+}
+.influencer-img > img {
+    width: 207px;
+    min-height: 215px;
+}
+.influencer-block .influencer-stats {
+    height: auto;
+    left: 10px;
+    position: absolute;
+    top: 136px;
+    width: 205px;
+    line-height: 14px;
+}
+.influencer-block .follower-number {
+    font-family: 'DrukWide-Bold';
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 20px;
+    font-weight: normal;
+}
+.influencer-block .followers-label {
+    font-size: 16px;
+    font-family: "HelveticaNeue-Medium";
+    font-weight: normal;
+    color: white;
+}
+.icn-twitter {
+    background: url(img/twitter1.png) no-repeat scroll 0px 0px / auto 24px rgba(0, 0, 0, 0);
+}
+.iconlink {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-top: 10px;
+}
+.icn-instagram {
+    background: url(img/instagram.png) no-repeat scroll 0px 0px / auto 24px rgba(0, 0, 0, 0);
+    margin-left: 8%;
+}
+.tabcontent {
+    display: none;
+    margin-top: -100px;
+  }
+
+/*START: 12am CSS */
+#tab-section{
+    border: 0px;
+    max-width: 945px;
+    width: 100%;
+    margin: auto;
+    padding: 4px 0px 20px;
+}
+.tabbination-section {
+    background: #ffffff;
+}
+.nav-tabs>li>a{
+    border: none;
+    padding: 20px 40px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: normal;
+    text-transform: capitalize;
+    color: #ffff !important;
+}
+.black-bg { 
+    background: #000000; 
+    padding-bottom: 70px; 
+}
+.tab-bg {
+    background: #e64a00;
+    padding-bottom: 100px;
+}
+.text-center { 
+    text-align: center;
+    color: white;
+}
+.custom-container {
+    max-width: 88%;
+    margin: auto;
+}
+.nav-tabs>li {
+    float: none;
+    margin-bottom: 0;
+    display: inline-block;
+}
+li.nav-item a br {
+    display: none;
+}
+@media screen and (max-width: 479px) {
+    li.nav-item a br {
+        display: block;
+    }   
+    .custom-container {
+        max-width: 100%;
+    }
+    .custom-container {
+        padding: 0px 13px;
+    }
+    .influencer-block .influencer-stats {
+        top: 75px;
+        width: 70px;
+    }
+    .influencer-block .influencer-img {
+        width: 150px;
+        height: 150px;
+    }
+    .influencer-img > img {
+        width: 150px;
+        min-height: 150px;
+    }
+    .influencer-block {
+        height: 150px;
+        width: 150px;
+        margin: 0px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .custom-container {
+        padding: 0px 62px !important;
+    }
+}
+@media screen and (max-width: 375px) {
+    .custom-container {
+        padding: 0px 37px !important;
+    }
+}
+@media screen and (max-width: 320px) {
+    .custom-container {
+        padding: 0px 10px !important;
+    }
+}
+/*END: 12am CSS */
+
+/* create blog */
+/* input animation */
+.group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input1 {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #c7c2c2;
+}
+
+.input1:focus {
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* LABEL ======================================= */
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.input1:focus~label,
+.input1:valid~label {
+    top: -15px;
+    font-size: 14px;
+    color: rgb(228, 116, 24);
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: rgb(228, 116, 24);
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+/* active state */
+.input1:focus~.bar:before,
+.input1:focus~.bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+.input1:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+
+
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: orange;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: orange;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: orange;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}

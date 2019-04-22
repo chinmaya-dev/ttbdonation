@@ -1,0 +1,1396 @@
+{% extends "layout.html" %} {% block content %}
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/loader.css') }}">
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/material-kit.css') }}">
+<style>	  
+	.my-card {
+		/* -webkit-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  -moz-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  padding: 10px 0px; */
+		margin: 10px 0px;
+	}
+
+	.body-img img {
+		max-width: 100%;
+		height: 210px;
+		max-height: 100%;
+		/* border-radius: 2%; */
+	}
+
+	.body-img {
+
+
+		-webkit-border-radius: .25rem;
+		/* border-radius: .25rem; */
+		border-radius: 2%;
+		position: relative;
+		text-align: center;
+	}
+
+	.body-img:hover .overlaynew {
+		background-color: rgba(48, 152, 157, 0.4);
+	}
+
+	.body-img a.info {
+		display: inline-block;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #fff;
+		border: 1px solid #fff;
+		background-color: transparent;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+		-webkit-transition: all 0.4s ease-in-out;
+		transition: all 0.4s ease-in-out;
+		font-weight: normal;
+		margin: 20px;
+		padding: 15%;
+		/* margin-left: 40px; */
+		/* left: 0; */
+		position: relative;
+	}
+
+	.body-img:hover a.info {
+		opacity: 1;
+		filter: alpha(opacity=100);
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1);
+	}
+
+	.bottom-box {
+		/* -webkit-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  -moz-box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35);
+  box-shadow: 2px 5px 10px 7px rgba(0,0,0,0.35); */
+		-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+		max-width: 100%;
+		margin: auto;
+	}
+
+	.pink-btn-bg {
+		background-color: #9c27b0;
+		border-color: #9c27b0;
+	}
+
+	.blue-btn-bg {
+		background-color: #00aec5;
+		border-color: #00bcd4;
+	}
+
+	.green-btn-bg {
+		background-color: #47a44b;
+		border-color: #39843c;
+	}
+
+	.button-inline-block {
+		display: block;
+		text-decoration: none;
+		width: 100%;
+		/* border-radius: 50px !important; */
+	}
+
+	.button-inline-block:hover {
+		text-decoration: none;
+		/* margin-top: 2px; */
+		-webkit-box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+		-moz-box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+		box-shadow: 2px 6px 19px 0 rgba(0, 0, 0, .37) !important;
+		transition: 0.7s;
+	}
+
+	.red-btn-bg {
+		background-color: rgba(240, 5, 68, 0.8);
+	}
+	/* HOVER STYLES */
+
+	div#hovercontainer {
+		position: relative;
+	}
+
+	.newimage {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+
+  }
+.overlaynew {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .newimage:hover .overlaynew {
+    background-color: rgba(48, 152, 157, 0.4);
+  }
+  .newimage a.info {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+		font-weight: normal;
+		margin-top:6% !important;
+    margin: 2px;
+    padding: 16%;
+}
+.newimage:hover a.info {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.mb_margin{
+		margin-top:-122px !important;
+}
+@media only screen and (max-width:375px) {
+	.mb_margin{
+		margin-top:-124px !important;
+	}
+	.mb_pic{
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+	.mb_time{
+		font-size: 8px !important;
+	}
+}
+
+ul.tabs{
+  
+  padding: 2%;
+	list-style: none;
+	text-align: center;
+	/* overflow-x: auto;
+  overflow-y: hidden; */
+  /* display: -webkit-box;
+  display: -moz-box; */
+}
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 5px 15px;
+	cursor: pointer;
+	float: none;
+	font-size:0.7em;
+  
+}
+
+ul.tabs li.current {
+  color: #222;
+  border-bottom: 4px solid black;
+}
+
+.tab-content{
+  display: none;
+  padding: 15px;
+}
+
+.tab-content.current{
+  display: inherit;
+}
+.st-btn{
+    display: inline-block !important;
+}
+.table_font{
+    word-wrap: break-word;
+    top: 0;
+    font-size: 15px;
+    padding: 19px 0px 0px 13px;
+    margin: 0px;
+}
+.table_font1{
+    word-wrap: break-word;
+    top: 0;
+    font-size: 15px;
+    /* padding: 19px 0px 0px 13px; */
+    margin: 0px;
+}
+.mb_follow{
+	text-decoration: none;
+	border-radius: 10px;
+	color: black;
+	border: 1px solid black;
+	font-size: 0.5em;
+	margin-top:-6%;
+}
+.mb_following{
+	text-decoration: none; 
+	border-radius: 17px;
+	font-size:0.5em;
+	margin-top:-8%;
+}
+.mb_profilename{
+	font-size:0.6em;
+}
+.mb_event{
+		padding-left: 37%;
+		font-size: 12px;
+}
+.pro_username{
+		font-size: 12px;
+	}
+.mb_home{
+	font-size: 17px;
+	margin-left: -17px;
+}
+@media screen and (max-width: 810px) and (min-width: 650px)  {
+    .mb_follow{
+	text-decoration: none;
+	border-radius: 10px;
+	color: black;
+	border: 1px solid black;
+	font-size: 16px;
+	margin-top:-6%;
+	}
+	.mb_following{
+		text-decoration: none; 
+		border-radius: 17px;
+		font-size: 16px;
+		margin-top:-8%;
+	}
+	.mb_profilename{
+		font-size: 18px;
+	}
+	.mb_month{
+		font-size: 18px;
+	}
+	.mb_date{
+		font-size: 18px;
+	}
+	.cls_btn {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.68);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+	}
+	.mb_event{
+		padding-left: 0px;
+		font-size: 18px;
+	}
+	.pro_username{
+		font-size: 17px;
+	}
+	.mb_home{
+		font-size: 22px;
+        margin-left: -17px;
+	}
+}
+@media only screen and (max-width: 620px){
+	.mb_tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+.iconoverlay:before {
+  
+  font-family: FontAwesome; 
+  content: "\f1d8";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  position:absolute;
+  font-size:20px;
+	}
+	.iconoverlayfile:before {
+  
+  font-family: FontAwesome; 
+  content: "\f030";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  position:absolute;
+  font-size:30px;
+	}
+  
+  	.btncolor {
+		background: #ffa31a;
+		color: #fff;
+	}
+
+	.inputWrapper {
+		height:70px;
+    width: 57px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: transparent;
+}
+.inputWrapper:before {
+  
+  font-family: FontAwesome; 
+  content: "\f030";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  position:absolute;
+  font-size:30px;
+	}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 20px;
+    right: 5px;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+.feed-shared-social-action-bar {
+			height: 40px;
+			justify-content: flex-start;
+			margin: 0;
+	}
+	.social_count{
+		padding: 9px;
+		padding-left: 21px;
+		font-size: 13px;
+		display: flex;
+		flex-direction: row;
+	}
+	.social_count > div {
+		padding: 5px;
+	}
+	.feed-shared-social-action-bar {
+			display: flex;
+			align-items: center;
+			/* justify-content: space-around; */
+			height: 50px;
+			box-sizing: border-box;
+			padding-left: 8px;
+			background-color: transparent;
+	}
+	.feed-shared-social-action-bar .button, .feed-shared-social-action-bar a {
+			white-space: nowrap;
+			font-size: 1.4rem;
+		    line-height: 1.42857;
+		    padding: 11px;
+			font-weight: 600;
+			color: rgba(0,0,0,.6);
+			/* background-color: #fff; */
+			display: flex;
+	}
+		.social-media{
+			display: flex;
+			flex-direction: row;
+		}
+		.linkdin-card {
+		/* border: 1px solid #000; */
+		box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+			transition: box-shadow 83ms;
+	}
+	.linkdin-card-header {
+			display: flex;
+			align-items: center;
+			padding: 10px 20px;
+	}
+	.lazy-image {
+		width: 10%;
+		margin-right: 10px;
+	}
+	.lazy-image a img {
+		width: 100%;
+		border-radius: 50%;
+	}
+	.feed-shared-actor__meta {
+			width: 85%;
+	}
+	.feed-shared-actor__meta a {
+		color: #000000;
+	}
+	.feed-shared-actor__meta a:hover {
+		text-decoration: none;
+	}
+	.feed-shared-actor__meta h3 {
+			font-size: 20px;
+			margin: 0px;
+	}
+	.feed-shared-actor__meta span {
+			font-size: 12px;
+			display: block;
+	}
+	
+	.dropbtn {
+		color: #000000;
+		font-size: 16px;
+		border: none;
+		background: transparent;
+	}
+	/* .dropdown {
+		position: relative;
+		display: inline-block;
+		width: 5%;
+	} */
+	.dropdown-content {
+					/* display: none; */
+					visibility: hidden;
+					position: absolute;
+					min-width: 250px;
+					z-index: 1;
+					background-color: #fff;
+					background-clip: padding-box;
+					border-radius: 2px;
+					box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 6px 9px rgba(0,0,0,.2);
+					transition: box-shadow 83ms;
+					transition: visibility 0s linear 167ms,opacity 167ms cubic-bezier(.4,0,1,1) 0s,z-index 0s linear 167ms;
+					padding: 4px 0;
+					max-width: 264px;
+					max-height: 548px;
+					box-sizing: border-box;
+					margin-left: -10em;
+		}
+				.dropdown-content:before {
+						position: absolute;
+						border-color: transparent;
+						border-style: solid;
+						border-width: 0;
+						content: '';
+						right: 15px;
+						border-right-width: 9px;
+						border-bottom: 9px rgba(0,0,0,0.1) solid;
+						border-left-width: 9px;
+						top: -9px;
+				}
+	.dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+	.dropdown-content a:hover {background-color: #ddd;}
+	.dropdown:hover .dropdown-content {
+		/*display: block;*/
+		visibility: visible;
+	}
+	.content1{ 
+		padding: 10px 20px;
+	}
+	.body-img img {
+		width: 100%;
+	}
+		/* for new ask question card design start */
+		.group 			  { 
+		position:relative; 
+		margin-bottom:45px; 
+		display: flex;
+		flex-grow: 1;
+		margin: 0;
+		align-items: center;
+		padding: 0px 20px;
+	}
+	input 				{
+		font-size:12px;
+		/* padding:10px 10px 10px 5px; */
+		display:block;
+		width:100%;
+		border:none;
+	}
+	input:focus {
+		outline:none; 
+	}
+	@media only screen and (max-width: 321px){
+		.input{
+		font-size:8px;
+		/* padding:10px 10px 10px 5px; */
+		display:block;
+		width:100%;
+		border:none;
+		}
+	}
+	.group label {
+		color:#999; 
+		font-size:18px;
+		font-weight:normal;
+		position:absolute;
+		pointer-events:none;
+		left:50px;
+		top:28px;
+		transition:0.2s ease all; 
+		-moz-transition:0.2s ease all; 
+		-webkit-transition:0.2s ease all;
+		display: flex;
+		align-items: center;
+	}
+	
+	/* active state */
+	input:focus ~ label, input:valid ~ label 		{
+		top:5px;
+		font-size:17px;
+		color:#5264AE;
+		align-items: center;
+	}
+	
+	.share-box__wrapper {
+			position: relative;
+			border-radius: 2px;
+	}
+	.share-box__wrapper--is-closed {
+			margin-bottom: 8px;
+	}
+	.share-box__wrapper {
+			margin: 0;
+			background: #fff;
+			color: #84878a;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			max-height: 100%;
+	}
+	.Elevation-2dp {
+			box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+			transition: box-shadow 83ms;
+	}
+	.display-flex {
+			display: flex;
+	}
+	.share-box__open {
+			display: flex;
+			flex-grow: 1;
+			margin: 0;
+			align-items: center;
+	}
+	
+	.share-box__trigger {
+			color: #696c6f;
+			border-right: 1px solid rgba(0,0,0,.15);
+	}
+	.border-left {
+		border-left: 1px solid rgba(0,0,0,.15)
+	}
+	.p4 {
+			padding: 16px;
+	}
+	.t-16 {
+			font-size: 1.6rem;
+			line-height: 1.5;
+	}
+	.t-bold {
+			font-weight: 600;
+	}
+	.t-black--light {
+			color: rgba(0,0,0,.6);
+	}
+	button {
+			background: 0 0;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+	}
+	li-icon[type$="-icon"] {
+			width: 24px;
+			height: 24px;
+	}
+	.mh2, .mr2 {
+			margin-right: 8px;
+	}
+	li-icon {
+			display: inline-block;
+			width: 300px;
+			height: 150px;
+			overflow: hidden;
+			position: relative;
+	}
+	li-icon[type$="-icon"]>svg {
+			vertical-align: top;
+	}
+	
+	li-icon>svg {
+			display: block;
+			margin: auto;
+	}
+	.tap-target.tap-target {
+			text-decoration: none;
+	}
+	
+	.share-box__trigger {
+			color: #696c6f;
+			border-right: 1px solid rgba(0,0,0,.15);
+	}
+	.share-media-button__label--square {
+			padding: 24px;
+	}
+	
+	.share-media-button__label--square {
+			box-shadow: none;
+			display: inline-flex;
+			color: rgba(0,0,0,.6);
+	}
+	.visually-hidden {
+			display: block;
+			border: 0;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+	}
+	.share-box__article-cta {
+			background-color: #f3f6f8;
+			border-top: 1px solid rgba(0,0,0,.15);
+			padding: 12px 16px;
+	}
+	
+	.t-14 {
+			font-size: 18px;
+			line-height: 1.42857;
+	}
+	.t-normal {
+			font-weight: 400;
+	}
+	.t-black--light {
+			color: rgba(0,0,0,.6);
+	}
+	.link-without-visited-state {
+			text-decoration: none;
+			color: #0073b1;
+	}
+	.inverse-link, .inverse-link-light-background-without-hover-state, .inverse-link-without-hover-state, .link, .link-without-hover-state, .link-without-hover-visited, .link-without-visited-state {
+			font-weight: 600;
+			background-color: transparent;
+			border: 0;
+	}
+	/* .tabs > li {
+
+	} */
+	/* for new ask question card design end */
+@media only screen and (max-width: 375px){
+	.feed-shared-social-action-bar .button, .feed-shared-social-action-bar a {
+			white-space: nowrap;
+			font-size: 1.4rem;
+		    line-height: 1.42857;
+		    padding: 5px;
+			font-weight: 600;
+			color: rgba(0,0,0,.6);
+			/* background-color: #fff; */
+			display: flex;
+	}
+	.feed-shared-social-action-bar {
+			display: flex;
+			align-items: center;
+			/* justify-content: space-around; */
+			height: 50px;
+			box-sizing: border-box;
+			padding-left: 0px;
+			background-color: transparent;
+	}
+	.mb_padding{
+		padding:0px;
+	}
+	.social_count {
+    padding: 9px;
+    padding-left: 6px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+   }
+  
+}
+@media only screen and (max-width: 425px){
+	.lazy-image {
+    width: 18%;
+    margin-right: 10px;
+   }
+   .feed-shared-actor__meta h3 {
+    font-size: 14px;
+    margin: 0px;
+	}
+	.feed-shared-actor__meta span {
+		font-size: 10px;
+		display: block;
+	}
+}
+@media screen and (max-width: 690px) and (min-width: 320px)  {
+	.mb_spaceing{
+		padding-top: 8px;
+		padding-bottom: 10px
+	}
+}
+@media screen and (max-width: 810px) and (min-width: 700px)  {
+	.mb_spaceing{
+		padding-top: 21px;
+		padding-bottom: 10px;
+	}
+	input {
+    font-size: 18px;
+    /* padding: 10px 10px 10px 5px; */
+    display: block;
+    width: 100%;
+    border: none;
+}
+.feed-shared-actor__meta span {
+    font-size: 16px;
+    display: block;
+}
+}	
+</style>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#lhide").hide();
+		$("#2hide").hide();
+		$("#dchide").hide();
+		$("#UnOp-hide").hide();
+
+		$("#update_text").focus(function () {
+			$("#lhide").show();
+			$("#2hide").show();
+			$("#dchide").show();
+			$("#UnOp-show").hide();
+			$("#UnOp-hide").show();
+		});
+
+		$("#submit").click(function () {
+			$("#lhide").hide();
+			$("#2hide").hide();
+			$("#dchide").hide();
+			$("#UnOp-show").show();
+			$("#UnOp-hide").hide();
+		});
+		$('#followbtn').click(function () {
+			var $this = $(this);
+			$this.toggleClass('following')
+			if ($this.is('.following')) {
+				$this.addClass('wait');
+			}
+		}).on('mouseleave', function () {
+			$(this).removeClass('wait');
+		})
+		// profile hover card start
+		// $('#detail').hover(
+		//    function(){ $(this).addClass('hovercard') }
+		//    function(){ $(this).removeClass('hovercard') }
+		//    )
+		$('ul.tabs li').click(function(){
+            var tab_id = $(this).attr('data-tab');
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+            $(this).addClass('current');
+            $("#"+tab_id).addClass('current');
+        })
+
+	});
+
+</script>
+
+<div>
+<div class="container">
+	
+	<div class="">
+			<ul class="tabs">
+					<li class="tab-link current" data-tab="tab-1">Home</li>
+					<li class="tab-link" data-tab="tab-2">Profile</li>
+					<li class="tab-link" data-tab="tab-3">Events</li>
+					<!-- <li class="tab-link" data-tab="tab-4">Events</li> -->
+			</ul>
+			<div class="tab-content current" id="tab-1" style="padding:0px;">
+			
+					<div class="col-md-12 mt-1 mb_padding">
+							<div style="margin-top: 25px;">
+									<div class="share-box__wrapper Elevation-2dp share-box__wrapper--is-closed">
+											<form method="POST" action="" enctype="multipart/form-data" style="margin-bottom:0 !important;">
+												{{ form.hidden_tag() }}
+										<div class="display-flex">							
+												<div class="group">
+													{% if form.update_text.errors %} {{ form.update_text(class="is-invalid") }}
+													<div class="invalid-feedback">
+														{% for error in form.update_text.errors %}
+														<span>{{ error }}</span> {% endfor %}
+													</div>
+													{% else %}
+													<li-icon aria-hidden="true" type="compose-icon" class="mr2" size="medium"><svg viewBox="0 0 24 24"
+															width="21px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon"
+															focusable="false">
+															<path
+																d="M17,13.75l2-2V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V6A1,1,0,0,1,4,5h8.25l-2,2H5V19H17V13.75Zm5-8a1,1,0,0,1-.29.74L13.15,15,7,17l2-6.15,8.55-8.55a1,1,0,0,1,1.41,0L21.71,5A1,1,0,0,1,22,5.71ZM17.93,7.58l-1.5-1.5-6.06,6.06,1.5,1.5Zm1.84-1.84-1.5-1.5L17.09,5.41l1.5,1.5Z"
+																class="large-icon" style="fill: currentColor"></path>
+														</svg></li-icon>
+													{{ form.update_text(placeholder="Write Something here") }}
+													
+													{% endif %}
+												</div>
+										
+											<div class="border-left share-box__trigger button share-media-button tap-target display-flex ember-view">
+													
+													
+													{% if form.picture.errors %} 
+													{% for error in form.picture.errors %}
+														<span class="text-danger">{{ error }}</span><br> {% endfor %} 
+													{% endif %}
+													<!-- <li-icon aria-hidden="true" type="camera-icon" size="large"><svg viewBox="0 0 24 24" width="24px"
+															height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon"
+															focusable="false">
+															<path
+																d="M21,6H18L16.5,3h-9L6,6H3A1,1,0,0,0,2,7V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V7A1,1,0,0,0,21,6ZM7.36,8l1.5-3h6.28l1.5,3H20v2H16.58a5,5,0,0,0-9.16,0H4V8H7.36Zm7.76,4A3.13,3.13,0,1,1,12,8.88,3.13,3.13,0,0,1,15.13,12ZM4,18V11H7.1a5,5,0,1,0,9.8,0H20v7H4Z"
+																class="large-icon" style="fill: currentColor"></path>
+														</svg></li-icon>
+													<span class="share-media-button__a11y-text visually-hidden">
+														Upload images
+													</span> -->
+													
+													<div class="inputWrapper mt-4 ml-4">
+													{{ form.picture(class="fileInput",style="background:transparent;")}} 
+												</div>
+											</div>
+											<div id="ember636"
+												class="share-box__trigger share-box__media-trigger button share-media-button tap-target display-flex ember-view">
+				
+				
+												<label class="share-media-button__label mvA
+													share-media-button__label--square">
+													<div class="iconoverlay mt-2">
+															{{ form.submit(style="background:transparent !important;") }}
+													</div>
+													
+													<!-- <li-icon aria-hidden="true" type="document-icon" size="large"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M14.13,2H5A1,1,0,0,0,4,3V21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V7.88ZM18,20H6V4h7V9h5V20ZM8,12h8v1H8V12Zm0,3h6v1H8V15Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon> -->
+													<!-- <i class="far fa-paper-plane"></i>
+													<span class="share-media-button__a11y-text visually-hidden">Send</span> -->
+												</label>
+											</div>
+								
+										</div>
+									</form>
+										<!-- <div class="share-box__article-cta t-14 t-black--light t-normal" style="padding: 20px;"> -->
+											<!-- <a href="#" data-control-name="share.publish_post" target="_blank" class="link-without-visited-state hoverable-link-text">Write an article</a> Here -->
+										<!-- </div> -->
+									</div>
+								</div> <!-- wrtite something card above div closed-->
+							
+				
+							<div id="demo" class="carousel slide Elevation-2dp mt-3 mb-1" style="height:258px; margin: 0 auto"
+							data-ride="carousel">
+		
+							<!-- The slideshow -->
+							<div class="carousel-inner">
+								{% for campaign in campaign.items %}
+								<div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
+		
+		
+									<div>
+										<div class="my-card">
+											<div class="body-img">
+												<img src="{{ url_for('static', filename='campaign_pics/' + campaign.image_file) }}"
+													style="max-height:200px;max-width:400px;height:auto;width:auto;">
+												<!-- <div class="overlaynew"><a class="info"
+														href="{{ url_for('campaign.campaignn', campaign_id=campaign.id) }}">View
+														Details</a></div> -->
+											</div>
+											<!-- .body-img -->
+											<!-- <a href="#" class="visit-btn"> -->
+											<div class="bottom-box">
+												{% if campaign.action=='Your Profile' %}
+												<p class=""><a class="text-white btn-md text-left card-footer shadow button-inline-block btncolor"
+														href="{{ url_for('users.user', id=campaign.campaign_author.id) }}"><i
+															class="fas fa-chevron-right pull-right mt-1"></i>Learn More</a></p>
+												{% endif %} {% if campaign.action=='Your Website' %}
+												<p class=""><a class="text-white text-left btn-md card-footer shadow button-inline-block btncolor"
+														href="{{campaign.campaign_author.web_url}}"><i
+															class="fas fa-chevron-right pull-right mt-1"></i>Visit us</a></p> {% endif %}
+												{% if campaign.action=='Your StoreFront' %}
+												<p class=""><a class="text-white btn-md text-left card-footer shadow button-inline-block btncolor"
+														href="http://maps.google.com/?q={{campaign.campaign_city }}"><i
+															class="fas fa-chevron-right pull-right mt-1"></i>Shop </a></p>
+		
+												{% endif %} {% if campaign.action=='Your Direct Messages' %}
+												<p class=""><a class="card-footer btn-md text-left shadow text-white button-inline-block btncolor"
+														href="{{ url_for('messages.send_message', id=campaign.campaign_author.id) }}"><i
+															class="fas fa-chevron-right pull-right mt-1"></i>Contact us</a></p>
+												<!-- </div> -->
+												<!-- <div class="shadow" style="background-color: rgba(3, 5, 125, 0.86);"></div> -->
+												<!-- <div class="shadow" style="background-color:rgba(240, 5, 68, 0.8);"></div> -->
+		
+												{% endif %}
+		
+											</div>
+											<!-- bottom-box -->
+										</div>
+										<!-- .col -->
+										<br>
+									</div>
+		
+		
+		
+								</div>
+		
+								{% endfor %}
+		
+							</div>
+		
+							<!-- Left and right controls -->
+							<a class="carousel-control-prev" href="#demo" data-slide="prev">
+								<span class="carousel-control-prev-icon"></span>
+							</a>
+							<a class="carousel-control-next" href="#demo" data-slide="next">
+								<span class="carousel-control-next-icon"></span>
+							</a>
+		
+						</div>
+						{% for update in update %}
+						<div class="mb_spaceing">
+						<div class="linkdin-card"> 
+								<div class="linkdin-card-header"> 
+								  <div class="lazy-image">
+										<a href="#">    
+											<img alt="logo" src="{{ url_for('static', filename='profile_pics/' + update.update_author.image_file) }}">
+									  </a>
+								  </div><!-- .lazy-image -->
+								  {% if current_user.is_authenticated %}
+								  <div class="feed-shared-actor__meta">
+									  <a href="{{ url_for('users.user', id=update.update_author.id) }}">
+										  <h3 class="feed-shared-actor__title">{{ update.update_author.username }}</h3>
+										  <!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+									  </a>
+									  <span class="feed-shared-actor__sub-description">{{ moment(update.update_date_posted).fromNow() }}</span>
+								  </div>
+								  {% else %}
+								  <div class="feed-shared-actor__meta">
+										<a>
+											<h3 class="feed-shared-actor__title">{{ update.update_author.username }}</h3>
+											<!-- <span class="feed-shared-actor__description">60,772 followers</span> -->
+										<span class="feed-shared-actor__sub-description">{{ moment(update.update_date_posted).fromNow() }}</span>
+			
+										</a>
+									</div>
+									{% endif %}
+									{% if update.update_author == current_user %}
+								  <div class="pop-menu dropdown">
+									  <button class="dropbtn"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M2,10H6v4H2V10Zm8,4h4V10H10v4Zm8-4v4h4V10H18Z" class="large-icon" style="fill: currentColor"></path></svg></button>
+									  <div class="dropdown-content">
+										  <a href="{{ url_for('users.update_update', update_id=update.id) }}">Update</a>
+										  <a href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+										  <!-- <a href="#">Link 3</a> -->
+										</div>
+								  </div><!-- .pop-menu -->
+								  {% endif %}
+								</div><!-- linkdin-card-header -->
+								<div class="content1">
+									<p> {{update.update_text }}</p>
+								</div><!-- .content -->
+								<div class="body-img">
+									<img src="{{ url_for('static', filename='update_pics/' + update.image_file) }}">
+								</div><!-- .body-img -->
+								<div class="social_count">
+									<div>
+									 <span>{{ update.likes.count() }}</span>
+									 Likes
+									</div>
+									<div>
+										.<span>{{ update.updatecomments.count() }}</span>
+										Comment
+									</div>
+								</div>
+								<hr style="margin:0px;">
+								<div class="feed-shared-social-actions feed-shared-social-action-bar social-detail-base-social-actions feed-shared-social-action-bar--minimal-padding ember-view">        <span data-control-name="like_toggle" aria-pressed="false" aria-label="Like Mohit Rai’s post" id="ember5270" class="like-button button like feed-shared-social-action-bar__action-btn ember-view"><button id="ember5271" class="social-details-like-button artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+									<span class="artdeco-button__text">
+									{% if current_user.has_liked_update(update) %}
+									<a href="{{ url_for('users.updatelike_action', update_id=update.id, action='unlike') }}">
+											<li-icon aria-hidden="true" type="like-filled-icon" class="unlike-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M17.51,11L15.36,8a14.81,14.81,0,0,1-2.25-5.29L12.74,1H11.5A2.5,2.5,0,0,0,9,3.5V4.08a9,9,0,0,0,.32,2.39L10,9H4.66A2.61,2.61,0,0,0,2,11.4a2.48,2.48,0,0,0,.39,1.43,2.48,2.48,0,0,0,.69,3.39,2.46,2.46,0,0,0,1.45,2.92,2.47,2.47,0,0,0,0,.36A2.5,2.5,0,0,0,7,22h4.52a8,8,0,0,0,1.94-.24l3-.76H21V11H17.51Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>	
+										<span aria-hidden="true" class="t-14">Like</span>						  
+										</a>
+									  {% else %}
+									  <a href="{{ url_for('users.updatelike_action', update_id=update.id, action='like') }}">
+										<li-icon aria-hidden="true" type="like-icon" class="like-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M17.51,11L15.36,8a14.81,14.81,0,0,1-2.25-5.29L12.74,1H10.5A2.5,2.5,0,0,0,8,3.5V4.08a9,9,0,0,0,.32,2.39L9,9H4.66A2.61,2.61,0,0,0,2,11.4a2.48,2.48,0,0,0,.39,1.43,2.48,2.48,0,0,0,.69,3.39,2.46,2.46,0,0,0,1.45,2.92,2.47,2.47,0,0,0,0,.36A2.5,2.5,0,0,0,7,22h4.52a8,8,0,0,0,1.94-.24l3-.76H21V11H17.51ZM19,19H16.88l-3.41.82A6,6,0,0,1,12,20H7a0.9,0.9,0,0,1-.9-0.89s0-.07,0-0.14l0.15-1-1-.4a0.9,0.9,0,0,1-.55-0.83,0.93,0.93,0,0,1,0-.22L5,15.57,4.27,15a0.9,0.9,0,0,1-.39-0.74A0.88,0.88,0,0,1,4,13.82l0.46-.72L4,12.38a0.88,0.88,0,0,1-.14-0.51,1,1,0,0,1,1-.87H11.5L10.2,6.3a9,9,0,0,1-.33-2.37V3.38a0.5,0.5,0,0,1,.5-0.5h0.95a17.82,17.82,0,0,0,2.52,6.22L16.6,13H19v6Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
+										<span aria-hidden="true" class="t-14">Like</span>						    
+									</a>
+									  {% endif %}
+									  <!-- <a href="{{ url_for('users.user', id=update.update_author.id) }}" style="text-decoration: none;"> -->
+										<!-- </a> -->
+										
+									
+									</span></button></span>
+											<span data-control-name="comment" id="ember5272" class="button comment feed-shared-social-action-bar__action-btn social-action-btn ember-view"><button id="ember5273" class="feed-shared-social-action-btn artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+									<span class="artdeco-button__text">
+									<a href="{{ url_for('users.user', id=update.update_author.id) }}" style="text-decoration: none;">
+										<li-icon aria-hidden="true" type="speech-bubble-icon" class="feed-shared-social-action-bar-icon"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M18,10H6V9H18v1Zm4-5V22l-5-4H3a1,1,0,0,1-1-1V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM20,6H4V16H17.7L20,17.84V6Zm-4,6H8v1h8V12Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon><span aria-hidden="true" class="t-14 ml1">Comment</span>
+									  <span class="visually-hidden">
+										Comment
+									  </span>
+									  </a>
+									
+									</span></button></span>
+											  <span data-control-name="reshare" id="ember5274" class="feed-shared-social-action-bar__action-btn feed-shared-social-action-bar__reshare-button reshare-button button reshare social-action-btn ember-view"><button id="ember5275" class="feed-shared-social-action-button artdeco-button artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view"><!---->
+									<span class="artdeco-button__text">
+										
+									  <li-icon type="share-linkedin-icon" size="large" role="img" aria-label="Share"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M24,12h0a1.18,1.18,0,0,0-.36-0.84L14,2V8H11A10,10,0,0,0,1,18v4H2.87A6.11,6.11,0,0,1,9,16h5v6l9.63-9.14A1.18,1.18,0,0,0,24,12s0,0,0,0h0Zm-8,5.54V14H9a8.15,8.15,0,0,0-6,2.84A8,8,0,0,1,11,10h5V6.48L21.81,12Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
+									
+									  <span aria-hidden="true" class="t-14 ml1 " data-toggle="dropdown">Share</span>
+									  <div class="dropdown-menu">
+											<div class="sharethis-inline-share-buttons"></div>
+										</div>
+									
+									</span></button>
+									<!----></span>
+									<!---->
+									</div>
+							</div><!-- linkdin-card -->
+						</div>
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+			
+										<div class="modal-header">
+											<h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+										</div>
+			
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+											<form action="{{ url_for('users.delete_update', update_id=update.id) }}" method="POST">
+												<input class="btn btn-danger" type="submit" value="Delete">
+											</form>
+										</div>
+			
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+			</div>
+		<div class="tab-content" id="tab-2" style="padding:0px;width:100%;">
+				<!-- User profile -->
+					<div class="col-md-12">
+				
+							<div class="main-card" style="height:200px;">
+									<div class="img-card">
+									<img style="height:50%" src="{{ url_for('static', filename='music1.jpg') }}" class="ig">
+	
+									<div class="rounded-circle img-fluid shadow"
+											style="position: relative; margin: -70px; margin-left:4%; background-image: url('{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}');width:60px; height: 60px; background-size: cover; border:3px solid #E6E6E6;">
+									</div>
+									<a href="{{ url_for('users.account',id=current_user.id) }}"><i style="font-size:25px; color:ivory; margin-right: 5px; margin-top: 20%;   position: relative;"
+											class="material-icons float-right">tune</i></a>
+	
+									</div>
+									<div class="title-card mb_margin" style="margin-left: 0 !important;">
+											<p style="font-size:17px;margin-left:-50% !important;" class="text-dark text-center mt-2" >{{ current_user.username }}</p>
+											
+											<div class="col-12 text-center pt-2">
+													<div class="row">
+															<!-- Followers -->
+															<div class="col-6">
+														 
+																	<p><b>{{ current_user.followed.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Following</span></p>
+															</div>
+															<!-- following -->
+															<div class="col-6">
+							
+																	<p><b >{{ current_user.followers.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Followers</span></p>
+															</div>
+													</div>
+											</div>
+											<p style="margin-left:-7% !important;margin-top:12% !important;">Coin Balance <small style="font-size: 15px; color: #ce0d54; margin-left: 20px;"><i class="fas fa-hryvnia"></i>&#xA0;{{ tota }}</small></p>
+									</div>
+							</div>
+	
+	
+				<div class="ui-block">
+					<div class="ui-block-title">
+						<p class="title" style="font-family: Arial, Times, cursive;"> Creators you may like</p>
+					</div>
+					<div class="card" style="background-color: #fff;">
+							
+						<ul class="list-group list-group-flush">
+							{% for creators in creators.items %}
+							<div>
+								<li class="list-group-item "><img class="adss" src="{{ url_for('static', filename='profile_pics/' + creators.image_file) }}" width="25" height="25"
+									 style="border-radius: 50%;">&#xA0;&#xA0;&#xA0;&#xA0;<span class="mt-3 profile mb_profilename" id="y{{ creators.id }}">{{ creators.username }}
+								</span>
+									<!--user name span tag end-->
+									{% if not current_user.is_following(creators) %}
+									<a href="{{ url_for('users.follow', id=creators.id) }}"
+									 title="follow" class="mb_follow px-2 btn-xs  float-right mt-3">Follow</a> {% else %}
+									<a href="{{ url_for('users.unfollow', id=creators.id) }}"
+									 title="unfollow" class="mb_following px-2 btn-xs btn-primary  float-right mt-3">Following</a> {% endif %}
+	
+									<!-- <div class="hovercard"><div class="hovercontent">Hovercard goes in this grey gox, but it won't disappear until the mouse leaves the larger box with the blue border (which would normally be hidden).</div></div> -->
+	
+									<!-- hover profile detail card start -->
+								
+									<div id="x{{ creators.id }}" class="shadow" style="display: none;position: absolute;	width: 280px;padding: 10px;background: white;color: #000000;font-size: 90%;	margin-top:-70%;margin-left:-100%;border-radius:10px;">
+											<div class="row">
+												<div class="col-md-6">
+										<img class="adss" src="{{ url_for('static', filename='profile_pics/' + creators.image_file) }}" width="50" height="50"
+											style="border-radius: 50%;">
+												</div>
+												<div class="col-md-6 float-right">
+														{% if not current_user.is_following(creators) %}
+														<a href="{{ url_for('users.follow', id=creators.id) }}"
+														 title="follow" class="mb_follow px-2 btn-xs  float-right mt-3">Follow</a> {% else %}
+														<a href="{{ url_for('users.unfollow', id=creators.id) }}"
+														 title="unfollow" class="mb_following px-2 btn-xs btn-primary  float-right mt-3">Following</a> {% endif %}
+												</div>
+											</div>
+											<h5>{{ creators.username }}</h5>
+										<p class="text-muted" style="margin-top:-4%;">{{ creators.email }}</p>
+										<div class="col-12 mt-1">
+												<div class="row">
+													<!-- Followers -->
+													<div class="col-6" style="margin-left:-5%;">
+														<p><b style="font-size: 10px;">{{ creators.followed.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Followers</span></p>
+														
+													</div>
+													<!-- following -->
+													<div class="col-6">
+														<p><b style="font-size: 10px;">{{ creators.followers.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Following</span></p>
+														
+													</div>
+												</div>
+											</div>
+										<p class="text-muted" style="font-size: 10px;">
+											{% if  creators.about_me != None %}
+											{{ creators.about_me }}
+											{% endif %}
+										</p>
+								
+									</div>
+									<script>
+										$(function () {
+											var moveLeft = 20;
+											var moveup = 160;
+	
+											$('span#y{{ creators.id  }}').hover(function (e) {
+												$("div#x{{ creators.id  }}").show();
+												//.css('top', e.pageY + moveDown)
+												//.css('left', e.pageX + moveLeft)
+												//.appendTo('body');
+											}, function () {
+												$("div#x{{ creators.id  }}").hide();
+											});
+	
+											$('span#y{{ creators.id  }}').mousemove(function (e) {
+											
+												$("div#x{{ creators.id  }}").css('top', e.pageX-moveup).css('left', e.pageX - moveLeft);
+											});
+	
+										});
+									</script>
+									<!-- hover profile detail card end -->
+							
+								</li>
+							
+							</div>
+								{% endfor %}
+						</ul>
+					
+					</div>
+			
+
+				</div>
+				<br>
+
+				<div class="ui-block">
+					<div class="ui-block-title">
+						<p class="title" cla style="font-family: Arial, Times, cursive;"> Brands you may like</p>
+					</div>
+					<div class="card" style="background-color: #fff;">
+						<ul class="list-group list-group-flush">
+							{% for brand in brand.items %}
+							<div style="position:relative;">
+							<li class="list-group-item "><img class="adss" src="{{ url_for('static', filename='profile_pics/' + brand.image_file) }}" width="25" height="25"
+								 style="border-radius: 50%;">&#xA0;&#xA0;&#xA0;&#xA0;<span class="mb_profilename mt-3" id="z{{ brand.id }}" >{{ brand.username }}</span>							{% if not current_user.is_following(brand) %}
+								<a href="{{ url_for('users.follow', id=brand.id) }}"
+								 title="follow" class="mb_follow px-2 btn-xs float-right mt-2">Follow</a> {% else %}
+								<a href="{{ url_for('users.unfollow', id=brand.id) }}"
+								 title="unfollow" class="mb_following px-2 btn-xs btn-primary float-right mt-2">Following</a> {% endif %} 
+	
+									 <!-- hover profile detail card start -->
+									 <div id="w{{ brand.id }}" class="shadow" style="display: none;position: absolute;	width: 280px;padding: 10px;background: white;color: #000000;font-size: 90%;	margin-top:-70%;margin-left:-100%;border-radius:10px;">
+											<div class="row">
+												<div class="col-md-6">
+										<img class="adss" src="{{ url_for('static', filename='profile_pics/' + brand.image_file) }}" width="50" height="50"
+											style="border-radius: 50%;">
+												</div>
+												<div class="col-md-6 float-right">
+														{% if not current_user.is_following(brand) %}
+														<a href="{{ url_for('users.follow', id=brand.id) }}"
+														 title="follow" class="mb_follow px-2 btn-xs  float-right mt-3">Follow</a> {% else %}
+														<a href="{{ url_for('users.unfollow', id=brand.id) }}"
+														 title="unfollow" class="mb_following px-2 btn-xs btn-primary  float-right mt-3">Following</a> {% endif %}
+												</div>
+											</div>
+											<h5>{{ brand.username }}</h5>
+										<p class="text-muted" style="margin-top:-4%;">{{ brand.email }}</p>
+										<div class="col-12 mt-1">
+												<div class="row">
+													<!-- Followers -->
+													<div class="col-6" style="margin-left:-5%;">
+														<p><b style="font-size: 10px;">{{ brand.followed.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Followers</span></p>
+														
+													</div>
+													<!-- following -->
+													<div class="col-6">
+														<p><b style="font-size: 10px;">{{ brand.followers.count() -1 }}</b><span class="text-muted" style="font-size: 10px;">&#xA0;&#xA0;Following</span></p>
+														
+													</div>
+												</div>
+											</div>
+										<p class="text-muted" style="font-size: 10px;">
+												{% if  brand.about_me != None %}
+												{{ brand.about_me }}
+												{% endif %}
+											
+										</p>
+								
+									</div>
+	
+									<script>
+										$(function () {
+											var moveLeft = 20;
+											var moveup = 160;
+	
+											$('span#z{{ brand.id }}').hover(function (e) {
+												$("div#w{{ brand.id }}").show();
+												//.css('top', e.pageY + moveDown)
+												//.css('left', e.pageX + moveLeft)
+												//.appendTo('body');
+	
+											}, function () {
+												$("div#w{{ brand.id }}").hide();
+											});
+	
+											$('span#z{{ brand.id }}').mousemove(function (e) {
+												var currTop = $(this).offset().top+100;
+												
+											//	$("div#w{{ brand.id }}").css('left', e.pageX + moveLeft);
+												$("div#w{{ brand.id }}").css('top', e.pageX-moveup).css('left', e.pageX - moveLeft);
+											});
+	
+										});
+									</script>
+									<!-- hover profile detail card end -->
+							</li>
+						</div>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-content" id="tab-3" style="padding:0px;">
+				<!-- <div class="row">		
+						<div class="col-12 col-md-12">
+								<iframe src="https://feed.mikle.com/widget/v2/103922/" height="402px" width="100%" class="fw-iframe" scrolling="no" frameborder="0"></iframe>			
+						</div>
+					   </div> -->
+								<div class="row">
+										<div class="ui-block-title">
+												<p class="title" cla style="font-family: Arial, Times, cursive;font-weight: 400;"> Latest Events</p>
+											</div>
+									{% for events in events %}
+									<!-- <div class="row"> -->
+									<div class="col-12 col-md-6" style="margin-top:4%;">
+										<div class="card" style="">
+											<img src="{{ url_for('static', filename='event_pics/' + events.image_file) }}" class="card-img1" alt="event image" style=" height: 161px !important;">
+											<!-- <img class="mx-auto d-block img-fluid card_img" src="{{ url_for('static', filename='event_pics/' + events.image_file) }}"
+																		style="height: auto; width: 100%;"> -->
+											<div style="padding:5%;">
+												<div class="row">
+													<div class="col-3">
+														<p class="mb_month" style="color:red;">{{ moment(events.event_start_date).format('MMM') }}</p>
+														<p class="text-dark mb_date">{{ moment(events.event_start_date).format('Do') }}</p>
+													</div>
+													<div class="col-8" style="padding:0%;">
+														<div>
+															<h6 class="truncate_heading">
+																<a class="text-uppercase m-link" href="{{ url_for('users.eventsn', events_id=events.id) }}">{{events.event_name }}</a>
+															</h6>
+														</div>
+														<div style="margin-top: -4%;
+															color: rgba(0,0,0,0.68);"><small class="pro_username"><a class="m-link text-capitalize" href="{{ url_for('users.user', id=events.Protagonist.id) }}">
+																				{{ events.Protagonist.username }}
+																			</a>&#xA0;, 
+															<a class="text-dark text-capitalize pro_username" href="http://maps.google.com/?q={{events.event_location }}">&#xA0;{{events.event_location }}</a>          
+														</small></div>
+													</div>
+												</div>
+												<hr>
+												<div class="row" style="align-items:center;">
+													<div class="col-md-5">
+														{% if current_user.has_in_events(events) %}
+														<a class="cls_btnlink" href="{{ url_for('users.eventin_action', events_id=events.id, action='out') }}">
+															<div class="cls_btn">CANCEL&#xA0;&#xA0; {{ events.intrest.count() }}</div>
+														</a>
+														{% else %}
+														<a class="cls_btnlink" href="{{ url_for('users.eventin_action', events_id=events.id, action='in') }}">
+															<div class="cls_btn">GOING&#xA0;&#xA0; {{ events.intrest.count() }}</div>
+														</a>
+														{% endif %}
+														<!-- <div class="cls_btn">Going</div> -->
+													</div>
+													<div class="col-md-7">
+														{% if events.event_category=='Beauty & Fashion' %}
+														<h5><span class="text-muted mb_event"><i class='fas fa-palette mr-2'></i>Beauty & Fashion</span></h5>
+														{% endif %} {% if events.event_category=='Gaming & Apps' %}
+														<h5><span class="text-muted mb_event"><i class="fa fa-gamepad mr-2"></i>Gaming & Apps</span></h5>
+														{% endif %} {% if events.event_category=='Health & Fitness' %}
+														<h5><span class="text-muted mb_event"><i class="fa fa-child mr-2"></i>Health & Fitness</span></h5>
+														{% endif %} {% if events.event_category=="Tech" %}
+														<h5><span class="text-muted mb_event"><i class="fa fa-tachometer mr-2"></i>Tech</span></h5>
+														{% endif %} {% if events.event_category=='Entertainment' %}
+														<h5><span class="text-muted mb_event"><i class="fa fa-video-camera mr-2"></i>Entertainment</span></h5>
+														{% endif %} {% if events.event_category=='Others' %}
+														<h5><span class="text-muted mb_event"><i class='fas fa-spinner mr-2'></i>Others</span></h5>
+														{% endif %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								 <!-- </div> -->
+									{% endfor %}
+								</div>
+		</div>
+		
+		
+			
+		</div>
+	</div>
+
+
+
+
+
+		<script>
+									function activatePlacesSearch() {
+										var input = document.getElementById('googleplaces');
+										var autocomplete = new google.maps.places.Autocomplete(input);
+									}
+									$("#show_div").mouseover(function () {
+										$("#hello").css('visibility', 'visible');
+									});
+		</script>
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZZjkOg4_d2Fw6BBN6UeDDqkh-PqgSzDU&libraries=places&callback=activatePlacesSearch"></script>
+	</div>
+
+{% endblock content %}

@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.boxed-inverse,  .advs-box.boxed-inverse:not(.shadow-1), .header-base {
+    background-color: #f4f9fe;
+}
+
+.advs-box.boxed-inverse{
+border-radius: 6px !important;
+}
+.advs-box-top-icon-img.boxed-inverse .advs-box-content {
+    padding: 30px;
+    border: none;
+}
+.advs-box-top-icon-img.niche-box-post {
+    padding-top: 0 !important;
+    text-align: left;
+    margin-top: 0 !important;
+    border: none;
+}
+.advs-box .advs-box-content .btn, .advs-box .advs-box-content .btn-text {
+    margin-top: 15px;
+}
+.btn-sm {
+    padding: 8px 35px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 2px;
+}
+.btn{
+  color: #fff;
+  background-color: #5584ff;
+}
+.niche-box-post .img-box {
+    margin: 0;
+}
+.img-box:not(.circle){
+  border-radius: 6px !important;
+}
+.advs-box-top-icon-img .img-box{
+    z-index: 1;
+    max-height: 350px;
+    max-width: 100%;
+    display: block;
+}
+</style>
+<div style="margin-top:4em;">
+<div class="col-12">
+        <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="advs-box advs-box-top-icon-img niche-box-post boxed-inverse" data-anima="scale-rotate" data-trigger="hover">
+                        
+                        <a class="img-box"><img src="{{ url_for('static', filename='img/brandphoto.jpeg') }}" alt="" /> </a>
+                        <div class="advs-box-content">
+                            <h2>Brands</h2>
+                            
+                            <p class="niche-box-content">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                            </p>
+                            <a class="btn btn-sm" href="{{ url_for('users.roleupdatecreators',id=current_user.id) }}">Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="advs-box advs-box-top-icon-img niche-box-post boxed-inverse" data-anima="scale-rotate" data-trigger="hover">
+                      
+                        <a class="img-box"> <img src="{{ url_for('static', filename='image-2.jpg') }}" alt="" style="max-height:300px !important;height:240px;"/></a>
+                        <div class="advs-box-content">
+                            <h2>Creatos</h2>
+                            
+                            <p class="niche-box-content">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+              
+                            </p>
+                            <a class="btn btn-sm" href="{{ url_for('users.roleupdatebrands',id=current_user.id) }}">Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="advs-box advs-box-top-icon-img niche-box-post boxed-inverse" data-anima="scale-rotate" data-trigger="hover">
+                        
+                        <a class="img-box"> <img src="{{ url_for('static', filename='image-11.jpg') }}" alt="" style="max-height:300px !important;height:240px;" /> </a>
+                        <div class="advs-box-content">
+                            <h2>Mentor</h2>
+                            
+                            <p class="niche-box-content">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                            </p>
+                            <a class="btn btn-sm" href="{{ url_for('users.role', id=current_user.id, action='mentor') }}">Apply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</div>
+</div>
+
+{% endblock content %}

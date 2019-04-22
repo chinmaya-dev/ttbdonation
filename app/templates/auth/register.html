@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ url_for('static', filename='badage.png') }}">
+  <title>Come Tribe with us | The Tribal Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,700">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles-merged.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"></script> -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<style>
+        .portfolio_description {
+    position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      overflow-y: scroll;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      overflow-y: scroll;
+      background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .portfolio-block {
+      position: relative;
+  }
+  
+ 
+  
+  a:hover,a:focus{
+      outline: none;
+      text-decoration: none;
+  }
+  .tab{ text-align: center; }
+  .tab .nav-tabs{
+      display: inline-block;
+      border-bottom: none;
+      position: relative;
+  }
+  .tab .nav-tabs li{
+      margin-bottom: 0;
+  }
+  .tab .nav-tabs li a{
+      display: block;
+      padding: 20px;
+      border: none;
+      border-radius: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: #444;
+      margin-right: 0;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.3s ease 0s;
+  }
+  .tab .nav-tabs li a i{
+      display: block;
+      font-size: 40px;
+      margin-bottom: 15px;
+  }
+  .tab .nav-tabs li.active a,
+  .tab .nav-tabs li a:hover{
+      border: none;
+      background: transparent;
+  }
+  .tab .nav-tabs li a:before,
+  .tab .nav-tabs li a:after{
+      content: "";
+      width: 0;
+      border-top: 3px solid #00a6ff;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      transition: all 0.3s ease 0s;
+  }
+  .tab .nav-tabs li a:after{
+      left: auto;
+      right: 0;
+  }
+  .tab .nav-tabs li.active a:before,
+  .tab .nav-tabs li a:hover:before,
+  .tab .nav-tabs li.active a:after,
+  .tab .nav-tabs li a:hover:after{
+      width: 50%;
+  }
+  .tab .tab-content{
+      padding: 20px;
+      margin-top: -5px;
+      border-radius: 0 0 5px 5px;
+      
+      font-size: 15px;
+      color: #757575;
+      line-height: 30px;
+  }
+  .tab .tab-content h3{
+      font-size: 24px;
+      margin-top: 0;
+  }
+  @media only screen and (max-width: 479px){
+      .tab .nav-tabs li{
+          width: 100%;
+          text-align: center;
+          margin-bottom: 5px;
+      }
+      .tab .nav-tabs li a,
+      .tab .nav-tabs li a:hover{ border-bottom: 1px solid #dfdfdf; }
+      .tab .tab-content{ border-top: none; }
+  }
+  .parallax{
+     /* The image used */
+     background-image:url("/static/img/influence-cloud-bg.png");
+     /* background-color: rgba(255, 255, 255, 0.5); */
+     /* Set a specific height */
+     min-height: 500px;
+     width: 100%;
+     /* Create the parallax scrolling effect */
+     
+  }
+  .parallax::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.88);
+      /* z-index: 9; */
+  }
+  .bgimg-1, .bgimg-2, .bgimg-3,.bgimg-4 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  .bgimg-1 {
+    background-image: url("img/brandphoto.jpeg");
+    min-height: 100vh;
+  }
+  
+  .bgimg-2 {
+    background-image: url("img/travel.jpg");
+    min-height: 100vh;
+  }
+  
+  .bgimg-3 {
+    background-image: url("img/brandpage.png");
+    min-height: 100vh;
+  }
+  
+  .bgimg-4 {
+    background-image: url("img/travel.jpg");
+    min-height: 100vh;
+  }
+  
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    color: #000;
+  }
+  
+  .caption_heading{
+    color: orange;
+    padding: 18px;
+    font-size: 35px;
+    letter-spacing: 5px;
+  }
+  
+  h3 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+  }
+  
+  .caption_text {
+      transition: 0.3s ease-out;
+  }
+  
+  .caption_text:hover {
+      transform: scale(1.05);
+      background-color:orange; 
+      padding: 25px;
+      box-shadow: 0 2px 8px black;
+  }
+  
+  
+  /* Turn off parallax scrolling for tablets and phones */
+  @media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3,.bgimg-4 {
+      background-attachment: scroll;
+    }
+  }
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: 0px;
+  }
+  
+  #tab-section>.nav-item>li{
+    border: 0px;
+    width: 14%;
+  }
+  
+  .skill_bottom_content {
+      display: flex;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+  }
+  .separator_small {
+      width: 30px;
+      height: 2px;
+      margin: 20px 0px;
+      background: #ff6863;
+  }
+  .skill_bottom_item .separator_small {
+      margin: 20px auto;
+  }
+  .section-header .section-title {
+    font-size: 32px;
+    color: #111;
+    text-align: center;
+    font-weight: 400;
+  }
+  
+  .section-header .section-description {
+    text-align: center;
+    padding-bottom: 40px;
+    color: #777;
+    font-style: italic;
+  }
+  
+  
+  
+  
+  
+  #features {
+    background: #fff;
+    padding: 60px 0 0 0;
+    overflow: hidden;
+  }
+  
+  #features .features-img {
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  @media (min-width: 769px) {
+    #features .features-img {
+      padding-top: 120px;
+      margin-top: -200px;
+    }
+  }
+  
+  #features .features-img img {
+    max-width: 100%;
+  }
+  
+  #features .box {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  #features .icon {
+    margin-bottom: 10px;
+  }
+  
+  #features .icon i {
+    color: #666666;
+    font-size: 40px;
+    transition: 0.5s;
+  }
+  
+  #features .icon i:before {
+    background: #1dc8cd;
+    background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #features .title {
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  
+  #features .title a {
+    color: #111;
+  }
+  
+  #features .description {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #features .section-description {
+    padding-bottom: 10px;
+  }
+  
+  
+  
+  
+  #more-features {
+    padding: 60px 0 60px 0;
+    overflow: hidden;
+  }
+  
+  #more-features .box {
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+    background: #fff;
+    transition: 0.4s;
+  }
+  
+  #more-features .icon {
+    float: left;
+  }
+  
+  #more-features .icon i {
+    color: #666666;
+    font-size: 80px;
+    transition: 0.5s;
+    line-height: 0;
+  }
+  
+  #more-features .icon i:before {
+    background: #1dc8cd;
+    background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #more-features h4 {
+    margin-left: 100px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  #more-features h4 a {
+    color: #111;
+  }
+  
+  #more-features p {
+    font-size: 14px;
+    margin-left: 100px;
+    margin-bottom: 0;
+    line-height: 24px;
+  }
+  
+  @media (max-width: 767px) {
+    #more-features .box {
+      margin-bottom: 20px;
+    }
+    #more-features .icon {
+      float: none;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    #more-features h4, #more-features p {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+  .social{
+        color: blue;
+        font-size:30px;
+        cursor: pointer;
+    }
+  
+    .parallaximg{
+    /* The image used */
+    background-image: url("/static/img/pexels-photo-934062.jpeg");
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* Set a specific height */
+    min-height: 500px;
+    width: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+  }
+  .parallaximg::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.88);
+      /* z-index: 9; */
+  }
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    width: 155px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .checkboxes label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+}
+.mdbgroup 			  { 
+  position:relative; 
+  margin-bottom:10px; 
+}
+
+.mdbinput 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  background:transparent !important;
+  border-bottom:1px solid #757575;
+}
+.mdbinput:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.mdblabel 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+.mdbinput:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+.mdbinput:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+  
+@-webkit-keyframes autofill {
+      to {
+        color: white;
+        background: transparent;
+      }
+    }
+    
+    input:-webkit-autofill {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+    }
+
+@media only screen and (max-device-width: 768px) {
+
+#welcomediv
+{
+  display:none;
+}
+
+}
+
+.signupmarginmobile{
+  margin-top:60%;
+}
+.signupmargin{
+  margin-top:7%;
+}
+    </style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#nav").hide();
+    });
+</script>
+</head>
+<body>
+
+        <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" title="The Tribal Box">The Tribal Box</a>
+                    <!-- <a class="navbar-brand" href="#" style="top:0;">
+                      <img src="img/logo.png" width="200" height="200" alt="" >
+                      
+                    </a>
+                   -->
+                  </div>
+          
+                  <div id="navbar-collapse" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="probootstra-cta-button"><a  href="{{ url_for('auth.login') }}"  class="btn" >Sign in</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <section class="flexslider">
+                    <div class="col-md-12 portfolio-block">
+                        <video autoplay loop muted
+                        style="position: fixed;top: 50%;left: 50%;min-width: 100%;min-height: 100%;width: auto;height: auto;z-index: -100;-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);background-size: cover; background-position: center center; -webkit-filter: blur(5px);-moz-filter: blur(5px);-o-filter: blur(5px);-ms-filter: blur(5px);filter: blur(5px);">
+                        <source src="{{ url_for('static', filename='ttbvedio.mp4') }}" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                      </video>
+                  <div class="portfolio_description">
+
+
+                             
+                  <ul class="slides">
+                    <li  class="">
+                      <div class="container">
+                        <div class="row">
+                          
+                         
+<div class="col-md-6" id="welcomediv">
+  <div class="probootstrap-slider-text probootstrap-animate mt-2" data-animate-effect="fadeInRight">
+
+    <!-- left side heading here     -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- TTB heding -->
+          <section class="forbrand" style="display:block;">
+            <div class="container">
+              <div class="row">
+                                                                                <div class="col-md-8">
+                                                                                  <div class="forbrand_main">
+                                                                                    <div class="container">
+                                                                                      <div class="row">
+                                                                                        <div class="col-md-6 pad">
+                                                                                          <div class="tab" role="tabpanel">
+                                                                                            <!-- Nav tabs -->
+                                                                                            <ul class="nav nav-tabs" role="tablist">
+                                                                                              <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab"
+                                                                                                  data-toggle="tab" style="color:white;"><i class="fa fa-globe"></i> Brand</a></li>
+                                                                                              <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab"
+                                                                                                  style="color:white;"><i class="fa fa-rocket"></i> Creator</a></li>
+                                                                                            </ul>
+                                                                                            <!-- Tab panes -->
+                                                                                            <div class="tab-content tabs">
+                                                                                              <div role="tabpanel" class="tab-pane fade in active" id="Section1" style="color:white;">
+                                                                                                <h3 style="color:white;">I am a Brand</h3>
+                                                                                                <p>Our data driven insights helps you find the right audience and optimised reach based on demography,
+                                                                                                  social economics and psychometrics for your campaigns.
+                                                                                
+                                                                                                  Are you brand looking to promote your product and services?
+                                                                                                </p>
+                                                                                                <!-- <a href="{{ url_for('auth.login') }}" target="_blank" class="button" style="vertical-align:middle">Login as Brand</a> -->
+                                                                                              </div>
+                                                                                
+                                                                                              <div role="tabpanel" class="tab-pane fade" id="Section2" style="color:white;">
+                                                                                                <h3 style="color:white;">I am a Creator</h3>
+                                                                                                <p>The Tribal Box one stop platform empowers and enables creators to get heard, connect and obtain
+                                                                                                  support from our
+                                                                                                  community of brands and followers.</p>
+                                                                                
+                                                                                
+                                                                                                <!-- <a href="{{ url_for('auth.login') }}" target="_blank" class="button" style="vertical-align:middle">Login as Creator</a>                                                                                   -->
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                
+                                                                                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="signupform" class="box col-md-6 probootstrap-animate shadow mt-5" data-animate-effect="fadeInLeft" >
+        <!-- login form -->
+        <div class="container">
+            <div class="row">
+              <!-- form -->
+              <div class="col-lg-4 col-md-6 col-12 mt-5 pt-3">
+                <!-- heading visible only below lg screen -->                                       
+                <!-- form -->
+                <form method="POST" action="" class="" style="background-color: rgba(0, 0, 0, 0.6); padding: 0px 12px 2px; ">
+                  {{ form.hidden_tag() }}
+                  <fieldset class="form-group" style="padding:13px !important;">
+                      
+                    <h3 class="text-white pull-left mt-2" style="color:white; border-bottom:2px solid #1161ee;margin-top:8%;text-transform: capitalize;font-family:Poppins,Arial,sans-serif;font-weight:bold; ">Join Today</h3>
+                    
+                    <!-- text fields -->
+                    <div class="form-group" style="margin-top:25%;">
+                      
+                      {% if form.username.errors %}
+                      <div class="mdbgroup"> 
+                      {{ form.username(class="mdbinput is-invalid") }}
+                      </div>
+                      <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %}
+                      <div class="mdbgroup"> 
+                      {{ form.username(class="mdbinput",
+                                    placeholder=form.username.label.text) }}
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="form-group">
+                      {% if form.email.errors %}
+                      <div class="mdbgroup">
+                      {{ form.email(class="mdbinput is-invalid") }}
+                    </div>
+                      <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %}
+                      <div class="mdbgroup">
+                      {{ form.email(class="mdbinput",
+                                    placeholder=form.email.label.text)}}
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="form-group">
+                      {% if form.password.errors %}
+                      <div class="mdbgroup">
+                      {{ form.password(class="mdbinput is-invalid") }}
+                    </div>
+                      <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %}
+                      <div class="mdbgroup">
+                      {{ form.password(class="mdbinput",
+                                    placeholder=form.password.label.text) }}
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="form-group">
+                      {% if form.confirm_password.errors %}
+                      <div class="mdbgroup">
+                      {{ form.confirm_password(class="mdbinput is-invalid") }}
+                    </div>
+                      <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                      {% else %}
+                      <div class="mdbgroup">
+                      {{ form.confirm_password(class="mdbinput",
+                                    placeholder=form.confirm_password.label.text) }}
+                       </div>
+                      {% endif %}
+                    </div>
+                    <div class="form-check">
+        
+                      {{ form.tandc(class="form-check-input",style="background:transparent !important;opacity: 0.2 !important;") }}
+                      <a class="text-white" style="color:#6a6f8c;;" href="{{ url_for('main.tandc') }}">Agree to our terms & conditions</a>
+                    </div>
+                  </fieldset>
+                  <!-- Button -->
+                  <div class="form-group text-center">
+                    {{ form.submit(class="btn btn-primary" , style="width:90%;border-radius: 25px;") }}
+                  </div>
+        
+                  <div class="border-top py-3">
+                    <small class="text-white">
+                      <p class="text-white text-center">Already Have An Account? <a class="text-white ml-2"
+                          href="{{ url_for('auth.login') }}">Sign
+                          In</a></p>
+                    </small>
+                  </div>
+                </form>
+
+                  
+                    
+                    </div>
+                </div>
+             
+            </div>
+            
+        </div>   
+
+
+ 
+</div>
+                                        </div>
+                                            </div>
+                    </li>
+                    
+                   
+                  </ul>
+                </div>
+                </div>
+             
+                </section>
+
+    <!-- button -->
+ 
+
+          <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
+          <script src="{{ url_for('static', filename='js/custom.min.js') }}"></script>
+          <script type="text/javascript" src="{{ url_for('static', filename='style.js') }}"></script>
+          <script>
+          var alterClass = function() {
+            var ww = document.body.clientWidth;
+            if (ww < 780) {
+              
+              $('#signupform').addClass('signupmarginmobile');
+              $('#signupform').removeClass('signupmargin');
+            } else if (ww >= 781) {
+              $('#signupform').removeClass('signupmarginmobile');
+              $('#signupform').addClass('signupmargin');
+             };
+           };
+            $(window).resize(function(){
+              alterClass();
+            });
+            //Fire it when the page first loads:
+            alterClass();
+            </script>
+</body>
+</html>

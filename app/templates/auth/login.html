@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ url_for('static', filename='badage.png') }}">
+  <title>Come Tribe with us | The Tribal Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,700">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles-merged.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"></script> -->
+
+<script>
+  AOS.init();
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<style>
+        .portfolio_description {
+          position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+   
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+    
+      background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .portfolio-block {
+      position: relative;
+  }
+  a:hover,a:focus{
+      outline: none;
+      text-decoration: none;
+  }
+  .tab{ text-align: center; }
+  .tab .nav-tabs{
+      display: inline-block;
+      border-bottom: none;
+      position: relative;
+  }
+  .tab .nav-tabs li{
+      margin-bottom: 0;
+  }
+  .tab .nav-tabs li a{
+      display: block;
+      padding: 20px;
+      border: none;
+      border-radius: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: #444;
+      margin-right: 0;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.3s ease 0s;
+  }
+  .tab .nav-tabs li a i{
+      display: block;
+      font-size: 40px;
+      margin-bottom: 15px;
+  }
+  .tab .nav-tabs li.active a,
+  .tab .nav-tabs li a:hover{
+      border: none;
+      background: transparent;
+  }
+  .tab .nav-tabs li a:before,
+  .tab .nav-tabs li a:after{
+      content: "";
+      width: 0;
+      border-top: 3px solid #00a6ff;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      transition: all 0.3s ease 0s;
+  }
+  .tab .nav-tabs li a:after{
+      left: auto;
+      right: 0;
+  }
+  .tab .nav-tabs li.active a:before,
+  .tab .nav-tabs li a:hover:before,
+  .tab .nav-tabs li.active a:after,
+  .tab .nav-tabs li a:hover:after{
+      width: 50%;
+  }
+  .tab .tab-content{
+      padding: 20px;
+      margin-top: -5px;
+      border-radius: 0 0 5px 5px;
+      
+      font-size: 15px;
+      color: #757575;
+      line-height: 30px;
+  }
+  .tab .tab-content h3{
+      font-size: 24px;
+      margin-top: 0;
+  }
+  @media only screen and (max-width: 479px){
+      .tab .nav-tabs li{
+          width: 100%;
+          text-align: center;
+          margin-bottom: 5px;
+      }
+      .tab .nav-tabs li a,
+      .tab .nav-tabs li a:hover{ border-bottom: 1px solid #dfdfdf; }
+      .tab .tab-content{ border-top: none; }
+     
+  }
+  .parallax{
+     /* The image used */
+     background-image:url("/static/img/influence-cloud-bg.png");
+     /* background-color: rgba(255, 255, 255, 0.5); */
+     /* Set a specific height */
+     min-height: 500px;
+     width: 100%;
+     /* Create the parallax scrolling effect */
+     
+  }
+  .parallax::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.88);
+      /* z-index: 9; */
+  }
+  .bgimg-1, .bgimg-2, .bgimg-3,.bgimg-4 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  .bgimg-1 {
+    background-image: url("img/brandphoto.jpeg");
+    min-height: 100vh;
+  }
+  
+  .bgimg-2 {
+    background-image: url("img/travel.jpg");
+    min-height: 100vh;
+  }
+  
+  .bgimg-3 {
+    background-image: url("img/brandpage.png");
+    min-height: 100vh;
+  }
+  
+  .bgimg-4 {
+    background-image: url("img/travel.jpg");
+    min-height: 100vh;
+  }
+  
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    color: #000;
+  }
+  
+  .caption_heading{
+    color: orange;
+    padding: 18px;
+    font-size: 35px;
+    letter-spacing: 5px;
+  }
+  
+  h3 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+  }
+  
+  .caption_text {
+      transition: 0.3s ease-out;
+  }
+  
+  .caption_text:hover {
+      transform: scale(1.05);
+      background-color:orange; 
+      padding: 25px;
+      box-shadow: 0 2px 8px black;
+  }
+  
+  
+  /* Turn off parallax scrolling for tablets and phones */
+  
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: 0px;
+  }
+  
+  #tab-section>.nav-item>li{
+    border: 0px;
+    width: 14%;
+  }
+  
+  .skill_bottom_content {
+      display: flex;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+  }
+  .separator_small {
+      width: 30px;
+      height: 2px;
+      margin: 20px 0px;
+      background: #ff6863;
+  }
+  .skill_bottom_item .separator_small {
+      margin: 20px auto;
+  }
+  .section-header .section-title {
+    font-size: 32px;
+    color: #111;
+    text-align: center;
+    font-weight: 400;
+  }
+  
+  .section-header .section-description {
+    text-align: center;
+    padding-bottom: 40px;
+    color: #777;
+    font-style: italic;
+  }
+  #features {
+    background: #fff;
+    padding: 60px 0 0 0;
+    overflow: hidden;
+  }
+  
+  #features .features-img {
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  @media (min-width: 769px) {
+    #features .features-img {
+      padding-top: 120px;
+      margin-top: -200px;
+    }
+  }
+  
+  #features .features-img img {
+    max-width: 100%;
+  }
+  
+  #features .box {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  #features .icon {
+    margin-bottom: 10px;
+  }
+  
+  #features .icon i {
+    color: #666666;
+    font-size: 40px;
+    transition: 0.5s;
+  }
+  
+  #features .icon i:before {
+    background: #1dc8cd;
+    background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #features .title {
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  
+  #features .title a {
+    color: #111;
+  }
+  
+  #features .description {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #features .section-description {
+    padding-bottom: 10px;
+  }
+  
+  
+  
+  
+  #more-features {
+    padding: 60px 0 60px 0;
+    overflow: hidden;
+  }
+  
+  #more-features .box {
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+    background: #fff;
+    transition: 0.4s;
+  }
+  
+  #more-features .icon {
+    float: left;
+  }
+  
+  #more-features .icon i {
+    color: #666666;
+    font-size: 80px;
+    transition: 0.5s;
+    line-height: 0;
+  }
+  
+  #more-features .icon i:before {
+    background: #1dc8cd;
+    background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #more-features h4 {
+    margin-left: 100px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  #more-features h4 a {
+    color: #111;
+  }
+  
+  #more-features p {
+    font-size: 14px;
+    margin-left: 100px;
+    margin-bottom: 0;
+    line-height: 24px;
+  }
+  
+  @media (max-width: 767px) {
+    #more-features .box {
+      margin-bottom: 20px;
+    }
+    #more-features .icon {
+      float: none;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    #more-features h4, #more-features p {
+      margin-left: 0;
+      text-align: center;
+    }
+    
+  }
+  .social{
+        color: blue;
+        font-size:30px;
+        cursor: pointer;
+    }
+  
+    .parallaximg{
+    /* The image used */
+    background-image: url("/static/img/pexels-photo-934062.jpeg");
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* Set a specific height */
+    min-height: 500px;
+    width: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+  }
+  .parallaximg::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.88);
+      /* z-index: 9; */
+  }
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    width: 155px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 2px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .checkboxes label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+}
+
+
+
+.select {
+  font-family:
+    'Roboto','Helvetica','Arial',sans-serif;
+	position: relative;
+	width: 350px;
+}
+
+.select-text {
+	position: relative;
+	font-family: inherit;
+	background-color: transparent !important;
+	width: 350px;
+	padding: 10px 10px 10px 0;
+	font-size: 13px;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid white;
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+	border-bottom: 1px solid #f4511e;
+}
+
+	/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.select:after {
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	
+	pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+.select-label {
+	color: rgba(0,0,0, 0.26);
+	font-size: 12px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 10px;
+	transition: 0.2s ease all;
+}
+
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+	color: #2F80ED;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+	position: relative;
+	display: block;
+	width: 350px;
+}
+
+.select-bar:before, .select-bar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #2F80ED;
+	transition: 0.2s ease all;
+}
+
+.select-bar:before {
+	left: 50%;
+}
+
+.select-bar:after {
+	right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.select-highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+.tranparentcolor{
+	background-color: transparent !important;
+	border: 0px !important;
+	outline: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	color:transparent !important;
+	cursor:default !important;
+}
+
+.mdbgroup 			  { 
+  position:relative; 
+  margin-bottom:50px; 
+}
+.mdbgrouppass{ 
+  position:relative; 
+  margin-bottom:50px; 
+}
+.mdbinput 				{
+  font-size:1em;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  background:transparent !important;
+  border-bottom:1px solid #757575;
+}
+.mdbinput:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.mdblabel 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+.mdbinput:focus ~ label, input:valid ~ label 		{
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+.mdbinput:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+.user-icon{
+  padding-left:30px;
+background-repeat: no-repeat;
+background-position-x: 4px;
+background-position-y: 4px;
+color:white;
+}
+.mdbgroup:before {
+  
+font-family: FontAwesome; 
+content: "\f0e0";  /* this is your text. You can also use UTF-8 character codes as I do here */
+position:absolute;
+font-size:20px;
+top:10px;
+}
+.mdbgrouppass:before {
+  
+  font-family: FontAwesome; 
+  content: "\f023";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  position:absolute;
+  font-size:20px;
+  top:10px;
+  }
+  @-webkit-keyframes autofill {
+      to {
+        color: white;
+        background: transparent;
+      }
+    }
+    
+    input:-webkit-autofill {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+    }
+
+@media only screen and (max-device-width: 768px) {
+.portfolio_description {
+height: 1200px;
+}
+video{
+height: 1200px;
+}
+#tabsectionbrand {
+  display:none;
+}
+}
+.signupmarginmobile{
+  margin-top:100%;
+}
+.signupmargin{
+  margin-top:10%;
+}
+
+    </style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#nav").hide();
+    var alterClass = function() {
+    var ww = document.body.clientWidth;
+    if (ww < 780) {
+      $('#videotoggle').addClass('portfolio_description1');
+      $('#videotoggle').addClass('desktop_video1');
+
+    
+
+    } else if (ww >= 781) {
+      $('#videotoggle').removeClass('portfolio_description1');
+      $('#videotoggle').removeClass('desktop_video1');
+      // $('#videotoggle').removeClass('mb_video'); 
+
+      // $('#videotoggle').show();
+     };
+   };
+    $(window).resize(function(){
+      alterClass();
+    });
+    //Fire it when the page first loads:
+    alterClass();
+    });
+</script>
+</head>
+<body>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '268153730556085',
+        xfbml: true,
+        version: 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+        <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" title="The Tribal Box">The Tribal Box</a>
+                    <!-- <a class="navbar-brand" href="#" style="top:0;">
+                      <img src="img/logo.png" width="200" height="200" alt="" >
+                      
+                    </a>
+                   -->
+                  </div>
+          
+                  <div id="navbar-collapse" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="probootstra-cta-button"><a href="{{ url_for('auth.register') }}"  class="btn" >Sign Up</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <section class="flexslider">
+                    <div class="col-md-12 portfolio-block">
+                        <video autoplay loop muted
+                        style="position: fixed;top: 50%;left: 50%;min-width: 100%;min-height: 100%;width: auto;height: auto;z-index: -100;-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);background-size: cover; background-position: center center; -webkit-filter: blur(5px);-moz-filter: blur(5px);-o-filter: blur(5px);-ms-filter: blur(5px);filter: blur(5px);">
+                        <source src="{{ url_for('static', filename='ttbvedio.mp4') }}" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                      </video>
+                  
+                  <div class="portfolio_description">
+                  <ul class="slides">
+                    <li class="">
+                      <div class="container">
+                        <div class="row">
+                          <div id="tabsectionbrand" class="col-md-6">
+                            <div class="probootstrap-slider-text probootstrap-animate" data-animate-effect="fadeInRight">
+            
+                                    <div class="container mt-5">
+                                            <!-- <div class="row">
+                                                <div class="col-lg-8"> -->
+                                                    <!-- TTB heding -->
+                                                    <section class="forbrand" style="display:block;">
+                                                            <div class="container">
+                                                              <div class="row">
+                                                                              <div class="col-md-8">
+                                                                                <div class="forbrand_main">
+                                                                                  <div class="container">
+                                                                                    <div class="row">
+                                                                                      <div class="col-md-6 pad">
+                                                                                        <div class="tab" role="tabpanel">
+                                                                                          <!-- Nav tabs -->
+                                                                                          <ul class="nav nav-tabs">
+                                                                                            <h1 style="color:white;">Welcome to Tribal Box </h1>
+                                                                              
+                                                                                          </ul>
+                                                                                          <!-- Tab panes -->
+                                                                                          <div class="tab-content tabs">
+                                                                                            <div role="tabpanel" class="tab-pane fade in active" id="Section1" style="color:white;">
+                                                                                              <h4 style="color:white; font-size: 23px;">One Stop Platform </h4>
+                                                                                              <p class="text center">The Tribal Box brings to you stories that are all around us,
+                                                                                                waiting to be told, waiting to be heard and waiting to inspire.<br>
+                                                                                                But now that wait is over.
+                                                                              
+                                                                                              </p>
+                                                                                              <div style="text-align: center;">
+                                                                                                <a href="#" class="btn btn-primary btn-lg" style="text-transform:initial;" data-toggle="modal"
+                                                                                                  data-target="#loginModal">Watch Demo !&#xA0;<i class="fas fa-play-circle"></i></a>
+                                                                                              </div>
+                                                                                              <!-- <a href="{{ url_for('auth.login') }}" target="_blank" class="button" style="vertical-align:middle">Login as Brand</a> -->
+                                                                                            </div>
+                                                                              
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              
+                                                                              </div>
+                                                              </div>
+                                                            </div>
+                                                          </section>
+                                                <!-- </div>
+                                             
+                                           
+                                            </div> -->
+                                        </div>
+                              
+                            </div>
+                          </div>
+                          <div id="signupform" class="box col-md-4 col-xs-11 probootstrap-animate" data-animate-effect="fadeInUp" >
+                                <!-- login form -->
+                                
+                                <div class="formm">
+                                        <div class="login-wrap">
+                                      <form method="POST" action="">
+                                    <div  class="login-html box" style="box-shadow: 2px 2px 4px #000000;">
+                                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                                        <label for="tab-1" class="tab" style="top: 0.5em;">
+                                          Sign In
+                                        </label>
+                                        <input id="tab-2" type="radio" name="tab" class="sign-up">
+                                        <label for="tab-2" class="tab" style="display:none;">
+                                          Sign Up
+                                        </label>
+                                        <div class="login-form" style="margin-top:8%;">
+                                            <div class="sign-in-htm">
+                                              {{ form.hidden_tag() }}
+                                              <fieldset class="form-group">
+                                              
+                                                <div class="form-group">
+                                                <div class="group">
+ 
+                                                    
+                                                    {% if form.email.errors %}
+                                                    <div class="mdbgroup"> 
+                                                    {{ form.email(id="emailtext",class="mdbinput user-icon is-invalid") }}
+                                                  </div>
+                                                    <div class="invalid-feedback" style="margin-top:-11%;">
+                                                      {% for error in form.email.errors %}
+                                                      <span>{{ error }}</span>
+                                                      {% endfor %}
+                                                    </div>
+                                                    {% else %}
+                                                    
+                                                    <div class="mdbgroup">      
+                                                    {{ form.email(class="mdbinput user-icon", type="text", placeholder="Email") }}
+                                                  </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="group" style="margin-top:-5%;">
+                                                 
+                                                    
+                                                    {% if form.password.errors %}
+                                                    <div class="mdbgrouppass">
+                                                    {{ form.password(class="mdbinput user-icon is-invalid") }}
+                                                  </div>
+                                                    <div class="invalid-feedback">
+                                                      {% for error in form.password.errors %}
+                                                      <span>{{ error }}</span>
+                                                      {% endfor %}
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="mdbgrouppass"> 
+                                                    {{ form.password(class="mdbinput user-icon", type="password", placeholder="Password",style="background:transparent !important;") }}
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="form-check" style="margin-top: -8%;">
+                                                  {{ form.remember(class="form-check-input",style="background:transparent !important;opacity: 0.2 !important;") }}
+                                                  {{ form.remember.label(class="form-check-label",style="color:#6a6f8c;") }}
+                                              </div> 
+                                                <div class="group" style="margin-top: 8%;">
+                                                    {{ form.submit(type="submit", class="button", style="border-radius: 25px;") }}
+                                                </div>
+                                                <div class="foot-lnk" style="margin-top: 8%;">
+                                                  <a href="{{ url_for('auth.reset_request') }}">Forgot Password?</a>
+                                                </div>
+                                                </form>
+                                              </fieldset>
+                                            </div>
+                  </div>
+                  <div class="row"  style="margin-top: 8%;">
+                      <div class="col-md-6 col-xs-6">
+                        <a href="{{ url_for('auth.facebook') }}">
+                          <button class="loginBtn loginBtn--facebook" style="width: 100%;">
+                            Facebook
+                          </button>
+                        </a>
+                      </div>
+                    
+                      <div class="col-md-6 col-xs-6" >
+                        <a href="{{ url_for('auth.googlelogin') }}">
+                          <button class="loginBtn loginBtn--google"  style="width: 100%;">
+                            Google
+                          </button>
+                        </a>
+                      </div>
+                      
+
+                                            </div>
+                        <div class="mt-2 border-top py-3" style="margin-top:7%;">
+                          <small class="text-white">
+                            <p class="text-white text-center">New in here? <a class="text-white ml-2"
+                                href="{{ url_for('auth.register') }}">Sign
+                                Up Today!</a></p>
+                          </small>
+                        </div>
+                                        </div>
+                                    </div>
+                    </li>
+                  </ul>
+                </div>
+                </div>
+                </section>
+                
+    <!-- button -->
+   
+
+          <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
+          <script src="{{ url_for('static', filename='js/custom.min.js') }}"></script>
+          <script type="text/javascript" src="{{ url_for('static', filename='style.js') }}"></script>
+          <script>
+              var alterClass = function() {
+                var ww = document.body.clientWidth;
+                if (ww < 780) {
+                  
+                  $('#signupform').addClass('signupmarginmobile');
+                  $('#signupform').removeClass('signupmargin');
+                  
+                } else if (ww >= 781) {
+                  $('#signupform').removeClass('signupmarginmobile');
+                  $('#signupform').addClass('signupmargin');
+                 };
+               };
+                $(window).resize(function(){
+                  alterClass();
+                });
+                //Fire it when the page first loads:
+                alterClass();
+                </script>
+</body>
+</html>

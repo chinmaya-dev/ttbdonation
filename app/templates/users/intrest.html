@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+.vertical-menu {
+  padding-right:0;
+  padding-left:0;
+  background-color: #fff;
+  width: 100%;
+  height: calc(170vh - 200px);
+  overflow: auto;
+}
+
+.vertical-menu a {
+    background-color: #fff;
+    color: #b5becf;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.vertical-menu a:hover {
+  background-color: #f4f9fe;
+}
+
+.vertical-menu a.active {
+    background-color: #f4f9fe;
+    color: #555d65;
+    font-weight: bold;
+    font-size: 16px;
+}
+    
+    .scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    }
+
+    .scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    }
+
+    .scrollmenu a:hover {
+    background-color: #777;
+    }
+    </style>
+<div class="bg-light">
+<div class="container">
+    <div class="row">
+        <div class="vertical-menu col-md-3 my-5 offset-lg-1 d-none d-md-block">
+                    
+            <a  href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+            <a  href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+            {% if current_user.is_role != 'Brand' %}
+            <a  href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a> 
+            <a   href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a> 
+            {% endif %}
+            <a  href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+            <a  class="active" href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+            <a  href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Achievement') }}</a>
+            <a  href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+            {% if current_user.is_role == 'Brand' %}
+            <a  href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+            {% endif %} {% if current_user.is_role != 'Brand' %}
+            {% endif %}
+            {% if user.category == 'Sports' %}
+            <a  href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+            {% endif %}
+          </div>
+              <div class="scrollmenu d-block d-md-none">
+
+                  <a href="{{ url_for('users.account',id=current_user.id) }}">{{ ('General') }}</a>
+                  <a href="{{ url_for('users.address',id=user.id) }}"> {{ ('Address') }}</a>
+                  {% if current_user.is_role != 'Brand' %}
+                  <a href="{{ url_for('users.occupation',id=user.id) }}">{{ ('Occupation') }}</a>
+                  <a href="{{ url_for('users.socialdashboard',id=user.id) }}">{{ ('Dashboard') }}</a>
+                  {% endif %}
+                  <a href="{{ url_for('users.links',id=user.id) }}">{{ ('SocialLinks') }}</a>
+                  <a href="{{ url_for('users.intrest',id=user.id) }}">{{ ('Interest') }}</a>
+                  <a href="{{ url_for('users.achievement',id=user.id) }}">{{ ('Achievement') }}</a>
+                  <a class="active" href="{{ url_for('users.special_event',id=user.id) }}">{{ ('Special Moments') }}</a>
+                  {% if current_user.is_role == 'Brand' %}
+                  <a href="{{ url_for('users.brandbrief',id=user.id) }}">{{('Brand Details') }}</a>
+                  {% endif %} {% if current_user.is_role != 'Brand' %}
+
+                  {% endif %}
+                  {% if user.category == 'Sports' %}
+                  <a href="{{ url_for('users.sports',id=user.id) }}">{{ ('SportsCarrier') }}</a>
+                  {% endif %}
+              </div>
+        <div class="col-12 col-md-6 bg-white p-4 my-5">
+            <div class="d-flex align-items-center">
+                <div class="">
+                    <img style="height:100px; width:100px;"  class="shadow-sm rounded-circle"
+                        src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}">
+                </div>
+
+                <div class="pl-5">
+                    <h2 class="mb_username">{{ user.username }}</h2>
+                    <p class="text-secondary">{{ user.email }}</p>
+                </div>
+            </div>
+            <hr>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+
+                <br>
+                <p class="text-secondary p-1">Intrest</p>
+                <div class="form-group">
+                    <!-- {{ form.intrest_type.label(class="form-control-label") }} -->
+                    {% if form.intrest_type.errors %}
+                    {{ form.intrest_type(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.intrest_type.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.intrest_type(class="form-control", placeholder="Intrest") }}
+                    {% endif %}
+                </div>
+                
+                <div class="form-group text-right">
+                    {{ form.submit(class="btn btn-info") }}
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+{% endblock content %}

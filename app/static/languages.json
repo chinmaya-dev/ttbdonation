@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Abkhaz",
+        "code":"ab"
+    },
+    {
+        "name":"Afar",
+        "code":"aa"
+    },
+    {
+        "name": "hindi",
+        "code": "hi"
+    },
+    {
+        "name": "english",
+        "code": "en"
+    },
+    {
+        "name": "spanish",
+        "code": "sp"
+    },
+    {
+        "name": "bangla",
+        "code": "ba"
+    }
+]
