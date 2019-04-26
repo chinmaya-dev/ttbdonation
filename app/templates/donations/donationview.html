@@ -17,6 +17,9 @@
 <link type="text/css" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery-social-share-bar.css') }}" > -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-social-share-bar.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <style>
   #share-bar {
     
@@ -248,24 +251,28 @@ transform: translate(-50% , -50%);
    }
 }
 </style>
-<div class="row">
-        <div class="col-12">
-          <img class="" style="width: 100%; max-height: 360px;position: relative;" src="{{ url_for('static', filename='la.jpg') }}">
-          <div class="" style="position: absolute;top: 0; width: 100%; height: 100%; background-color: black; opacity: 0.5;"></div>
-          <div class="text-center content-margin" style="">
-            <p class="text-light main_font">The Trible Box Campaign Program</p>
-            <p  class=" text-light sub_font mb-3">Because every dream matter</p>
-            <button class="btn bg-light explore_btn" type="button"
-                data-toggle="modal" data-target="#myModal">View Demo<i class="fas fa-play-circle ml-3"></i></button>
-            {% if current_user.is_role == 'Creators' %}
-            <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn bg-primary request_btn">Request Donation</a>
-            {% else %}
-            <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn bg-primary request_btn">Create Donation</a>
-            {% endif %}
-          </div>
-        </div>
-</div>
 
+
+<div class="hero-wrap" style="background-image: url('../static/la.jpg');width: 100%; height: 360px;object-fit: cover;">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-7 text-center" >
+        <h1 class="mb-4" >The Trible Box Campaign Program</h1>
+        <p class="mb-5" >Because every dream matter</p>
+
+        <p ><a class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo" data-toggle="modal" data-target="#myModal"><i class="fas fa-play-circle mr-2"></i>Watch Video</a>
+          {% if current_user.is_role == 'Creators' %}
+          <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo">Request Donation</a>
+          {% else %}
+          <a href="{{ url_for('donation.create_donation', id=current_user.id) }}" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo">Create Donation</a>
+          {% endif %}
+        
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- The Modal -->
 <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -287,62 +294,80 @@ transform: translate(-50% , -50%);
         </div>
     </div>
 </div>
-
-
-<section class="home-campaign section-bg-white" style="padding-top:25px;" >
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="section-title">Why choose us </h2>
-            </div>
+<section class="ftco-counter ftco-intro" id="section-counter">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-5 d-flex justify-content-center counter-wrap ">
+        <div class="block-18 color-1 align-items-stretch">
+          <div class="text">
+            <span>Served Over</span>
+            <strong class="number" data-number="1432805">1432805</strong>
+            <span>Children in 190 countries in the world</span>
+          </div>
         </div>
-        <div class="row probootstrap-gutter60">
-                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-right">
-                  <div class="service hover_service text-center">
-                    <div style="color:black !important;" class="icon"><i class="fa fa-lock"></i></div>
-                    <div class="text">
-                      <h3>Secure</h3>
-                      <p>Your transaction and data are secure and you have nothing to be worried about. We are giving world
-                        class security.</p>
-                    </div>  
-                  </div>
-                </div>
-                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-left">
-                  <div class="service hover_service text-center">
-                    <div class="icon"><i class="fa fa-history"></i></div>
-                    <div class="text">
-                      <h3>Flexible</h3>
-                      <p>You can donate any amount, whatever you want. There is no fixed amount in the campaigns.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-right">
-                  <div class="service hover_service text-center">
-                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                    <div class="text">
-                      <h3>Easy</h3>
-                      <p>Create a campaign or donate in less than 5 minutes. So, just create campaign, get funds  make
-                        your dream come true.</p>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="col-md-3 col-lg-3 col-sm-6 col-12" data-aos="fade-left">
-                  <div class="service hover_service text-center">
-                    <div class="icon"><i class="fa fa-gift"></i></div>
-                    <div class="text">
-                      <h3>Supports reward</h3>
-                      <p>Campaign owners can offer rewards. So the backers will get rewarded for their donations.</p>
-                    </div>  
-                  </div>
-                </div>
-             
-              </div>
-
-
+      </div>
+      <div class="col-md d-flex justify-content-center counter-wrap ">
+        <div class="block-18 color-2 align-items-stretch">
+          <div class="text">
+            <h3 class="mb-4">Donate Money</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts.</p>
+            <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex justify-content-center counter-wrap ">
+        <div class="block-18 color-3 align-items-stretch">
+          <div class="text">
+            <h3 class="mb-4">Be a Volunteer</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts.</p>
+            <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
+<section class="ftco-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <h2 class="section-title">Why choose us </h2>
+          </div>
+      </div>
+    <div class="row">
+      <div class="col-md-4 d-flex align-self-stretch" data-aos="fade-right">
+        <div class="media block-6 d-flex services p-3 py-4 d-block">
+          <div class="icon d-flex mb-3" style="color: #FF5200;font-size:2em;"><i class="fa fa-lock"></i></div>
+          <div class="media-body pl-4">
+            <h3 class="heading">Secure</h3>
+            <p>Your transaction and data are secure and you have nothing to be worried about. We are giving world
+                class security.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-4 d-flex align-self-stretch" data-aos="fade-left">
+        <div class="media block-6 d-flex services p-3 py-4 d-block">
+          <div class="icon d-flex mb-3" style="color: #FF5200;font-size:2em;"><i class="fa fa-history"></i></div>
+          <div class="media-body pl-4">
+            <h3 class="heading">Flexible</h3>
+            <p>You can donate any amount, whatever you want. There is no fixed amount in the campaigns.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-4 d-flex align-self-stretch" data-aos="fade-right">
+        <div class="media block-6 d-flex services p-3 py-4 d-block">
+          <div class="icon d-flex mb-3" style="color: #FF5200;font-size:2em;"><i class="fa fa-thumbs-up"></i></div>
+          <div class="media-body pl-4">
+            <h3 class="heading">Easy</h3>
+            <p>Create a campaign or donate in less than 5 minutes. So, just create campaign, get funds  make
+                your dream come true.</p>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="home-campaign section-bg-gray new-home-campaigns" data-aos="fade-up">
     <div class="container">
@@ -353,52 +378,29 @@ transform: translate(-50% , -50%);
             </div>
         </div>
         <div class="row">
+          
             {% for donationreason in donationreason %}
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pt-3">
-                <div class="shadow p-2">
-                    <div class="row">
-
-                    </div>
-                    <div class="row p-2" style="margin-top:-20px">
-                        <div class="newimage">
-                            <!-- Iframe -->
-
-                            <a href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}"><img class="d-block img-fluid" style="display: block;position: relative;width: 100%;height: 100%;" src="{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}"></a>
-
-
-                            <div class="overlaynew"><a class="info" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">View Details</a></div>
-                        </div>
-                    </div>
-                    <div class="circle_share" data-toggle="dropdown"><i class="fas fa-share-alt"></i></div>
-                    <div class="dropdown-menu">
-                        <!-- Social Icons -->
-                        <div id="share-bar" class="sharebar"></div>
-                      </div>
-                    <!-- categories -->
-                   
-
-                    <div class="col-12 pt-0 d-flex" style="height: 50px;margin-top:11%; ">
-                        <h6 style="font-size: 0.8em;max-height:56px; overflow: hidden;" class="align-left text-dark"><a class="article-title text-uppercase" href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">{{ donationreason.goal }}</a></h6>
-                        <br>
-                    </div>
-                    <p class="ml-2"> {{ donationreason.short }} </p>
-
-                    <br>    
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex">
+                <div class="blog-entry align-self-stretch">
+                  <a href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}" class="block-20" style="background-image: url('{{ url_for('static', filename='donation_pics/' + donationreason.image_file) }}');">
+                  </a>
+                  <div class="text p-4 d-block">
                     
-                    
-                    <div style="margin-left: 12px; margin-right: 12px; margin-top: 10px;" class=" d-flex justify-content-between">
-                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Ends</span><br>{{ moment(donationreason.end_date).fromNow()}}
-                            </div>
+                    <h3 style="font-size: 0.8em;max-height:56px; overflow: hidden;" class="heading mt-3"><a href="{{ url_for('donation.donationn', donationreason_id=donationreason.id) }}">{{ donationreason.goal }}</a></h3>
+                    <p>{{ donationreason.short }}</p>
+                  </div>
+                  <div style="margin-left: 12px; margin-right: 12px; margin-bottom:3%;" class=" d-flex justify-content-between">
+                      <div class="text-muted"><span class="text-dark" style="font-size:16px;">Ends</span><br>{{ moment(donationreason.end_date).fromNow()}}
+                          </div>
 
-                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Target</span><br>Rs. {{ "{:,}".format(donationreason.target_amount)
-                            }}</div>
+                      <div class="text-muted"><span class="text-dark" style="font-size:16px;">Target</span><br>Rs. {{ "{:,}".format(donationreason.target_amount)
+                          }}</div>
 
-                        <div class="text-muted"><span class="text-dark" style="font-size:16px;">Funded</span><br>Rs. {{"{:,}".format(donation)}}</div>
-                    </div>
-                    <br>
-                    
+                      <div class="text-muted"><span class="text-dark" style="font-size:16px;">Funded</span><br>Rs. {{"{:,}".format(donation)}}</div>
+                  </div>
                 </div>
-            </div>
+              </div>
+           
             {% endfor %}
         </div>
         <div class="row">
@@ -438,4 +440,6 @@ transform: translate(-50% , -50%);
 <script>
  $('.sharebar').share();
 </script>
+ <script src="{{ url_for('static', filename='js/aos.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/donationjs/main.js') }}"></script>
 {% endblock content %}
